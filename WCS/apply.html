@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title> Application Form</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0b0b0f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Glass Container */
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  animation: fadeUp 1s ease;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+  background: linear-gradient(to right, #a855f7, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 15px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+}
+
+/* Inputs */
+.input-group {
+  position: relative;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 10px #a855f7;
+}
+
+/* Floating Label */
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: gray;
+  font-size: 14px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+  top: -8px;
+  font-size: 11px;
+  color: #a855f7;
+}
+
+/* Upload Box */
+.upload-box {
+  border: 2px dashed rgba(255,255,255,0.2);
+  padding: 25px;
+  text-align: center;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  border-color: #a855f7;
+}
+
+.upload-box.dragover {
+  border-color: #3b82f6;
+  background: rgba(59,130,246,0.1);
+}
+
+.upload-box input {
+  display: none;
+}
+
+.file-name {
+  margin-top: 10px;
+  color: #4ade80;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(to right, #a855f7, #3b82f6);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Loader */
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-top: 3px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+/* Animations */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media(max-width:600px){
+  h1 { font-size: 24px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Apply Now</h1>
+
+<form id="form">
+
+<!-- Personal Info -->
+<div class="grid grid-2">
+  <div class="input-group">
+    <input type="text" required>
+    <label>Full Name</label>
+  </div>
+  <div class="input-group">
+    <input type="email" required>
+    <label>Email Address</label>
+  </div>
+  <div class="input-group">
+    <input type="text" required>
+    <label>Phone Number</label>
+  </div>
+  <div class="input-group">
+    <input type="text" required>
+    <label>Location</label>
+  </div>
+</div>
+
+<br>
+
+<!-- Application Details -->
+<div class="grid grid-2">
+  <select required>
+    <option value="">Apply For</option>
+    <option>Internship</option>
+    <option>Full-Time</option>
+    <option>Remote</option>
+      <option>Free Lancing</option>
+  </select>
+
+  <select id="role" required>
+  <option value="">Select Role</option>
+  <option>Business Consultant</option>
+  <option>Business Analyst</option>
+  <option>Project Manager</option>
+  <option>Web Developer</option>
+  <option>App Developer</option>
+  <option>UI/UX Designer</option>
+  <option>Graphic Designer</option>
+  <option>Video Editor</option>
+  <option>Social Media Executive</option>
+   <option>Social Media Manager</option>
+   <option>Cinematographer</option>
+   <option>Digital Marketing Executive</option>
+   <option>Sales Executive</option>
+   <option>Model / Artist / Talent for Brand Shoots</option>
+   <option>Content Creator</option>
+</select>
+
+  <select required>
+    <option value="">Experience</option>
+    <option>Fresher</option>
+    <option>1-2 Years</option>
+    <option>3+ Years</option>
+  </select>
+</div>
+
+<br>
+
+<!-- Skills -->
+<div class="grid grid-2">
+  <div class="input-group">
+    <input type="text" required>
+    <label>Skills (comma separated)</label>
+  </div>
+  <div class="input-group">
+    <input type="text" required>
+    <label>Portfolio / GitHub / LinkedIn</label>
+  </div>
+</div>
+
+<br>
+
+<!-- Upload -->
+<div class="upload-box" id="uploadBox">
+  <p>Drag & Drop Resume or <label style="color:#a855f7;cursor:pointer;">Browse</label></p>
+  <input type="file" id="fileInput">
+  <div class="file-name" id="fileName"></div>
+</div>
+
+<br>
+
+<!-- Additional -->
+<div class="input-group">
+  <textarea rows="3" required></textarea>
+  <label>Why should we hire you?</label>
+</div>
+
+<br>
+
+<select required>
+  <option value="">Availability</option>
+  <option>Immediate</option>
+  <option>15 Days</option>
+  <option>1 Month</option>
+</select>
+
+<br>
+
+<label>
+  <input type="checkbox" required> I agree to Terms & Conditions
+</label>
+
+<br><br>
+
+<button type="submit" id="submitBtn">Submit Application</button>
+
+</form>
+
+</div>
+
+<script>
+const uploadBox = document.getElementById("uploadBox");
+const fileInput = document.getElementById("fileInput");
+const fileName = document.getElementById("fileName");
+
+uploadBox.addEventListener("click", () => fileInput.click());
+
+uploadBox.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  uploadBox.classList.add("dragover");
+});
+
+uploadBox.addEventListener("dragleave", () => {
+  uploadBox.classList.remove("dragover");
+});
+
+uploadBox.addEventListener("drop", (e) => {
+  e.preventDefault();
+  uploadBox.classList.remove("dragover");
+  handleFile(e.dataTransfer.files[0]);
+});
+
+fileInput.addEventListener("change", () => {
+  handleFile(fileInput.files[0]);
+});
+
+function handleFile(file) {
+  const allowed = ["application/pdf","application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+
+  if (!allowed.includes(file.type)) {
+    alert("Only PDF/DOC/DOCX allowed");
+    return;
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("Max file size 2MB");
+    return;
+  }
+
+  fileName.innerHTML = "✔ " + file.name;
+}
+
+/* Submit Animation */
+const form = document.getElementById("form");
+const btn = document.getElementById("submitBtn");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  btn.innerHTML = '<div class="loader"></div>';
+
+  setTimeout(() => {
+    btn.innerHTML = "Submitted ✔";
+  }, 2000);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Business Consulting & Analysis | WCS</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
+
+:root{
+    --bg:#050816;
+    --bg-soft:#080b18;
+
+    --text-hi:#ffffff;
+    --text-mid:#a0a8c0;
+    --text-low:#747d99;
+
+    --line:rgba(255,255,255,.08);
+
+    --purple:#7c5cff;
+    --blue:#4f8dfd;
+
+    --violet-soft:rgba(124,92,255,.10);
+
+    --grad:linear-gradient(
+        90deg,
+        #7c5cff,
+        #4f8dfd
+    );
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text-hi);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    background:#6c4dff;
+
+    filter:blur(180px);
+
+    opacity:.25;
+
+    top:-150px;
+    left:-150px;
+
+    z-index:-1;
+
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    background:#00bfff;
+
+    filter:blur(180px);
+
+    opacity:.18;
+
+    bottom:-150px;
+    right:-150px;
+
+    z-index:-1;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container,
+.wrap{
+    width:90%;
+    max-width:1300px;
+    margin:0 auto;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav{
+    position:fixed;
+
+    top:0;
+    left:0;
+    right:0;
+
+    z-index:999;
+
+    padding:18px 0;
+
+    background:rgba(5,8,22,.65);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    border-bottom:1px solid var(--line);
+}
+
+.navbar{
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-area{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    flex-shrink:0;
+}
+
+.logo-area img{
+    width:70px;
+    height:70px;
+
+    max-width:70px;
+    max-height:70px;
+
+    object-fit:contain;
+
+    display:block;
+
+    flex:0 0 70px;
+
+    border-radius:50%;
+}
+
+
+/* =========================================================
+   NAV RIGHT
+========================================================= */
+
+.nav-right{
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links{
+    display:flex;
+
+    align-items:center;
+
+    gap:40px;
+}
+
+.nav-links a{
+    color:#b8b8c5;
+
+    font-size:16px;
+
+    text-decoration:none;
+
+    transition:color .3s ease;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.dropdown{
+    position:relative;
+}
+
+.drop-btn{
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+}
+
+.dropdown-content{
+    position:absolute;
+
+    top:calc(100% + 15px);
+
+    left:0;
+
+    width:280px;
+
+    background:#111827;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(10px);
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease,
+        transform .3s ease;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+}
+
+.dropdown-content a{
+    display:block;
+
+    padding:15px 20px;
+
+    font-size:15px;
+
+    color:#b8b8c5;
+}
+
+.dropdown-content a:hover{
+    background:rgba(255,255,255,.05);
+
+    color:#fff;
+}
+
+
+/* =========================================================
+   LET'S TALK BUTTON
+========================================================= */
+
+.nav-talk{
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:12px 26px;
+
+    border-radius:999px;
+
+    background:var(--grad);
+
+    color:#fff;
+
+    font-weight:600;
+
+    font-size:15px;
+
+    white-space:nowrap;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.nav-talk:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(79,141,253,.3);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    padding:180px 0 100px;
+
+    text-align:center;
+}
+
+.hero span{
+    color:#8d95b3;
+
+    text-transform:uppercase;
+
+    letter-spacing:4px;
+
+    font-size:20px;
+}
+
+.hero h1{
+    font-size:clamp(3rem,6vw,5.2rem);
+
+    line-height:1.1;
+
+    max-width:1000px;
+
+    margin:20px auto;
+
+    font-weight:800;
+}
+
+.hero .gradient{
+    background:linear-gradient(
+        90deg,
+        #FFD700,
+        #FFA500
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    font-size:60px;
+}
+
+
+
+.hero p{
+    max-width:800px;
+
+    margin:0 auto;
+
+    color:var(--text-mid);
+
+    line-height:1.8;
+
+    font-size:18px;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services{
+    padding-bottom:120px;
+}
+
+.grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+}
+
+
+/* =========================================================
+   SERVICE CARD
+========================================================= */
+
+.card{
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--line);
+
+    border-radius:24px;
+
+    padding:40px;
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+
+    border-color:var(--purple);
+
+    box-shadow:
+        0 20px 40px rgba(124,92,255,.2);
+}
+
+.card h2{
+    margin-bottom:25px;
+
+    font-size:30px;
+}
+
+.card ul{
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+}
+
+.card li{
+    padding:12px 0;
+
+    border-bottom:1px solid var(--line);
+
+    color:#b5bdd2;
+
+    line-height:1.5;
+}
+
+.card li:last-child{
+    border-bottom:none;
+}
+
+
+/* =========================================================
+   SERVICE ICON
+========================================================= */
+
+.icon{
+    width:60px;
+
+    height:60px;
+
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #4f8dfd
+    );
+
+    border-radius:16px;
+
+    margin-bottom:25px;
+
+    position:relative;
+}
+
+.icon::after{
+    content:"";
+
+    position:absolute;
+
+    width:22px;
+    height:22px;
+
+    border:2px solid rgba(255,255,255,.8);
+
+    border-radius:6px;
+
+    top:19px;
+    left:19px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer{
+    position:relative;
+
+    border-top:1px solid var(--line);
+
+    background:var(--bg-soft);
+
+    padding:96px 0 32px;
+}
+
+.footer-container{
+    width:90%;
+
+    max-width:1300px;
+
+    margin:0 auto;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:repeat(12,1fr);
+
+    gap:40px;
+
+    padding-bottom:60px;
+}
+
+
+/* =========================================================
+   FOOTER BRAND
+========================================================= */
+
+.footer-brand-col{
+    grid-column:span 5;
+}
+
+.footer-logo{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--text-hi);
+
+    font-family:'Space Grotesk',sans-serif;
+
+    font-weight:600;
+
+    font-size:18px;
+
+    letter-spacing:-.01em;
+}
+
+.footer-logo .dot{
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    flex-shrink:0;
+
+    background:var(--grad);
+
+    box-shadow:
+        0 0 12px 2px rgba(124,92,255,.65);
+}
+
+.footer-tagline{
+    margin-top:16px;
+
+    max-width:280px;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    color:var(--text-mid);
+}
+
+
+/* =========================================================
+   SOCIAL ICONS
+========================================================= */
+
+.social-row{
+    display:flex;
+
+    gap:12px;
+
+    margin-top:28px;
+}
+
+.social-btn{
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    border:1px solid var(--line);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:var(--text-mid);
+
+    transition:
+        border-color .35s ease,
+        background .35s ease,
+        color .35s ease,
+        transform .35s ease;
+}
+
+.social-btn:hover{
+    border-color:rgba(124,92,255,.55);
+
+    background:var(--violet-soft);
+
+    color:#fff;
+
+    transform:translateY(-3px);
+}
+
+.social-btn svg{
+    display:block;
+}
+
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.footer-col{
+    grid-column:span 2;
+}
+
+.footer-col.contact-col{
+    grid-column:span 3;
+}
+
+.footer-col h5{
+    margin:0 0 20px;
+
+    font-family:'Space Grotesk',sans-serif;
+
+    font-size:12px;
+
+    letter-spacing:.14em;
+
+    text-transform:uppercase;
+
+    color:var(--text-low);
+
+    font-weight:600;
+}
+
+.footer-col ul{
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin:0;
+
+    padding:0;
+}
+
+.footer-col li{
+    font-size:14px;
+
+    color:var(--text-mid);
+}
+
+
+/* =========================================================
+   FOOTER LINKS
+========================================================= */
+
+.footer-link{
+    color:var(--text-mid);
+
+    text-decoration:none;
+
+    transition:
+        color .3s ease,
+        padding-left .3s ease;
+}
+
+.footer-link:hover{
+    color:var(--text-hi);
+
+    padding-left:4px;
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.footer-bottom{
+    border-top:1px solid var(--line);
+
+    padding-top:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+    gap:16px;
+}
+
+.footer-bottom-tag{
+    margin:0;
+
+    font-family:'Space Grotesk',sans-serif;
+
+    font-size:11.5px;
+
+    letter-spacing:.18em;
+
+    text-transform:uppercase;
+
+    color:var(--text-low);
+}
+
+.footer-copy{
+    margin:0;
+
+    font-size:12px;
+
+    color:var(--text-low);
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+
+    bottom:24px;
+
+    right:24px;
+
+    z-index:999;
+
+    max-width:320px;
+
+    padding:16px 22px;
+
+    border-radius:14px;
+
+    font-size:13.5px;
+
+    line-height:1.5;
+
+    color:var(--text-hi);
+
+    background:rgba(14,15,24,.78);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    border:1px solid var(--line);
+
+    box-shadow:
+        0 20px 50px -12px rgba(0,0,0,.6);
+
+    transform:translateY(28px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        opacity .5s ease;
+}
+
+.toast.show{
+    transform:translateY(0);
+
+    opacity:1;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1000px
+========================================================= */
+
+@media(max-width:1000px){
+
+    .nav-right{
+        gap:20px;
+    }
+
+    .nav-links{
+        gap:22px;
+    }
+
+    .nav-links a{
+        font-size:14px;
+    }
+
+    .nav-talk{
+        padding:10px 20px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 900px
+========================================================= */
+
+@media(max-width:900px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:150px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+
+        row-gap:44px;
+    }
+
+    .footer-brand-col{
+        grid-column:span 2;
+    }
+
+    .footer-col,
+    .footer-col.contact-col{
+        grid-column:span 1;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 800px
+========================================================= */
+
+@media(max-width:800px){
+
+    nav{
+        padding:12px 0;
+    }
+
+    .logo-area img{
+        width:52px;
+
+        height:52px;
+
+        max-width:52px;
+
+        max-height:52px;
+
+        flex-basis:52px;
+    }
+
+    .logo-area{
+        font-size:15px;
+    }
+
+    .nav-right{
+        gap:15px;
+    }
+
+    .nav-links{
+        gap:14px;
+    }
+
+    .nav-links a{
+        font-size:13px;
+    }
+
+    .nav-talk{
+        padding:9px 16px;
+
+        font-size:13px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 650px
+========================================================= */
+
+@media(max-width:650px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-right{
+        gap:0;
+    }
+
+    .nav-talk{
+        padding:10px 18px;
+    }
+
+    .logo-area img{
+        width:48px;
+
+        height:48px;
+
+        max-width:48px;
+
+        max-height:48px;
+
+        flex-basis:48px;
+    }
+
+    .hero{
+        padding:130px 0 80px;
+    }
+
+    .hero span{
+        font-size:11px;
+
+        letter-spacing:2.5px;
+    }
+
+    .hero h1{
+        font-size:clamp(2.4rem,10vw,4rem);
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .services{
+        padding-bottom:80px;
+    }
+
+    .card{
+        padding:28px;
+
+        border-radius:20px;
+    }
+
+    .card h2{
+        font-size:25px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 560px
+========================================================= */
+
+@media(max-width:560px){
+
+    .site-footer{
+        padding-top:70px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+
+        gap:35px;
+    }
+
+    .footer-brand-col,
+    .footer-col,
+    .footer-col.contact-col{
+        grid-column:span 1;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
+    .footer-bottom-tag{
+        font-size:10px;
+
+        letter-spacing:.12em;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+
+        transition:none !important;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav>
+
+    <div class="wrap navbar">
+
+        <!-- Logo -->
+
+        <a href="index.html" class="logo-area">
+
+            <img
+                src="Web content logo.png"
+                alt="Web Content Services Logo"
+            >
+
+            <span>Web Content</span>
+
+        </a>
+
+
+        <!-- Navigation -->
+
+        <div class="nav-right">
+
+            <div class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+
+                <!-- Solutions Dropdown -->
+
+                <div class="dropdown">
+
+                    <a href="#" class="drop-btn">
+                        Solutions
+                        <span>▼</span>
+                    </a>
+
+                    <div class="dropdown-content">
+
+                        <a href="consulting.html">
+                            Business Consulting & Analysis
+                        </a>
+
+                        <a href="technology.html">
+                            Technology Solutions
+                        </a>
+
+                        <a href="branding.html">
+                            Branding & Social Media
+                        </a>
+
+                        <a href="learning.html">
+                            Learning & Career Development
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <a href="mediagallery.html">
+                    Media Gallery
+                </a>
+
+            </div>
+
+
+            <!-- Let's Talk -->
+
+            <a
+                href="contact.html"
+                class="nav-talk"
+            >
+                Let's Talk
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <span>
+            Business Consulting & Analysis
+        </span>
+
+        <h1>
+
+            Helping Businesses Think Better,
+
+            <span class="gradient">
+                Work Better & Grow Better.
+            </span>
+
+           
+        </h1>
+
+        <p>
+
+            We help organizations identify challenges,
+            optimize processes, improve decision-making,
+            and create scalable strategies that drive
+            sustainable growth and operational excellence.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section class="services">
+
+    <div class="container">
+
+        <div class="grid">
+
+
+            <!-- =================================================
+                 BUSINESS CONSULTING
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="icon"></div>
+
+                <h2>
+                    Business Consulting
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Business Strategy
+                    </li>
+
+                    <li>
+                        Business Transformation
+                    </li>
+
+                    <li>
+                        Digital Transformation
+                    </li>
+
+                    <li>
+                        Growth Consulting
+                    </li>
+
+                    <li>
+                        Process Improvement
+                    </li>
+
+                    <li>
+                        Team Structuring
+                    </li>
+
+                    <li>
+                        Organizational Development
+                    </li>
+
+                    <li>
+                        Employee Training
+                    </li>
+
+                    <li>
+                        Leadership Development
+                    </li>
+
+                    <li>
+                        Pain Point Identification & Resolution
+                    </li>
+
+                    <li>
+                        Business Scaling
+                    </li>
+
+                    <li>
+                        Change Management
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BUSINESS ANALYSIS
+            ================================================== -->
+
+            <div class="card">
+
+                <div class="icon"></div>
+
+                <h2>
+                    Business Analysis
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Requirement Gathering
+                    </li>
+
+                    <li>
+                        Process Analysis
+                    </li>
+
+                    <li>
+                        Gap Analysis
+                    </li>
+
+                    <li>
+                        Workflow Design
+                    </li>
+
+                    <li>
+                        Business Documentation
+                    </li>
+
+                    <li>
+                        BRD
+                    </li>
+
+                    <li>
+                        SRS
+                    </li>
+
+                    <li>
+                        SOP Development
+                    </li>
+
+                    <li>
+                        KPI Development
+                    </li>
+
+                    <li>
+                        Performance Analysis
+                    </li>
+
+                    <li>
+                        Business Intelligence
+                    </li>
+
+                    <li>
+                        Decision Support
+                    </li>
+
+                    <li>
+                        Reporting & Analytics
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-grid">
+
+
+            <!-- =================================================
+                 FOOTER BRAND
+            ================================================== -->
+
+            <div class="footer-brand-col">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                >
+
+                    <span class="dot"></span>
+
+                    <span>
+                        Web Content Services & Business Solutions
+                    </span>
+
+                </a>
+
+
+                <p class="footer-tagline">
+
+                    Where Smart Solutions Build Trusted Brands.
+
+                </p>
+
+
+                <!-- Social Media -->
+
+                <div class="social-row">
+
+
+                    <!-- LinkedIn -->
+
+                    <a
+                        href="https://www.linkedin.com/company/web-content-services/"
+                        class="social-btn"
+                        aria-label="LinkedIn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+
+                            <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM.5 8.98H9V23H.5zM12.5 8.98h8.14v1.91h.11c1.13-2.14 3.9-2.14 5.75 0V23h-4.5v-6.9c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V23h-4.5z"/>
+
+                        </svg>
+
+                    </a>
+
+
+                    <!-- Instagram -->
+
+                    <a
+                        href="https://www.instagram.com/webcontent.in/"
+                        class="social-btn"
+                        aria-label="Instagram"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                        >
+
+                            <rect
+                                x="3"
+                                y="3"
+                                width="18"
+                                height="18"
+                                rx="5"
+                            />
+
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="4.2"
+                            />
+
+                            <circle
+                                cx="17.3"
+                                cy="6.7"
+                                r="1"
+                            />
+
+                        </svg>
+
+                    </a>
+
+
+                    <!-- X -->
+
+                    <a
+                        href="#"
+                        class="social-btn"
+                        aria-label="X / Twitter"
+                    >
+
+                        <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+
+                            <path d="M18.9 2H22l-7.6 8.7L23.3 22H16.9l-5-6.6L6 22H2.9l8.1-9.3L1.7 2h6.6l4.5 6z"/>
+
+                        </svg>
+
+                    </a>
+
+
+                    <!-- Facebook -->
+
+                    <a
+                        href="#"
+                        class="social-btn"
+                        aria-label="Facebook"
+                    >
+
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+
+                            <path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-1 .3-1.6 1.7-1.6h1.7V3.5C16.3 3.4 15.2 3.3 14 3.3c-2.6 0-4.4 1.6-4.4 4.5v2.5H6.8v3.3h2.8V22z"/>
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SOLUTIONS
+            ================================================== -->
+
+            <div class="footer-col">
+
+                <h5>
+                    Solutions
+                </h5>
+
+                <ul>
+
+                    <li>
+                        <a
+                            href="BC.html"
+                            class="footer-link"
+                        >
+                            Business Consulting & Analysis
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="technology.html"
+                            class="footer-link"
+                        >
+                            Technology
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="branding.html"
+                            class="footer-link"
+                        >
+                            Branding & Social Media
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="learning.html"
+                            class="footer-link"
+                        >
+                            Learning & Career
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 COMPANY
+            ================================================== -->
+
+            <div class="footer-col">
+
+                <h5>
+                    Company
+                </h5>
+
+                <ul>
+
+                    <li>
+                        <a
+                            href="about.html"
+                            class="footer-link"
+                        >
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="insights.html"
+                            class="footer-link"
+                        >
+                            Our Work
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="careers.html"
+                            class="footer-link"
+                        >
+                            Careers
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="contact.html"
+                            class="footer-link"
+                        >
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CONTACT
+            ================================================== -->
+
+            <div class="footer-col contact-col">
+
+                <h5>
+                    Contact
+                </h5>
+
+                <ul>
+
+                    <li>
+                        +91 9022545488
+                    </li>
+
+                    <li>
+                        contentweb.officials@gmail.com
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER BOTTOM
+        ================================================== -->
+
+        <div class="footer-bottom">
+
+            <p class="footer-bottom-tag">
+
+                Consult. Analyze. Build. Brand. Grow.
+
+            </p>
+
+            <p class="footer-copy">
+
+                ©
+                <span id="year"></span>
+                Web Content Services & Business Solutions.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    id="toast"
+    class="toast"
+>
+    Thanks — your message has been sent.
+    We'll be in touch shortly.
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+/* Current Year */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* =========================================================
+   OPTIONAL TOAST FUNCTION
+========================================================= */
+
+function showToast(message){
+
+    const toast = document.getElementById("toast");
+
+    if(!toast) return;
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(function(){
+
+        toast.classList.remove("show");
+
+    },4000);
+}
+
+</script>
+
+
+</body>
+</html>

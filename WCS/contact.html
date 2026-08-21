@@ -1,0 +1,788 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Web Content Services &amp; Business Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#05060a;
+    --bg-1:#0a0c16;
+    --glass:rgba(255,255,255,0.045);
+    --glass-border:rgba(255,255,255,0.10);
+    --glass-border-hover:rgba(255,255,255,0.20);
+    --text-0:#ffffff;
+    --text-1:#9CA3AF;
+    --text-2:#5f6577;
+    --violet:#8b5cf6;
+    --blue:#3b82f6;
+    --cyan:#38bdf8;
+    --grad: linear-gradient(120deg, var(--violet), var(--blue));
+    --grad-soft: linear-gradient(120deg, rgba(139,92,246,0.18), rgba(59,130,246,0.14));
+    --radius-lg:22px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --ease: cubic-bezier(.16,.84,.44,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 520px at 15% -10%, rgba(139,92,246,0.16), transparent 60%),
+      radial-gradient(ellipse 820px 620px at 88% 8%, rgba(59,130,246,0.13), transparent 55%),
+      linear-gradient(180deg, var(--bg-0), #070811 40%, var(--bg-0));
+    color:var(--text-0);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001s !important; animation-iteration-count:1 !important; transition-duration:0.001s !important; scroll-behavior:auto !important;}
+  }
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+  ::selection{background:rgba(139,92,246,0.35); color:#fff;}
+  :focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:6px;}
+
+  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--text-1);
+  }
+  .eyebrow::before{content:''; width:16px; height:1px; background:var(--grad);}
+
+  h1,h2,h3{font-family:'Poppins',sans-serif; font-weight:700; letter-spacing:-0.03em; line-height:1.06;}
+
+  .grad-text{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  .stagger > *{transition-delay:calc(var(--i,0) * 90ms);}
+
+  /* ================= NAV ================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 22px 0;
+    transition: background .4s var(--ease),
+                border-color .4s var(--ease),
+                padding .4s var(--ease);
+    border-bottom: 1px solid transparent;
+}
+
+header.scrolled {
+    background: rgba(6, 7, 13, 0.72);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 14px 0;
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Dropdown */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-content{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:260px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    overflow:hidden;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:.3s;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-content a{
+    display:block;
+    padding:15px 20px;
+}
+
+.dropdown-content a:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.nav-talk{
+    padding:14px 28px;
+    border-radius:999px;
+    background:linear-gradient(
+    90deg,
+    #7c5cff,
+    #4f8dfd
+    );
+    color:white;
+    font-weight:600;
+}
+/* ================= LOGO ================= */
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-0);
+}
+
+/* Logo Image */
+.logo img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Logo Text */
+.logo > span {
+    display: block;
+}
+
+.logo span small {
+    display: block;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-1);
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* ================= NAV LINKS ================= */
+
+.nav-right{
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 34px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-1);
+    position: relative;
+    padding: 4px 0;
+    transition: color .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-0);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--grad);
+    transition: width .35s var(--ease);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+ 
+/* ================= MOBILE MENU ================= */
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    width: 22px;
+    height: 1.5px;
+    background: var(--text-0);
+    display: block;
+    transition: transform .3s ease,
+                opacity .3s ease;
+}
+
+/* ================= TABLET / MOBILE ================= */
+
+@media (max-width: 860px) {
+
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 16px;
+        right: 16px;
+
+        background: rgba(10, 12, 22, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+
+        flex-direction: column;
+        padding: 22px;
+        gap: 18px;
+
+        transform: translateY(-14px);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: all .35s var(--ease);
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 640px) {
+
+    header {
+        padding: 14px 0;
+    }
+
+    header.scrolled {
+        padding: 10px 0;
+    }
+
+    .logo img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo {
+        gap: 8px;
+        font-size: 14px;
+    }
+
+    .logo span small {
+        font-size: 8px;
+    }
+
+    .nav-links {
+        top: 68px;
+    }
+}
+
+/* ================= VERY SMALL DEVICES ================= */
+
+@media (max-width: 400px) {
+
+    .logo img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .logo {
+        font-size: 13px;
+    }
+
+    .logo span small {
+        font-size: 7.5px;
+    }
+}
+  /* ================= HERO ================= */
+  .hero{
+    position:relative; min-height:100svh; display:flex; align-items:center; justify-content:center;
+    padding:150px 0 90px; text-align:center; overflow:hidden;
+  }
+  .hero-bg{position:absolute; inset:0; z-index:0; pointer-events:none;}
+  .blob{position:absolute; border-radius:50%; filter:blur(90px); opacity:0.55; animation:drift 18s ease-in-out infinite;}
+  .blob-1{width:480px; height:480px; left:-120px; top:-60px; background:radial-gradient(circle, var(--violet), transparent 70%); animation-duration:22s;}
+  .blob-2{width:520px; height:520px; right:-160px; top:10%; background:radial-gradient(circle, var(--blue), transparent 70%); animation-duration:26s; animation-delay:-6s;}
+  .blob-3{width:380px; height:380px; left:38%; bottom:-160px; background:radial-gradient(circle, var(--cyan), transparent 70%); animation-duration:20s; animation-delay:-11s; opacity:0.35;}
+  @keyframes drift{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    33%{ transform:translate(40px,-30px) scale(1.08); }
+    66%{ transform:translate(-30px,26px) scale(0.94); }
+  }
+  .grid-overlay{
+    position:absolute; inset:0; opacity:0.35;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+  }
+  .hero::after{
+    content:''; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(ellipse 700px 500px at 50% 55%, transparent 20%, var(--bg-0) 88%);
+  }
+  .hero-inner{position:relative; z-index:2; max-width:820px; margin:0 auto; padding:0 24px;}
+  .hero .eyebrow{justify-content:center; margin-bottom:26px;}
+  .hero .eyebrow::before{display:none;}
+  .hero h1{font-size:clamp(36px, 6vw, 72px); margin-bottom:26px;}
+  .hero p.lead{font-size:clamp(16px,2vw,19px); color:var(--text-1); line-height:1.75; max-width:600px; margin:0 auto 44px;}
+  .hero-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+
+  .btn-primary{
+    position:relative; display:inline-flex; align-items:center; gap:10px; padding:16px 32px; border-radius:999px; border:none;
+    background:var(--grad); color:#fff; font-weight:600; font-size:15px; letter-spacing:-0.01em;
+    box-shadow:0 8px 30px -8px rgba(139,92,246,0.55);
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease); overflow:hidden;
+  }
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02); box-shadow:0 14px 40px -8px rgba(139,92,246,0.75);}
+  .btn-primary:active{transform:translateY(0) scale(0.98);}
+  .btn-primary .shine{position:absolute; inset:0; background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.35) 48%, transparent 65%); transform:translateX(-120%); transition:transform .7s var(--ease);}
+  .btn-primary:hover .shine{transform:translateX(120%);}
+  .btn-ghost{
+    padding:16px 30px; border-radius:999px; border:1px solid var(--glass-border); color:var(--text-0); font-weight:600; font-size:15px;
+    background:var(--glass); transition:border-color .3s, background .3s, transform .3s var(--ease);
+  }
+  .btn-ghost:hover{border-color:var(--glass-border-hover); transform:translateY(-2px);}
+
+  .scroll-cue{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:10px; color:var(--text-2); font-size:11px;
+    letter-spacing:0.14em; text-transform:uppercase;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:linear-gradient(var(--text-2), transparent); animation:pulse-line 2.2s ease-in-out infinite;}
+  @keyframes pulse-line{0%,100%{opacity:0.3;} 50%{opacity:1;}}
+
+  /* ================= SECTION SHELL ================= */
+  section{position:relative; padding:120px 0;}
+  @media (max-width:640px){ section{padding:80px 0;} }
+  .section-head{max-width:640px; margin:0 auto 64px; text-align:center;}
+  .section-head h2{font-size:clamp(28px,4vw,42px); margin-top:18px;}
+  .section-head p{color:var(--text-1); font-size:16px; margin-top:16px; line-height:1.7;}
+
+  /* ================= SOLUTIONS STRIP ================= */
+  .sol-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;}
+  .sol-card{padding:26px; transition:border-color .35s, transform .35s var(--ease), box-shadow .35s;}
+  .sol-card:hover{transform:translateY(-4px); border-color:var(--glass-border-hover); box-shadow:0 20px 50px -25px rgba(139,92,246,0.4);}
+  .sol-num{font-size:12px; font-weight:700; color:var(--cyan); letter-spacing:0.06em; margin-bottom:10px; font-family:'Poppins',sans-serif;}
+  .sol-card h4{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600; margin-bottom:6px;}
+  .sol-card p{font-size:13px; color:var(--text-1); line-height:1.6;}
+
+  /* ================= CONTACT LAYOUT ================= */
+  .contact-grid{display:grid; grid-template-columns:1.35fr 1fr; gap:28px; align-items:start;}
+  @media (max-width:960px){ .contact-grid{grid-template-columns:1fr;} }
+
+  .glass-card{
+    background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius-lg);
+    backdrop-filter:blur(22px) saturate(150%); -webkit-backdrop-filter:blur(22px) saturate(150%);
+    box-shadow:0 20px 60px -30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+    transition:border-color .4s, transform .4s var(--ease), box-shadow .4s;
+  }
+
+  .form-card{padding:44px; position:relative;}
+  .form-card::before{
+    content:''; position:absolute; inset:-1px; border-radius:var(--radius-lg); padding:1px;
+    background:linear-gradient(140deg, rgba(139,92,246,0.35), transparent 30%, transparent 70%, rgba(59,130,246,0.3));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
+  }
+  @media (max-width:640px){ .form-card{padding:28px 22px;} }
+  .form-card h3{font-family:'Poppins',sans-serif; font-size:22px; margin-bottom:4px;}
+  .form-card .sub{color:var(--text-1); font-size:14px; margin-bottom:32px;}
+
+  fieldset{border:none; margin-bottom:30px;}
+  fieldset:last-of-type{margin-bottom:0;}
+  legend{font-size:11.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--violet); margin-bottom:18px; padding:0;}
+
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  .field-row:last-child{margin-bottom:0;}
+  @media (max-width:520px){ .field-row{grid-template-columns:1fr;} }
+  .field{position:relative; margin-bottom:16px;}
+  fieldset .field:last-child{margin-bottom:0;}
+  .field label{display:block; font-size:12.5px; font-weight:500; color:var(--text-1); margin-bottom:8px;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:13px 16px; border-radius:var(--radius-sm); background:rgba(255,255,255,0.03);
+    border:1px solid var(--glass-border); color:var(--text-0); font-family:inherit; font-size:14.5px;
+    transition:border-color .3s, box-shadow .3s, background .3s;
+  }
+  .field textarea{resize:vertical; min-height:110px; line-height:1.6;}
+  .field input::placeholder, .field textarea::placeholder{color:var(--text-2);}
+  .field input:hover, .field select:hover, .field textarea:hover{border-color:var(--glass-border-hover);}
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none; border-color:rgba(139,92,246,0.6);
+    box-shadow:0 0 0 4px rgba(139,92,246,0.14), 0 0 24px -6px rgba(59,130,246,0.35);
+    background:rgba(255,255,255,0.05);
+  }
+  .field select{
+    appearance:none; -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%239aa0b0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; cursor:pointer;
+  }
+  .field select option{background:#0d1020; color:var(--text-0);}
+
+  .submit-row{margin-top:34px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
+  .submit-btn{min-width:220px; justify-content:center;}
+  .submit-btn[disabled]{cursor:default; filter:saturate(0.7);}
+  .spinner{width:16px; height:16px; border-radius:50%; border:2px solid rgba(255,255,255,0.35); border-top-color:#fff; animation:spin 0.7s linear infinite; display:none;}
+  .submit-btn.loading .spinner{display:inline-block;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .form-note{font-size:12.5px; color:var(--text-2);}
+
+  .success-msg{
+    display:none; align-items:center; gap:12px; margin-top:22px; padding:16px 18px; border-radius:var(--radius-sm);
+    background:rgba(59,130,246,0.09); border:1px solid rgba(139,92,246,0.35); font-size:13.5px; color:var(--text-0);
+  }
+  .success-msg.show{display:flex; animation:fade-slide .5s var(--ease);}
+  @keyframes fade-slide{from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);}}
+  .success-msg .dot{width:8px; height:8px; border-radius:50%; background:var(--grad); flex-shrink:0; box-shadow:0 0 10px rgba(139,92,246,0.8);}
+
+  /* ---- info column ---- */
+  .info-col{display:flex; flex-direction:column; gap:18px;}
+  .info-card{padding:28px; display:flex; gap:16px; align-items:flex-start; cursor:default;}
+  .info-card:hover{border-color:var(--glass-border-hover); transform:translateY(-3px);}
+  .info-icon{
+    width:44px; height:44px; border-radius:12px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    background:var(--grad-soft); border:1px solid var(--glass-border); transition:transform .35s var(--ease), background .35s;
+  }
+  .info-card:hover .info-icon{transform:scale(1.08) rotate(-4deg); background:var(--grad);}
+  .info-icon svg{width:19px; height:19px; stroke:var(--text-0);}
+  .info-text .k{font-size:12px; color:var(--text-2); font-weight:500; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:5px;}
+  .info-text .v{font-size:15px; color:var(--text-0); font-weight:600; line-height:1.5;}
+  .info-text .v-sub{font-size:13px; color:var(--text-1); margin-top:2px; font-weight:400;}
+
+  .approach-card{padding:28px;}
+  .approach-card .k{font-size:12px; color:var(--text-2); font-weight:500; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px;}
+  .approach-row{display:flex; justify-content:space-between; font-size:13.5px; padding:9px 0; border-bottom:1px dashed var(--glass-border); color:var(--text-1);}
+  .approach-row:last-child{border-bottom:none;}
+  .approach-row span:last-child{color:var(--text-0); font-weight:600;}
+
+  .social-card{padding:28px;}
+  .social-card .k{font-size:12px; color:var(--text-2); font-weight:500; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px;}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{
+    width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--glass-border); background:rgba(255,255,255,0.02);
+    transition:transform .35s var(--ease), background .35s, border-color .35s;
+  }
+  .social-row a:hover{transform:translateY(-4px); background:var(--grad); border-color:transparent;}
+  .social-row svg{width:16px; height:16px; stroke:var(--text-0);}
+
+  /* ================= FOOTER ================= */
+  footer{padding:56px 0 32px; border-top:1px solid var(--glass-border);}
+  .footer-grid{display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:36px; padding-bottom:36px; border-bottom:1px solid var(--glass-border);}
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr;} }
+  .footer-brand p{font-size:13.5px; color:var(--text-1); margin-top:12px; max-width:280px; line-height:1.6;}
+  footer h5{font-family:'Poppins',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-2); margin-bottom:16px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;}
+  footer ul a{font-size:13.5px; color:var(--text-1); transition:color .2s;}
+  footer ul a:hover{color:var(--text-0);}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-top:24px; font-size:12.5px; color:var(--text-2);}
+  .footer-statement{font-weight:600; color:var(--text-1); letter-spacing:0.02em;}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap nav-inner">
+   <a href="#top" class="logo">
+    <img src="Web content logo.png" alt="Web Content Services Logo">
+    <span>
+        Web Content 
+        <small></small>
+    </span>
+</a>
+     <div class="nav-right">
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+       <div class="dropdown">
+                    <a href="#">Solutions ▾</a>
+
+                    <div class="dropdown-content">
+                        <a href="consulting.html">Business Consulting</a>
+                        <a href="technology.html">Technology Solutions</a>
+                        <a href="branding.html">Branding & Social Media</a>
+                        <a href="learning.html">Learning & Career Development</a>
+                    </div>
+                </div>
+      <a href="mediagallery.html">Media Gallery</a>
+       
+    <div style="display:flex; align-items:center; gap:14px;">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="eyebrow reveal">Business Consulting · Business Analysis · Technology · Branding &amp; Social Media · Learning &amp; Career</div>
+      <h1 class="reveal">Let's Talk About<br><span class="grad-text">Your Business.</span></h1>
+      <p class="lead reveal">Have a challenge, idea, or opportunity? Let's understand your requirements and create the right strategy, technology, and creative solution for your business.</p>
+      <div class="hero-actions reveal">
+        <a href="careers.html" class="btn-primary"><span class="shine"></span>Start a Conversation</a>
+        <a href="#" class="btn-ghost">Explore Our Solutions</a>
+      </div>
+    </div>
+ 
+  </section>
+
+  <!-- ================= FOUR SOLUTIONS STRIP ================= -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow" style="justify-content:center;">What we help with</div>
+        <h2>Tell us where the <span class="grad-text">challenge</span> is.</h2>
+        <p>We don't fit businesses into predefined services — we understand the requirement first, then design a practical solution around it.</p>
+      </div>
+      <div class="sol-grid stagger">
+        <div class="glass-card sol-card reveal"><div class="sol-num">01</div><h4>Business Consulting &amp; Analysis</h4><p>Understand. Structure. Transform.</p></div>
+        <div class="glass-card sol-card reveal"><div class="sol-num">02</div><h4>Technology Solutions</h4><p>Build. Integrate. Scale.</p></div>
+        <div class="glass-card sol-card reveal"><div class="sol-num">03</div><h4>Branding &amp; Social Media</h4><p>Position. Communicate. Grow.</p></div>
+        <div class="glass-card sol-card reveal"><div class="sol-num">04</div><h4>Learning &amp; Career Development</h4><p>Learn. Execute. Grow.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT FORM ================= -->
+  <section id="contact-form">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow" style="justify-content:center;">Get in touch</div>
+        <h2>Start a conversation<br>about your business.</h2>
+        <p>Fill in a few details below — the more context you share, the sharper our first response will be.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- FORM -->
+        <form class="glass-card form-card reveal" id="contactForm" novalidate>
+          <h3>Let's Connect</h3>
+          <p class="sub">Every field helps us prepare before we call.</p>
+
+          <fieldset>
+            <legend>Personal information</legend>
+            <div class="field-row">
+              <div class="field">
+                <label for="fullName">Full name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+              </div>
+              <div class="field">
+                <label for="company">Company name</label>
+                <input type="text" id="company" name="company" placeholder="Your company" required>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 90000 00000" required>
+              </div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Business information</legend>
+            <div class="field-row">
+              <div class="field">
+                <label for="industry">Industry</label>
+                <input type="text" id="industry" name="industry" placeholder="e.g. Retail, Fintech, Manufacturing" required>
+              </div>
+              <div class="field">
+                <label for="service">Service / solution required</label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service</option>
+                  <option>Business Consulting</option>
+                  <option>Business Analysis</option>
+                  <option>Technology</option>
+                  <option>Branding &amp; Social Media</option>
+                  <option>Learning &amp; Career</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="requirement">Business requirement</label>
+              <input type="text" id="requirement" name="requirement" placeholder="In one line, what are you trying to solve?">
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Message</legend>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Share any additional details, timelines, or context."></textarea>
+            </div>
+          </fieldset>
+
+          <div class="submit-row">
+            <button type="submit" class="btn-primary submit-btn" id="submitBtn">
+              <span class="spinner"></span>
+              <span class="btn-label">Start a Conversation</span>
+            </button>
+            <span class="form-note">We reply within 1 business day.</span>
+          </div>
+
+          <div class="success-msg" id="successMsg"><span class="dot"></span>Thanks — your message is in. Our team will be in touch shortly.</div>
+        </form>
+
+        <!-- INFO -->
+        <div class="info-col">
+          <div class="glass-card info-card reveal">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v14H4z"/><path d="m4 6 8 7 8-7"/></svg></div>
+            <div class="info-text"><div class="k">Email</div><div class="v">contentweb.officials@gmail.com</div><div class="v-sub">General &amp; new business enquiries</div></div>
+          </div>
+          <div class="glass-card info-card reveal">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.4-1.4a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.8 2Z"/></svg></div>
+            <div class="info-text"><div class="k">Phone</div><div class="v">+91 90225 45488</div> 
+          </div>
+
+          </div>
+
+          <div class="glass-card social-card reveal">
+            <div class="k">Follow along</div>
+            <div class="social-row">
+              <a href="https://www.linkedin.com/company/web-content-services/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M6.9 9h2.8v9H6.9zM8.3 4.8a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2ZM12.4 9h2.7v1.3c.5-.8 1.4-1.5 2.9-1.5 2.2 0 3.5 1.4 3.5 4.3V18h-2.8v-4.4c0-1.3-.5-2.1-1.6-2.1-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.9V18h-2.8V9Z"/></svg></a>
+              <a href=" https://www.instagram.com/webcontent.in?igsh=MXM5OGc0c2VrMjVvMg%3D%3D&utm_source=qr" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.4"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+              <a href="https://www.facebook.com/share/1CNiLj4fPb/?mibextid=wwXIfr" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 8.5h2.5V5H14c-2 0-3.5 1.6-3.5 3.6V11H8v3.2h2.5V21H14v-6.8h2.3l.4-3.2H14V8.9c0-.3.2-.4.4-.4Z"/></svg></a>
+ <a href="https://chat.whatsapp.com/KlSIOQ0xLno3jTHZzybYtt" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.52 3.48A11.8 11.8 0 0 0 12.05 0C5.52 0 .2 5.32.2 11.85c0 2.09.55 4.13 1.59 5.93L0 24l6.39-1.67a11.82 11.82 0 0 0 5.66 1.44h.01c6.53 0 11.85-5.32 11.85-11.85 0-3.17-1.23-6.15-3.39-8.44zM12.06 21.7c-1.79 0-3.55-.48-5.08-1.39l-.36-.21-3.79.99 1.01-3.69-.23-.38a9.7 9.7 0 0 1-1.49-5.17c0-5.37 4.37-9.74 9.74-9.74 2.6 0 5.04 1.01 6.88 2.85a9.67 9.67 0 0 1 2.86 6.89c0 5.37-4.37 9.74-9.74 9.74zm5.34-7.29c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.19.29-.76.95-.93 1.14-.17.19-.34.22-.63.07-.29-.15-1.22-.45-2.33-1.44-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.17-.24-.58-.49-.5-.66-.5h-.56c-.19 0-.51.07-.78.36-.27.29-1.02 1-.1 2.44.92 1.44 2.16 2.83 4.01 3.87 1.85 1.04 2.57 1.12 3.49.94.56-.11 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.19-.56-.34z"/>
+  </svg>
+</a>            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo"><span class="logo-mark">WCS</span><span>Web Content Services<small>Business Solutions</small></span></a>
+        <p>Where Smart Solutions Build Trusted Brands.</p>
+      </div>
+      <div>
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="#">Business Consulting &amp; Analysis</a></li>
+          <li><a href="#">Technology</a></li>
+          <li><a href="#">Branding &amp; Social Media</a></li>
+          <li><a href="#">Learning &amp; Career</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="#contact-form">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-statement">Consult. Analyze. Build. Brand. Grow.</span>
+      <span>© 2026 Web Content Services &amp; Business Solutions. All Rights Reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach((el, i) => { el.style.setProperty('--i', i % 8); });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successMsg = document.getElementById('successMsg');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
+    submitBtn.querySelector('.btn-label').textContent = 'Sending…';
+    setTimeout(() => {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      submitBtn.querySelector('.btn-label').textContent = 'Message sent';
+      successMsg.classList.add('show');
+      form.reset();
+      setTimeout(() => { submitBtn.querySelector('.btn-label').textContent = 'Start a Conversation'; }, 3200);
+    }, 1400);
+  });
+</script>
+
+</body>
+</html>

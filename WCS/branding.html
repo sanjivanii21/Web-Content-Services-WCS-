@@ -1,0 +1,428 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Branding & Social Media Management | WCS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#05060a;
+    --bg-soft:#0a0c16;
+    --text:#ffffff;
+    --text-mid:#a6aabd;
+    --line:rgba(255,255,255,.08);
+    --violet:#7c5cff;
+    --blue:#4f8dfd;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.wrap{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ================= NAVBAR ================= */
+   
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:999;
+    padding:20px 0;
+    background:rgba(5,6,10,.9);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+   
+}
+
+.logo-area img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:2px solid #fff;
+}
+.logo-area h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:18px;
+}
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.nav-links a{
+    color:#b8b8c5;
+    font-size:18px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.dropdown{
+    position:relative;
+}
+
+.drop-btn{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.dropdown-content{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:260px;
+
+    background:#111827;
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:18px;
+    overflow:hidden;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+
+    transition:.3s;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-content a{
+    display:block;
+    padding:15px 20px;
+    font-size:15px;
+}
+
+.dropdown-content a:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.nav-talk{
+    padding:14px 32px;
+    border-radius:999px;
+
+    background:linear-gradient(
+      90deg,
+      #7c5cff,
+      #4f8dfd
+    );
+
+    color:white;
+    font-weight:600;
+}
+
+/* ================= HERO ================= */
+
+.page-hero{
+    padding:180px 0 120px;
+    text-align:center;
+}
+
+.section-tag{
+    color:var(--violet);
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    display:inline-block;
+    margin-bottom:20px;
+}
+
+.page-hero h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(3rem,6vw,5rem);
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.grad-text{
+    background:linear-gradient(
+    90deg,
+    #7c5cff,
+    #4f8dfd
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.page-hero p{
+    max-width:700px;
+    margin:auto;
+    color:var(--text-mid);
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ================= SERVICES ================= */
+
+.services-section{
+    padding-bottom:120px;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+.service-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:35px;
+    transition:.4s;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--violet);
+    box-shadow:0 20px 40px rgba(124,92,255,.2);
+}
+
+.service-card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.service-card p{
+    color:var(--text-mid);
+    line-height:1.8;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:40px 0;
+    text-align:center;
+    color:var(--text-mid);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page-hero{
+        padding:150px 0 80px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+  <nav>
+    <div class="wrap navbar">
+
+        <div class="logo-area">
+            <img src="Web content logo.png" alt="Logo">
+            <h2>Web Content</h2>
+        </div>
+
+        <div class="nav-right">
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                    <a href="#">Solutions ▾</a>
+
+                    <div class="dropdown-content">
+                        <a href="consulting.html">Business Consulting</a>
+                        <a href="technology.html">Technology Solutions</a>
+                        <a href="branding.html">Branding & Social Media</a>
+                        <a href="learning.html">Learning & Career Development</a>
+                    </div>
+                </div>
+
+                 
+
+                <a href="mediagallery.html">Media Gallery</a>
+            </div>
+            <a href="contact.html" class="nav-talk">
+                Let's Talk
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+   
+<!-- ================= HERO ================= -->
+
+<section class="page-hero">
+
+    <div class="wrap">
+
+        <span class="section-tag">
+            Branding & Social Media Management
+        </span>
+
+        <h1>
+            Building Brands That
+            <span class="grad-text">People Trust.</span>
+        </h1>
+
+        <p>
+            We turn business value into professional
+            brand communication.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services-section">
+
+<div class="wrap">
+
+<div class="service-grid">
+
+<div class="service-card">
+<h3>Brand Strategy</h3>
+<p>Develop strong brand positioning and growth-focused communication.</p>
+</div>
+
+<div class="service-card">
+<h3>Corporate Identity</h3>
+<p>Create a professional visual identity that represents your business.</p>
+</div>
+
+<div class="service-card">
+<h3>Social Media Management</h3>
+<p>Manage and grow your digital presence across social platforms.</p>
+</div>
+
+<div class="service-card">
+<h3>Content Planning</h3>
+<p>Structured content calendars aligned with business goals.</p>
+</div>
+
+<div class="service-card">
+<h3>Content Writing</h3>
+<p>High-quality content that informs, engages and converts.</p>
+</div>
+
+<div class="service-card">
+<h3>Graphic Design</h3>
+<p>Creative visual assets that strengthen brand recognition.</p>
+</div>
+
+<div class="service-card">
+<h3>Video Editing</h3>
+<p>Professional editing for social media and marketing campaigns.</p>
+</div>
+
+<div class="service-card">
+<h3>Cinematography</h3>
+<p>Premium video production and storytelling for brands.</p>
+</div>
+
+<div class="service-card">
+<h3>Paid Promotion</h3>
+<p>Targeted advertising campaigns focused on measurable growth.</p>
+</div>
+
+<div class="service-card">
+<h3>SEO</h3>
+<p>Improve search visibility and drive organic traffic.</p>
+</div>
+
+<div class="service-card">
+<h3>Local SEO</h3>
+<p>Increase visibility among local customers and nearby markets.</p>
+</div>
+
+<div class="service-card">
+<h3>Influencer Marketing</h3>
+<p>Reach wider audiences through trusted influencers.</p>
+</div>
+
+<div class="service-card">
+<h3>Campaign Management</h3>
+<p>End-to-end execution and monitoring of marketing campaigns.</p>
+</div>
+
+<div class="service-card">
+<h3>Brand Communication</h3>
+<p>Deliver consistent messaging across all customer touchpoints.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+    © 2026 Web Content Services & Business Solutions. All Rights Reserved.
+</footer>
+
+</body>
+</html>

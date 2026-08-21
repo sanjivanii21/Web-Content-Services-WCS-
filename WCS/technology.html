@@ -1,0 +1,451 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology Solutions | Web Content Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+      --bg:#05060a;
+    --card:#0f1117;
+    --line:rgba(255,255,255,.08);
+    --text-hi:#ffffff;
+    --text-mid:#a0a7b8;
+    --violet:#7c5cff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text-hi);
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.wrap{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+/* ---------- NAV ---------- */
+   
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:999;
+    padding:20px 0;
+    background:rgba(5,6,10,.9);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+  .navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-area img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    border:2px solid #fff;
+}
+.logo-area h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:18px;
+}
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.nav-links a{
+    color:#b8b8c5;
+    
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.dropdown{
+    position:relative;
+}
+
+.drop-btn{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.dropdown-content{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:260px;
+
+    background:#111827;
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:16px;
+    overflow:hidden;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+
+    transition:.3s;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-content a{
+    display:block;
+    padding:15px 20px;
+     
+}
+
+.dropdown-content a:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.nav-talk{
+    padding:14px 32px;
+    border-radius:999px;
+
+    background:linear-gradient(
+      90deg,
+      #7c5cff,
+      #4f8dfd
+    );
+
+    color:rgb(240, 233, 233);
+    font-weight:600;
+}
+ 
+
+/* HERO */
+
+.page-hero{
+    position:relative;
+    
+    padding:180px 0 120px;
+    text-align:center;
+    overflow:hidden;
+}
+
+.page-hero::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#7c5cff40,transparent 70%);
+    top:-200px;
+    left:-100px;
+    filter:blur(80px);
+}
+
+.page-hero::after{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#4f8dfd40,transparent 70%);
+    right:-100px;
+    top:0;
+    filter:blur(80px);
+}
+
+.section-tag{
+    display:inline-block;
+    color:#8d95b3;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    margin-bottom:25px;
+    position:relative;
+    z-index:2;
+}
+
+.page-hero h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(3rem,6vw,5.5rem);
+    line-height:1.1;
+    max-width:1000px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+.grad-text{
+    background:linear-gradient(90deg,#7c5cff,#4f8dfd);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.page-hero p{
+    max-width:700px;
+    margin:30px auto 0;
+    color:var(--text-mid);
+    font-size:18px;
+    line-height:1.8;
+    position:relative;
+    z-index:2;
+}
+
+/* SERVICES */
+
+.services-section{
+    padding:40px 0 120px;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+}
+
+.service-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:35px;
+    backdrop-filter:blur(12px);
+    transition:.4s;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+    border-color:#7c5cff;
+    box-shadow:0 20px 40px rgba(124,92,255,.25);
+}
+
+.service-card h3{
+    font-size:20px;
+    margin-bottom:15px;
+    font-family:'Space Grotesk',sans-serif;
+}
+
+.service-card p{
+    color:var(--text-mid);
+    line-height:1.8;
+}
+
+/* POSITIONING */
+
+.positioning{
+    padding:80px 0 120px;
+    text-align:center;
+}
+
+.positioning h2{
+    font-size:clamp(2rem,4vw,3.5rem);
+    font-family:'Space Grotesk',sans-serif;
+    margin-bottom:20px;
+}
+
+.positioning p{
+    max-width:800px;
+    margin:auto;
+    color:var(--text-mid);
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+  .nav-links{
+        display:none;
+    }
+    .service-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page-hero{
+        padding:140px 0 80px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap navbar">
+
+        <div class="logo-area">
+            <img src="Web content logo.png" alt="Logo">
+            <h2>Web Content</h2>
+        </div>
+
+        <div class="nav-right">
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                    <a href="#">Solutions ▾</a>
+
+                    <div class="dropdown-content">
+                        <a href="consulting.html">Business Consulting</a>
+                        <a href="technology.html">Technology Solutions</a>
+                        <a href="branding.html">Branding & Social Media</a>
+                        <a href="learning.html">Learning & Career Development</a>
+                    </div>
+                </div>
+
+                 
+
+                <a href="mediagallery.html">Media Gallery</a>
+            </div>
+            <a href="contact.html" class="nav-talk">
+                Let's Talk
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+<section class="page-hero">
+
+    <div class="wrap">
+
+        <span class="section-tag">
+            Technology Solutions
+        </span>
+
+        <h1>
+            Building Digital Solutions That
+            <span class="grad-text">
+                Solve Real Business Problems.
+            </span>
+        </h1>
+
+        <p>
+            Technology should not simply look good.
+            It should solve a business problem.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="services-section">
+
+    <div class="wrap">
+
+        <div class="service-grid">
+
+            <div class="service-card">
+                <h3>Website Development</h3>
+                <p>Modern, responsive and SEO-friendly websites designed for business growth.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Web Application Development</h3>
+                <p>Custom applications tailored to your operations and workflows.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Mobile Application Development</h3>
+                <p>Android and iOS applications built for scalability and performance.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>UI / UX Design</h3>
+                <p>Intuitive experiences that increase engagement and conversions.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>CRM Solutions</h3>
+                <p>Manage customers, sales pipelines and communication efficiently.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Database Management</h3>
+                <p>Reliable, secure and optimized data storage solutions.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>API Integration</h3>
+                <p>Connect systems, automate workflows and improve productivity.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>QA & Testing</h3>
+                <p>Comprehensive testing to ensure quality and reliability.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Cloud Deployment</h3>
+                <p>Deploy and scale applications securely on cloud platforms.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Website Maintenance</h3>
+                <p>Continuous monitoring, updates and technical support.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="positioning">
+
+    <div class="wrap">
+
+        <h2>
+            Technology Should Solve Problems,
+            <span class="grad-text">Not Create Them.</span>
+        </h2>
+
+        <p>
+            We design and develop technology solutions that improve efficiency,
+            eliminate bottlenecks, automate processes and support long-term
+            business growth.
+        </p>
+
+    </div>
+
+</section>
+
+</body>
+</html>

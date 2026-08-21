@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Web Content Services & Digital Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #05060a;
+    --bg-soft: #0a0c16;
+    --line: rgba(255,255,255,0.08);
+    --text-hi: #f4f5fb;
+    --text-mid: #a6aabd;
+    --text-low: #6b6f85;
+    --violet: #7c5cff;
+    --blue: #4f8dfd;
+    --violet-soft: rgba(124,92,255,0.16);
+    --blue-soft: rgba(79,141,253,0.14);
+    --grad: linear-gradient(115deg, #7c5cff 0%, #5a7bff 45%, #4f8dfd 100%);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text-hi);
+    font-family: 'Inter', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background: var(--violet); color:#fff; }
+
+  h1,h2,h3, .display{
+    font-family:'Space Grotesk', sans-serif;
+    letter-spacing:-0.02em;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  button{ font-family:inherit; }
+
+  .wrap{
+    max-width: 1240px;
+    margin:0 auto;
+    padding: 0 40px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 60;
+    padding: 26px 0;
+    background: linear-gradient(to bottom, rgba(5,6,10,0.85), rgba(5,6,10,0));
+    backdrop-filter: blur(6px);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; letter-spacing:-0.01em; }
+  .logo span{ color: var(--text-low); font-weight:500; }
+  .nav-links{ display:flex; gap:40px; font-size:14px; color: var(--text-mid); }
+  .nav-links a{ position:relative; transition: color .3s ease; }
+  .nav-links a:hover{ color: var(--text-hi); }
+  .nav-links a.active{ color: var(--text-hi); }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-8px; height:2px;
+    background: var(--grad); border-radius:2px;
+  }
+  .nav-cta{
+    font-size:13px; padding:10px 20px; border:1px solid var(--line); border-radius:999px;
+    color: var(--text-hi); transition: all .3s ease;
+  }
+  .nav-cta:hover{ border-color: rgba(124,92,255,0.6); background: var(--violet-soft); }
+  @media (max-width:860px){ .nav-links{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height: 62vh;
+    display:flex;
+    align-items:center;
+    padding-top: 150px;
+    padding-bottom: 30px;
+    overflow:hidden;
+  }
+  .hero-bg{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+  .grid-overlay{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 75%);
+  }
+  .orb{ position:absolute; border-radius:50%; filter: blur(90px); opacity:0.55; }
+  .orb-1{
+    width:640px; height:640px; top:-220px; left:50%; transform: translateX(-62%);
+    background: radial-gradient(circle at 35% 35%, #7c5cff, transparent 70%);
+    animation: float1 16s ease-in-out infinite;
+  }
+  .orb-2{
+    width:480px; height:480px; top:120px; left:58%;
+    background: radial-gradient(circle at 60% 40%, #4f8dfd, transparent 70%);
+    animation: float2 18s ease-in-out infinite;
+  }
+  @keyframes float1{ 0%,100%{ transform: translateX(-62%) translateY(0); } 50%{ transform: translateX(-56%) translateY(30px); } }
+  @keyframes float2{ 0%,100%{ transform: translateY(0) translateX(0); } 50%{ transform: translateY(-25px) translateX(-20px); } }
+
+  .hero-inner{ position:relative; z-index:2; width:100%; text-align:center; }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--text-mid);
+    border:1px solid var(--line);
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.02);
+    opacity:0; transform: translateY(14px);
+  }
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%;
+    background: var(--grad);
+    box-shadow: 0 0 12px 2px rgba(124,92,255,0.8);
+  }
+
+  .hero h1{
+    font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+    line-height: 1.1;
+    font-weight: 600;
+    max-width: 900px;
+    margin: 30px auto 0;
+    opacity:0; transform: translateY(24px);
+  }
+  .hero h1 .grad-text{
+    background: var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .reveal.in{ animation: revealUp .9s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes revealUp{ to{ opacity:1; transform: translateY(0); } }
+
+  /* ---------- FILTER BAR ---------- */
+  .filter-section{ position:relative; padding-bottom: 10px; }
+  .filter-bar{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
+    margin-bottom: 60px;
+  }
+  .filter-tab{
+    position:relative;
+    font-size: 13.5px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--text-mid);
+    background: rgba(255,255,255,0.02);
+    cursor: pointer;
+    transition: color .3s ease, border-color .3s ease, background .3s ease;
+  }
+  .filter-tab:hover{ color: var(--text-hi); border-color: rgba(255,255,255,0.22); }
+  .filter-tab.active{ color: var(--text-hi); border-color: rgba(124,92,255,0.5); background: var(--violet-soft); }
+  .filter-tab::after{
+    content:''; position:absolute; left:50%; bottom:5px; transform:translateX(-50%);
+    width:0; height:2px; border-radius:2px; background: var(--grad);
+    transition: width .35s ease;
+  }
+  .filter-tab.active::after{ width: 22px; }
+
+  /* ---------- WORK GRID ---------- */
+  .work-section{ position:relative; padding: 0 0 170px; }
+  .work-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .work-card{
+    position:relative;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: linear-gradient(160deg, rgba(255,255,255,0.03), rgba(255,255,255,0.006));
+    overflow: hidden;
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1), border-color .45s ease, box-shadow .45s ease;
+  }
+  .work-card:hover{ border-color: rgba(124,92,255,0.4); box-shadow: 0 30px 60px -22px rgba(0,0,0,0.6); transform: translateY(-6px); }
+  .work-card.filtered-out{ opacity:0 !important; transform: scale(.94) !important; pointer-events:none; }
+
+  .work-media{
+    position:relative;
+    aspect-ratio: 4 / 3;
+    overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .work-media-bg{
+    position:absolute; inset:0;
+    transition: transform .7s cubic-bezier(.2,.8,.2,1);
+  }
+  .work-card:hover .work-media-bg{ transform: scale(1.08); }
+
+  .work-mono{
+    position:relative; z-index:2;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size: 64px;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: -0.02em;
+    text-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  }
+
+  .work-media::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,0.14) 1px, transparent 1px);
+    background-size: 18px 18px;
+    opacity: 0.5;
+    z-index:1;
+  }
+
+  .work-overlay{
+    position:absolute; inset:0; z-index:3;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding: 22px;
+    background: linear-gradient(to top, rgba(4,5,10,0.92) 0%, rgba(4,5,10,0.5) 45%, rgba(4,5,10,0) 75%);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .work-card:hover .work-overlay{ opacity: 1; transform: translateY(0); }
+
+  .work-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 14px; }
+  .work-tag{
+    font-size: 11px; padding: 5px 10px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--text-hi);
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+  }
+
+  .overlay-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    align-self:flex-start;
+    font-size: 13px; font-weight:600;
+    padding: 11px 20px;
+    border-radius: 9px;
+    background: var(--grad);
+    color: #08050f;
+    box-shadow: 0 10px 26px -8px rgba(124,92,255,0.6);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .overlay-cta:hover{ transform: translateY(-2px); box-shadow: 0 14px 32px -8px rgba(124,92,255,0.85); }
+  .overlay-cta svg{ transition: transform .3s ease; }
+  .overlay-cta:hover svg{ transform: translateX(3px); }
+
+  .work-body{ padding: 26px 26px 28px; }
+  .work-industry{
+    font-size: 11.5px; letter-spacing: 0.12em; text-transform:uppercase;
+    color: var(--text-low); margin-bottom: 10px;
+  }
+  .work-name{ font-size: 20px; font-weight:600; margin-bottom: 10px; }
+  .work-desc{ font-size: 14px; line-height: 1.7; color: var(--text-mid); margin-bottom: 18px; }
+
+  .work-services{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 20px; }
+  .service-chip{
+    font-size: 11.5px; padding: 5px 11px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--text-mid);
+  }
+
+  .case-link{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size: 13.5px; font-weight:500; color: var(--text-hi);
+    position:relative;
+  }
+  .case-link::after{
+    content:''; position:absolute; left:0; bottom:-4px; width:0%; height:1px;
+    background: var(--grad); transition: width .4s ease;
+  }
+  .case-link:hover::after{ width:100%; }
+  .case-link svg{ transition: transform .35s ease; }
+  .case-link:hover svg{ transform: translateX(4px); }
+
+  @media (max-width: 1020px){
+    .work-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px){
+    .work-grid{ grid-template-columns: 1fr; }
+    .wrap{ padding: 0 22px; }
+    .filter-bar{ gap:8px; margin-bottom: 44px; }
+  }
+
+  .reveal-scroll{
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal-scroll.in-view{ opacity: 1 !important; transform: translateY(0) !important; }
+
+  /* ---------- CASE STUDY MODAL ---------- */
+  .modal-overlay{
+    position: fixed; inset:0; z-index: 100;
+    background: rgba(4,5,10,0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display:flex; align-items:center; justify-content:center;
+    padding: 24px;
+    opacity: 0; visibility: hidden;
+    transition: opacity .4s ease, visibility .4s ease;
+  }
+  .modal-overlay.show{ opacity: 1; visibility: visible; }
+
+  .modal-panel{
+    position:relative;
+    width: 100%; max-width: 640px;
+    max-height: 86vh;
+    overflow-y: auto;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    background: linear-gradient(165deg, rgba(16,17,28,0.96), rgba(9,10,18,0.98));
+    box-shadow: 0 40px 90px -20px rgba(0,0,0,0.7);
+    padding: 52px 48px 46px;
+    transform: translateY(24px) scale(.98);
+    transition: transform .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .modal-overlay.show .modal-panel{ transform: translateY(0) scale(1); }
+
+  .modal-close{
+    position:absolute; top: 22px; right: 22px;
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.03);
+    color: var(--text-mid);
+    font-size: 18px;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    transition: all .3s ease;
+  }
+  .modal-close:hover{ color: var(--text-hi); border-color: rgba(124,92,255,0.5); background: var(--violet-soft); }
+
+  .modal-cat{
+    display:inline-block;
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform:uppercase;
+    color: var(--violet);
+    margin-bottom: 16px;
+  }
+  .modal-panel h3{ font-size: 30px; font-weight:600; line-height:1.2; margin-bottom: 12px; max-width: 480px; }
+  .modal-meta{ font-size: 13.5px; color: var(--text-low); margin-bottom: 36px; }
+  .modal-meta span{ color: var(--text-mid); }
+
+  .modal-block + .modal-block{ margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .modal-block h5{
+    font-size: 11.5px; letter-spacing: 0.14em; text-transform:uppercase;
+    color: var(--text-low); margin-bottom: 10px; font-weight:600;
+  }
+  .modal-block p{ font-size: 15px; line-height: 1.75; color: var(--text-mid); }
+  .modal-block.outcome-block h5{ color: var(--blue); }
+
+  .outcome-stats{ display:flex; gap: 28px; margin-top: 16px; flex-wrap:wrap; }
+  .outcome-stat{ }
+  .outcome-stat .num{
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size: 26px;
+    background: var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .outcome-stat .lbl{ font-size: 12px; color: var(--text-low); margin-top: 4px; }
+
+  @media (max-width: 560px){
+    .modal-panel{ padding: 40px 26px 34px; }
+    .modal-panel h3{ font-size: 24px; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{
+    position:relative;
+    border-top: 1px solid var(--line);
+    background: var(--bg-soft);
+    padding: 96px 0 32px;
+  }
+  .footer-grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap: 40px; padding-bottom: 60px; }
+  .footer-brand-col{ grid-column: span 5; }
+  .footer-logo{ display:flex; align-items:center; gap:10px; font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:18px; letter-spacing:-0.01em; }
+  .footer-logo .dot{ width:10px; height:10px; border-radius:50%; flex-shrink:0; background: var(--grad); box-shadow: 0 0 12px 2px rgba(124,92,255,0.65); }
+  .footer-tagline{ margin-top: 16px; font-size: 14px; line-height: 1.7; color: var(--text-mid); max-width: 280px; }
+  .social-row{ display:flex; gap: 12px; margin-top: 28px; }
+  .social-btn{ width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); display:flex; align-items:center; justify-content:center; color: var(--text-mid); transition: border-color .35s ease, background .35s ease, color .35s ease, transform .35s ease; }
+  .social-btn:hover{ border-color: rgba(124,92,255,0.55); background: var(--violet-soft); color: var(--text-hi); transform: translateY(-3px); }
+  .footer-col{ grid-column: span 2; }
+  .footer-col.contact-col{ grid-column: span 3; }
+  .footer-col h5{ font-size: 12px; letter-spacing: 0.14em; text-transform:uppercase; color: var(--text-low); font-weight:600; margin-bottom: 20px; }
+  .footer-col ul{ list-style:none; display:flex; flex-direction:column; gap: 12px; }
+  .footer-col li{ font-size: 14px; color: var(--text-mid); }
+  .footer-link{ color: var(--text-mid); transition: color .3s ease, padding-left .3s ease; }
+  .footer-link:hover{ color: var(--text-hi); padding-left: 4px; }
+  .footer-bottom{ border-top: 1px solid var(--line); padding-top: 30px; display:flex; align-items:center; justify-content:space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-bottom-tag{ font-family:'Space Grotesk', sans-serif; font-size: 11.5px; letter-spacing: 0.18em; text-transform:uppercase; color: var(--text-low); }
+  .footer-copy{ font-size: 12px; color: var(--text-low); }
+  @media (max-width: 900px){
+    .footer-grid{ grid-template-columns: 1fr 1fr; row-gap: 44px; }
+    .footer-brand-col{ grid-column: span 2; }
+    .footer-col, .footer-col.contact-col{ grid-column: span 1; }
+  }
+  @media (max-width: 560px){
+    .footer-grid{ grid-template-columns: 1fr; }
+    .footer-brand-col{ grid-column: span 1; }
+    .footer-bottom{ flex-direction: column; align-items:flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="logo">WCS<span>&nbsp;/ Digital Solutions</span></a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="solutions.html">Services</a>
+      <a href="work.html" class="active">Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="#" class="nav-cta">Book a call</a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="grid-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="eyebrow reveal" style="animation-delay:.05s">
+      <span class="dot"></span>
+      Our Work
+    </div>
+
+    <h1 class="reveal" style="animation-delay:.18s">
+      Ideas Into Execution. <span class="grad-text">Execution Into Results.</span>
+    </h1>
+  </div>
+</section>
+
+<!-- ===================== FILTER ===================== -->
+<section class="filter-section">
+  <div class="wrap">
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="business">Business</button>
+      <button class="filter-tab" data-filter="websites">Websites</button>
+      <button class="filter-tab" data-filter="applications">Applications</button>
+      <button class="filter-tab" data-filter="branding">Branding</button>
+      <button class="filter-tab" data-filter="social-media">Social Media</button>
+      <button class="filter-tab" data-filter="creative">Creative</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WORK GRID ===================== -->
+<section class="work-section">
+  <div class="wrap">
+    <div class="work-grid" id="workGrid">
+
+      <article class="work-card reveal-scroll" data-cat="business" data-project="nexora">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 30% 20%, rgba(124,92,255,0.55), transparent 60%), radial-gradient(circle at 80% 80%, rgba(79,141,253,0.45), transparent 55%), #100f1c;"></div>
+          <span class="work-mono">N</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Business Analysis</span><span class="work-tag">Process Design</span></div>
+            <a href="#" class="overlay-cta" data-project="nexora">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">Management Consulting</div>
+          <h3 class="work-name">Nexora Consulting</h3>
+          <p class="work-desc">Restructured operating workflows and reporting for a fast-growing consulting firm losing time to manual handoffs.</p>
+          <div class="work-services">
+            <span class="service-chip">Business Analysis</span>
+            <span class="service-chip">Process Design</span>
+          </div>
+          <a href="#" class="case-link" data-project="nexora">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="websites" data-project="lumen">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 70% 25%, rgba(79,141,253,0.55), transparent 60%), radial-gradient(circle at 20% 80%, rgba(124,92,255,0.4), transparent 55%), #0d1220;"></div>
+          <span class="work-mono">L</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Web Design</span><span class="work-tag">Development</span></div>
+            <a href="#" class="overlay-cta" data-project="lumen">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">SaaS / Productivity</div>
+          <h3 class="work-name">Lumen Web Studio</h3>
+          <p class="work-desc">A full site rebuild for a SaaS platform, focused on faster load times and a clearer conversion path.</p>
+          <div class="work-services">
+            <span class="service-chip">Web Design</span>
+            <span class="service-chip">Development</span>
+          </div>
+          <a href="#" class="case-link" data-project="lumen">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="applications" data-project="orbit">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 25% 75%, rgba(124,92,255,0.5), transparent 60%), radial-gradient(circle at 75% 20%, rgba(79,141,253,0.5), transparent 55%), #0f1018;"></div>
+          <span class="work-mono">O</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Product Design</span><span class="work-tag">App Development</span></div>
+            <a href="#" class="overlay-cta" data-project="orbit">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">Logistics &amp; Field Ops</div>
+          <h3 class="work-name">Orbit FieldOps</h3>
+          <p class="work-desc">A mobile app that gave field technicians live job data, cutting dispatch calls and paperwork.</p>
+          <div class="work-services">
+            <span class="service-chip">Product Design</span>
+            <span class="service-chip">App Development</span>
+          </div>
+          <a href="#" class="case-link" data-project="orbit">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="branding" data-project="verto">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 60% 70%, rgba(124,92,255,0.55), transparent 60%), radial-gradient(circle at 30% 20%, rgba(79,141,253,0.4), transparent 55%), #120f1e;"></div>
+          <span class="work-mono">V</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Brand Identity</span><span class="work-tag">Packaging</span></div>
+            <a href="#" class="overlay-cta" data-project="verto">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">D2C Beauty</div>
+          <h3 class="work-name">Verto Skincare</h3>
+          <p class="work-desc">A full identity system and packaging refresh that repositioned a skincare line as a premium label.</p>
+          <div class="work-services">
+            <span class="service-chip">Brand Identity</span>
+            <span class="service-chip">Packaging</span>
+          </div>
+          <a href="#" class="case-link" data-project="verto">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="social-media" data-project="pulse">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 25% 25%, rgba(79,141,253,0.55), transparent 60%), radial-gradient(circle at 75% 75%, rgba(124,92,255,0.45), transparent 55%), #0e111c;"></div>
+          <span class="work-mono">P</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Social Strategy</span><span class="work-tag">Content</span></div>
+            <a href="#" class="overlay-cta" data-project="pulse">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">Fitness &amp; Wellness</div>
+          <h3 class="work-name">Pulse Social</h3>
+          <p class="work-desc">A content system and posting cadence that turned a boutique studio's page into its top lead source.</p>
+          <div class="work-services">
+            <span class="service-chip">Social Strategy</span>
+            <span class="service-chip">Content</span>
+          </div>
+          <a href="#" class="case-link" data-project="pulse">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="creative" data-project="aether">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 50% 15%, rgba(124,92,255,0.55), transparent 60%), radial-gradient(circle at 20% 85%, rgba(79,141,253,0.45), transparent 55%), #100e1a;"></div>
+          <span class="work-mono">A</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Art Direction</span><span class="work-tag">Motion Design</span></div>
+            <a href="#" class="overlay-cta" data-project="aether">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">Media Production</div>
+          <h3 class="work-name">Aether Motion</h3>
+          <p class="work-desc">A visual identity and motion toolkit used across a production studio's trailers, reels and socials.</p>
+          <div class="work-services">
+            <span class="service-chip">Art Direction</span>
+            <span class="service-chip">Motion Design</span>
+          </div>
+          <a href="#" class="case-link" data-project="aether">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="business" data-project="northbridge">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 75% 30%, rgba(124,92,255,0.5), transparent 60%), radial-gradient(circle at 25% 75%, rgba(79,141,253,0.4), transparent 55%), #0f0f1a;"></div>
+          <span class="work-mono">N</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Strategy Consulting</span></div>
+            <a href="#" class="overlay-cta" data-project="northbridge">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">Financial Services</div>
+          <h3 class="work-name">Northbridge Capital</h3>
+          <p class="work-desc">A go-to-market strategy and internal restructure that helped a boutique advisory scale past its founder.</p>
+          <div class="work-services">
+            <span class="service-chip">Strategy Consulting</span>
+          </div>
+          <a href="#" class="case-link" data-project="northbridge">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="websites" data-project="kairos">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 30% 70%, rgba(79,141,253,0.5), transparent 60%), radial-gradient(circle at 80% 25%, rgba(124,92,255,0.45), transparent 55%), #0d0e19;"></div>
+          <span class="work-mono">K</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">Website</span><span class="work-tag">CMS</span></div>
+            <a href="#" class="overlay-cta" data-project="kairos">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">EdTech</div>
+          <h3 class="work-name">Kairos Learning</h3>
+          <p class="work-desc">A course-marketing site and CMS built so a coaching institute could publish new cohorts without a developer.</p>
+          <div class="work-services">
+            <span class="service-chip">Website</span>
+            <span class="service-chip">CMS</span>
+          </div>
+          <a href="#" class="case-link" data-project="kairos">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card reveal-scroll" data-cat="applications" data-project="vantage">
+        <div class="work-media">
+          <div class="work-media-bg" style="background: radial-gradient(circle at 65% 65%, rgba(124,92,255,0.5), transparent 60%), radial-gradient(circle at 20% 20%, rgba(79,141,253,0.5), transparent 55%), #0f1119;"></div>
+          <span class="work-mono">V</span>
+          <div class="work-overlay">
+            <div class="work-tags"><span class="work-tag">App Development</span><span class="work-tag">UX</span></div>
+            <a href="#" class="overlay-cta" data-project="vantage">
+              View Case Study
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-industry">Retail</div>
+          <h3 class="work-name">Vantage Retail</h3>
+          <p class="work-desc">A store-associate app that replaced paper stock checks with real-time inventory lookups.</p>
+          <div class="work-services">
+            <span class="service-chip">App Development</span>
+            <span class="service-chip">UX</span>
+          </div>
+          <a href="#" class="case-link" data-project="vantage">
+            View Case Study
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CASE STUDY MODAL ===================== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+    <span class="modal-cat" id="modalCat"></span>
+    <h3 id="modalTitle"></h3>
+    <p class="modal-meta" id="modalMeta"></p>
+
+    <div class="modal-block">
+      <h5>Problem</h5>
+      <p id="modalProblem"></p>
+    </div>
+    <div class="modal-block">
+      <h5>Solution</h5>
+      <p id="modalSolution"></p>
+    </div>
+    <div class="modal-block outcome-block">
+      <h5>Outcome</h5>
+      <p id="modalOutcome"></p>
+      <div class="outcome-stats" id="modalStats"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="index.html" class="footer-logo">
+          <span class="dot"></span>
+          Web Content Services &amp; Digital Solutions
+        </a>
+        <p class="footer-tagline">Where Smart Solutions Build Trusted Brands.</p>
+
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM.5 8.98H9V23H.5zM12.5 8.98h8.14v1.91h.11c1.13-2.14 3.9-2.14 5.75 0V23h-4.5v-6.9c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V23h-4.5z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="X / Twitter">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22H16.9l-5-6.6L6 22H2.9l8.1-9.3L1.7 2h6.6l4.5 6z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-1 .3-1.6 1.7-1.6h1.7V3.5C16.3 3.4 15.2 3.3 14 3.3c-2.6 0-4.4 1.6-4.4 4.5v2.5H6.8v3.3h2.8V22z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="solutions.html#consulting" class="footer-link">Business Consulting &amp; Analysis</a></li>
+          <li><a href="solutions.html#technology" class="footer-link">Technology</a></li>
+          <li><a href="solutions.html#branding" class="footer-link">Branding &amp; Social Media</a></li>
+          <li><a href="solutions.html#learning" class="footer-link">Learning &amp; Career</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="index.html#about" class="footer-link">About</a></li>
+          <li><a href="work.html" class="footer-link">Our Work</a></li>
+          <li><a href="#" class="footer-link">Insights</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+          <li><a href="#" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>+91 9022545488</li>
+          <li>contentweb.officials@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-bottom-tag">Consult. Analyze. Build. Brand. Grow.</p>
+      <p class="footer-copy">&copy; <span id="year"></span> Web Content Services &amp; Digital Solutions. All Rights Reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  // ---------- Hero entrance ----------
+  document.querySelectorAll('.hero .reveal').forEach(el => {
+    requestAnimationFrame(() => el.classList.add('in'));
+  });
+
+  // ---------- Scroll reveal for cards ----------
+  const cards = Array.from(document.querySelectorAll('.work-card'));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if(entry.isIntersecting){
+        const idx = cards.indexOf(entry.target);
+        entry.target.style.transitionDelay = ((idx % 3) * 0.08) + 's';
+        entry.target.classList.add('in-view');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  cards.forEach(el => obs.observe(el));
+
+  // ---------- Filtering ----------
+  const filterBar = document.getElementById('filterBar');
+  filterBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-tab');
+    if(!btn) return;
+    filterBar.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+
+    cards.forEach(card => {
+      const match = filter === 'all' || card.dataset.cat === filter;
+      if(match){
+        card.classList.remove('filtered-out');
+      } else {
+        card.classList.add('filtered-out');
+      }
+    });
+  });
+
+  // ---------- Case study data ----------
+  const projects = {
+    nexora: {
+      cat: 'Business Consulting', title: 'Nexora Consulting', meta: 'Management Consulting — Business Analysis, Process Design',
+      problem: 'Nexora\'s consultants were spending more time chasing status updates across spreadsheets and email than delivering client work, and leadership had no single view of project health.',
+      solution: 'We mapped their delivery workflow end to end, cut out duplicate approval steps, and introduced a lightweight reporting structure the whole team could keep updated in minutes, not hours.',
+      outcome: 'Within one quarter, project reporting became reliable enough for leadership to make faster staffing decisions, and the team reclaimed hours previously lost to manual updates.',
+      stats: [['38%','Less admin time'],['4wks','To full rollout'],['3','Teams onboarded']]
+    },
+    lumen: {
+      cat: 'Website Design & Development', title: 'Lumen Web Studio', meta: 'SaaS / Productivity — Web Design, Development',
+      problem: 'Lumen\'s marketing site loaded slowly, buried its pricing and sign-up path, and was not converting trial visitors at a rate that matched their ad spend.',
+      solution: 'We rebuilt the site on a lighter front end, restructured the navigation around a single clear conversion path, and rewrote the core landing pages around the product\'s real value.',
+      outcome: 'The new site loads in a fraction of the previous time and gives visitors a much shorter path from landing page to trial sign-up.',
+      stats: [['2.1s','Load time'],['+61%','Trial sign-ups'],['5','Pages rebuilt']]
+    },
+    orbit: {
+      cat: 'Application Development', title: 'Orbit FieldOps', meta: 'Logistics & Field Ops — Product Design, App Development',
+      problem: 'Field technicians relied on phone calls and paper job sheets, which meant dispatch delays and no visibility into job status until the end of the day.',
+      solution: 'We designed and built a mobile app that gave technicians live job assignments, status updates, and photo capture, synced directly back to the dispatch team.',
+      outcome: 'Dispatch calls dropped sharply and job status became visible in real time, letting the operations team plan the next day\'s routes with far less guesswork.',
+      stats: [['54%','Fewer dispatch calls'],['12min','Avg. update time'],['1','Unified app']]
+    },
+    verto: {
+      cat: 'Branding & Identity', title: 'Verto Skincare', meta: 'D2C Beauty — Brand Identity, Packaging',
+      problem: 'Verto\'s products were well formulated but the packaging and visual identity looked inconsistent across retailers, undercutting the premium price point they wanted to hold.',
+      solution: 'We built a cohesive identity system — logotype, palette, packaging structure and photography direction — designed to read as premium at shelf and online.',
+      outcome: 'The refreshed identity rolled out across the full product line and online store, giving Verto a consistent premium look across every touchpoint.',
+      stats: [['1','Unified identity'],['12','SKUs refreshed'],['6wks','Design to launch']]
+    },
+    pulse: {
+      cat: 'Social Media Management', title: 'Pulse Social', meta: 'Fitness & Wellness — Social Strategy, Content',
+      problem: 'A boutique fitness studio was posting inconsistently with no clear content plan, and its social channels were not bringing in new members.',
+      solution: 'We built a monthly content system with a repeatable posting cadence, a clearer visual style, and content built specifically to move followers toward booking a class.',
+      outcome: 'Consistent posting and a clearer content mix turned the studio\'s page into its strongest source of new class bookings.',
+      stats: [['+2.4x','Engagement'],['Daily','Posting cadence'],['#1','Lead source']]
+    },
+    aether: {
+      cat: 'Creative & Motion', title: 'Aether Motion', meta: 'Media Production — Art Direction, Motion Design',
+      problem: 'A production studio had strong reel content but no consistent visual identity tying its trailers, socials and pitch decks together.',
+      solution: 'We developed a visual and motion toolkit — type, color, transitions and title treatments — built to be reused across every format the studio publishes.',
+      outcome: 'The studio now ships trailers, reels and pitch materials that are instantly recognizable as their own, without rebuilding the look each time.',
+      stats: [['1','Motion toolkit'],['4','Formats covered'],['3wks','Delivery time']]
+    },
+    northbridge: {
+      cat: 'Business Consulting', title: 'Northbridge Capital', meta: 'Financial Services — Strategy Consulting',
+      problem: 'Northbridge had grown around its founder\'s personal network, but had no repeatable process for winning new clients without her direct involvement in every deal.',
+      solution: 'We built a go-to-market strategy and a lighter internal structure that let the wider team originate and close new business on its own.',
+      outcome: 'The firm now brings in new clients through a repeatable process rather than founder-led sales, freeing leadership to focus on larger accounts.',
+      stats: [['+29%','New client rate'],['5','Team members enabled'],['1','GTM playbook']]
+    },
+    kairos: {
+      cat: 'Website Design & Development', title: 'Kairos Learning', meta: 'EdTech — Website, CMS',
+      problem: 'A coaching institute needed a developer every time it wanted to publish a new course or update a batch schedule, slowing down enrollment campaigns.',
+      solution: 'We built a marketing site on a CMS the academic team could manage directly, with templates for new course pages and batch listings.',
+      outcome: 'The team now publishes new courses and updates schedules on their own, without waiting on developer time for routine changes.',
+      stats: [['0','Dev hours per update'],['9','Course pages live'],['3wks','Build time']]
+    },
+    vantage: {
+      cat: 'Application Development', title: 'Vantage Retail', meta: 'Retail — App Development, UX',
+      problem: 'Store associates were checking stock manually against paper sheets, leading to inaccurate availability information for customers.',
+      solution: 'We designed and built a simple in-store app giving associates real-time inventory lookups and stock transfer requests from the floor.',
+      outcome: 'Associates now resolve stock questions on the spot, cutting the back-and-forth that used to send customers elsewhere.',
+      stats: [['47%','Faster stock checks'],['6','Stores rolled out'],['1','Unified app']]
+    }
+  };
+
+  const overlay = document.getElementById('modalOverlay');
+  const modalCat = document.getElementById('modalCat');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalMeta = document.getElementById('modalMeta');
+  const modalProblem = document.getElementById('modalProblem');
+  const modalSolution = document.getElementById('modalSolution');
+  const modalOutcome = document.getElementById('modalOutcome');
+  const modalStats = document.getElementById('modalStats');
+
+  function openModal(id){
+    const p = projects[id];
+    if(!p) return;
+    modalCat.textContent = p.cat;
+    modalTitle.textContent = p.title;
+    modalMeta.textContent = p.meta;
+    modalProblem.textContent = p.problem;
+    modalSolution.textContent = p.solution;
+    modalOutcome.textContent = p.outcome;
+    modalStats.innerHTML = p.stats.map(s => `<div class="outcome-stat"><div class="num">${s[0]}</div><div class="lbl">${s[1]}</div></div>`).join('');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(){
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-project]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(el.dataset.project);
+    });
+  });
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+  // ---------- Footer year ----------
+  const yearEl = document.getElementById('year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+</script>
+
+</body>
+</html>

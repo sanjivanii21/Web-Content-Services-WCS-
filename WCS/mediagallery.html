@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Media Gallery </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#05060a;
+    --card:rgba(255,255,255,.03);
+    --line:rgba(255,255,255,.08);
+    --text:#ffffff;
+    --text-mid:#a1a8c3;
+    --violet:#7c5cff;
+    --blue:#4f8dfd;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+a{
+    text-decoration:none;
+}
+
+.wrap{
+    width:min(1280px,92%);
+    margin:auto;
+}
+
+/* NAVBAR */
+
+ /* ---------- NAV ---------- */
+  nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:999;
+    padding:20px 0;
+    background:rgba(5,6,10,.9);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* Logo */
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-area img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.logo-area h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:18px;
+}
+
+/* Right Menu */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.nav-links a{
+    color:#b8b8c5;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* Dropdown */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-content{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:260px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    overflow:hidden;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:.3s;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-content a{
+    display:block;
+    padding:15px 20px;
+}
+
+.dropdown-content a:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.nav-talk{
+    padding:14px 28px;
+    border-radius:999px;
+    background:linear-gradient(
+    90deg,
+    #7c5cff,
+    #4f8dfd
+    );
+    color:white;
+    font-weight:600;
+}
+/* HERO */
+
+.hero{
+    padding:180px 0 100px;
+}
+
+.hero span{
+    display:inline-block;
+    color:#8d95b3;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    margin-bottom:25px;
+    font-size:14px;
+}
+
+.hero h1{
+    font-size:clamp(3rem,6vw,5.5rem);
+    line-height:1.05;
+    max-width:1000px;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #7c5cff,
+        #4f8dfd
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:700px;
+    margin-top:25px;
+    color:var(--text-mid);
+    font-size:20px;
+    line-height:1.8;
+}
+
+/* TABS */
+
+.tabs{
+    display:flex;
+    gap:40px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:80px;
+}
+
+.tabs a{
+    padding:18px 0;
+    color:var(--text-mid);
+    font-weight:600;
+}
+
+.tabs a:hover{
+    color:#fff;
+}
+
+.tabs .active{
+    color:var(--violet);
+    border-bottom:3px solid var(--violet);
+}
+
+/* SECTION */
+
+.section{
+    padding:20px 0 100px;
+}
+
+.section-title{
+    font-size:60px;
+    margin-bottom:60px;
+}
+
+/* EXECUTIVES */
+
+.executive-card{
+    display:grid;
+    grid-template-columns:420px 1fr;
+    gap:70px;
+
+    background:var(--card);
+
+    border:1px solid var(--line);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    margin-bottom:40px;
+}
+
+.executive-card img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.executive-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.executive-info h3{
+    font-size:46px;
+    margin-bottom:10px;
+}
+
+.position{
+    color:var(--violet);
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.bio{
+    color:var(--text-mid);
+    line-height:1.9;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.social-links{
+    display:flex;
+    gap:15px;
+}
+
+.social-links a{
+    padding:14px 28px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    color:#fff;
+    transition:.3s;
+}
+
+.social-links a:hover{
+    background:linear-gradient(
+        90deg,
+        var(--violet),
+        var(--blue)
+    );
+}
+
+/* OFFICES */
+
+.office-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:35px;
+}
+
+.office-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:28px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.office-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--violet);
+}
+
+.office-card img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+}
+
+.office-card h3{
+    font-size:30px;
+    padding:25px 25px 10px;
+}
+
+.office-card p{
+    padding:0 25px 25px;
+    color:var(--text-mid);
+    line-height:1.8;
+}
+
+/* FOOTER */
+
+ .footer-grid{
+    display:grid;
+    grid-template-columns:2.5fr 1fr 1fr 1fr;
+    gap:80px;
+}
+
+.footer-title{
+    font-size:36px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:15px;
+}
+
+.footer-desc{
+    color:#9ca3af;
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.footer-heading{
+    color:#8b5cf6;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.footer-links{
+    list-style:none;
+}
+
+.footer-links li{
+    margin-bottom:15px;
+}
+
+.footer-links a{
+    color:#9ca3af;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    margin-top:60px;
+    padding-top:30px;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+@media(max-width:900px){
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .executive-card{
+        grid-template-columns:1fr;
+    }
+
+    .office-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:40px;
+    }
+
+    .executive-info h3{
+        font-size:34px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+  <nav>
+    <div class="wrap navbar">
+
+        <div class="logo-area">
+            <img src="Web content logo.png" alt="Logo">
+            <h2>Web Content</h2>
+        </div>
+
+        <div class="nav-right">
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                    <a href="#">Solutions ▾</a>
+
+                    <div class="dropdown-content">
+                        <a href="consulting.html">Business Consulting</a>
+                        <a href="technology.html">Technology Solutions</a>
+                        <a href="branding.html">Branding & Social Media</a>
+                        <a href="learning.html">Learning & Career Development</a>
+                    </div>
+                </div>
+
+                 
+
+                <a href="mediagallery.html">Media Gallery</a>
+            </div>
+            <a href="contact.html" class="nav-talk">
+                Let's Talk
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+<div class="wrap">
+
+    <span>MEDIA GALLERY</span>
+
+    <h1>
+        Leadership, Workplace
+        & Corporate Culture.
+    </h1>
+
+    <p>
+        Meet our executives, explore our offices and discover the people and places driving innovation, growth and transformation.
+    </p>
+
+</div>
+</section>
+
+<div class="wrap">
+
+    <div class="tabs">
+        <a href="#executives" class="active">Executives</a>
+        <a href="#offices">Offices</a>
+    </div>
+
+</div>
+
+<!-- EXECUTIVES -->
+
+<section id="executives" class="section">
+<div class="wrap">
+
+<h2 class="section-title">Executives</h2>
+
+<div class="executive-card">
+
+    <img src="CEO.jpeg" alt="CEO">
+
+    <div class="executive-info">
+
+        <h3>John Smith</h3>
+
+        <div class="position">
+            Founder & CEO
+        </div>
+
+        <p class="bio">
+            Leading company strategy, innovation and business growth while building strong client relationships and driving long-term organizational success.
+        </p>
+
+        <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+            <a href="#">X</a>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="executive-card">
+
+    <img src="director.jpeg" alt="Director">
+
+    <div class="executive-info">
+
+        <h3>Sarah Johnson</h3>
+
+        <div class="position">
+            Managing Director
+        </div>
+
+        <p class="bio">
+            Responsible for operational excellence, strategic execution and delivering exceptional outcomes for clients and stakeholders.
+        </p>
+
+        <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+            <a href="#">X</a>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</section>
+
+<!-- OFFICES -->
+
+<section id="offices" class="section">
+<div class="wrap">
+
+<h2 class="section-title">Offices</h2>
+
+<div class="office-grid">
+
+<div class="office-card">
+
+    <img src="headquarters.jpeg" alt="Head Office">
+
+    <h3>Corporate Headquarters</h3>
+
+    <p>
+        The central hub for leadership, strategic planning, consulting and technology innovation.
+    </p>
+
+</div>
+
+<div class="office-card">
+
+    <img src="learning.jpeg" alt="Training Center">
+
+    <h3>Learning & Development Center</h3>
+
+    <p>
+        Dedicated to internship programs, professional development, training and industry collaboration.
+    </p>
+
+</div>
+
+</div>
+
+</div>
+</section>
+ <footer style="background:#05060a;padding:80px 40px;">
+
+<div class="footer-grid">
+
+    <div>
+        <h3 class="footer-title">
+            Web Content Services & Business Solutions
+        </h3>
+
+        <p class="footer-desc">
+            Where Smart Solutions Build Trusted Brands.
+        </p>
+    </div>
+
+    <div>
+        <h4 class="footer-heading">Solutions</h4>
+
+        <ul class="footer-links">
+            <li><a href="BC.html">Business Consulting & Analysis</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="branding.html">Branding & Social Media</a></li>
+            <li><a href="learning.html">Learning & Career</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h4 class="footer-heading">Company</h4>
+
+        <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Our Work</a></li>
+            <li><a href="#">Insights</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <div>
+        <h4 class="footer-heading">Contact</h4>
+
+        <ul class="footer-links">
+            <li>+91 9022545488</li>
+            <li>contentweb.officials@gmail.com</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="footer-bottom">
+    <p style="color:#9ca3af;">
+        Consult. Analyze. Build. Brand. Grow.
+    </p>
+
+    <p style="color:#9ca3af;">
+        © 2026 Web Content Services & Business Solutions.
+    </p>
+</div>
+
+</footer>
+</body>
+</html>

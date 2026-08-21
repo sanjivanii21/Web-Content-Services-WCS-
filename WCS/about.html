@@ -1,0 +1,753 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Content Services & Digital Solutions — Strategy, Technology & Creative Growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #05060a;
+    --bg-soft: #0a0c16;
+    --line: rgba(255,255,255,0.08);
+    --text-hi: #f4f5fb;
+    --text-mid: #a6aabd;
+    --text-low: #6b6f85;
+    --violet: #7c5cff;
+    --blue: #4f8dfd;
+    --violet-soft: rgba(124,92,255,0.16);
+    --blue-soft: rgba(79,141,253,0.14);
+    --grad: linear-gradient(115deg, #7c5cff 0%, #5a7bff 45%, #4f8dfd 100%);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--text-hi);
+    font-family: 'Inter', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background: var(--violet); color:#fff; }
+
+  h1,h2,h3, .display{
+    font-family:'Space Grotesk', sans-serif;
+    letter-spacing:-0.02em;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width: 1240px;
+    margin:0 auto;
+    padding: 0 40px;
+  }
+
+  /* ---------- NAV ---------- */
+   nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:999;
+    padding:20px 0;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(5,6,10,.65),
+        rgba(5,6,10,0)
+    );
+
+    backdrop-filter:blur(6px);
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* Logo */
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-area img{
+    width:70px;
+    height: 70px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.logo-area h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:18px;
+}
+
+/* Right Menu */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.nav-links a{
+    color:#b8b8c5;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* Dropdown */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-content{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:260px;
+    background:#111827;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    overflow:hidden;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:.3s;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-content a{
+    display:block;
+    padding:15px 20px;
+}
+
+.dropdown-content a:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.nav-talk{
+    padding:14px 28px;
+    border-radius:999px;
+    background:linear-gradient(
+    90deg,
+    #7c5cff,
+    #4f8dfd
+    );
+    color:white;
+    font-weight:600;
+}
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    padding-top: 120px;
+    overflow:hidden;
+  }
+
+  .hero-bg{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+  }
+
+  .grid-overlay{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 75%);
+  }
+
+  .orb{
+    position:absolute;
+    border-radius:50%;
+    filter: blur(90px);
+    opacity:0.55;
+  }
+  .orb-1{
+    width:640px; height:640px;
+    top:-220px; left:50%;
+    transform: translateX(-62%);
+    background: radial-gradient(circle at 35% 35%, #7c5cff, transparent 70%);
+    animation: float1 16s ease-in-out infinite;
+  }
+  .orb-2{
+    width:480px; height:480px;
+    top:120px; left:58%;
+    background: radial-gradient(circle at 60% 40%, #4f8dfd, transparent 70%);
+    animation: float2 18s ease-in-out infinite;
+  }
+
+  @keyframes float1{
+    0%,100%{ transform: translateX(-62%) translateY(0); }
+    50%{ transform: translateX(-56%) translateY(30px); }
+  }
+  @keyframes float2{
+    0%,100%{ transform: translateY(0) translateX(0); }
+    50%{ transform: translateY(-25px) translateX(-20px); }
+  }
+
+  .hero-inner{
+    position:relative; z-index:2;
+    width:100%;
+    text-align:center;
+  }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--text-mid);
+    border:1px solid var(--line);
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.02);
+    opacity:0; transform: translateY(14px);
+  }
+  .eyebrow .dot{
+    width:6px; height:6px; border-radius:50%;
+    background: var(--grad);
+    box-shadow: 0 0 12px 2px rgba(124,92,255,0.8);
+  }
+
+  .hero h1{
+    font-size: clamp(2.4rem, 5.4vw, 4.75rem);
+    line-height: 1.06;
+    font-weight: 600;
+    max-width: 950px;
+    margin: 30px auto 0;
+    opacity:0; transform: translateY(24px);
+  }
+  .hero h1 .grad-text{
+    background: var(--grad);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero p.sub{
+    max-width: 620px;
+    margin: 28px auto 0;
+    font-size: 17px;
+    line-height:1.7;
+    color: var(--text-mid);
+    opacity:0; transform: translateY(20px);
+  }
+
+  .hero-ctas{
+    display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+    margin-top: 42px;
+    opacity:0; transform: translateY(20px);
+  }
+
+  .btn{
+    font-size: 14.5px;
+    font-weight:500;
+    padding: 15px 28px;
+    border-radius: 10px;
+    display:inline-flex; align-items:center; gap:9px;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, background .35s ease, border-color .35s ease;
+  }
+  .btn-primary{
+    background: var(--grad);
+    color:#08050f;
+    font-weight:600;
+    box-shadow: 0 8px 30px -8px rgba(124,92,255,0.65);
+  }
+  .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 14px 36px -8px rgba(124,92,255,0.85); }
+  .btn-ghost{
+    border:1px solid var(--line);
+    color: var(--text-hi);
+    background: rgba(255,255,255,0.02);
+  }
+  .btn-ghost:hover{ border-color: rgba(255,255,255,0.28); transform: translateY(-3px); background: rgba(255,255,255,0.05); }
+  .btn-ghost svg, .btn-primary svg{ transition: transform .35s ease; }
+  .btn:hover svg{ transform: translateX(3px); }
+
+  .scroll-cue{
+    position:absolute; bottom: 40px; left:50%; transform: translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    color: var(--text-low); font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    opacity:0;
+    z-index:2;
+  }
+  .scroll-line{
+    width:1px; height:38px;
+    background: linear-gradient(to bottom, var(--text-low), transparent);
+    position:relative; overflow:hidden;
+  }
+  .scroll-line::after{
+    content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;
+    background: linear-gradient(to bottom, transparent, var(--violet), transparent);
+    animation: scrollmove 2.2s ease-in-out infinite;
+  }
+  @keyframes scrollmove{ 0%{ top:-100%; } 100%{ top:100%; } }
+
+  /* entrance triggers */
+  .reveal.in{ animation: revealUp .9s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes revealUp{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    position:relative;
+    padding: 170px 0 150px;
+    border-top: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(79,141,253,0.10), transparent 60%),
+      var(--bg-soft);
+  }
+
+  .about-head{
+    display:grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 80px;
+    align-items:end;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-eyebrow{
+    font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color: var(--text-low);
+    display:flex; align-items:center; gap:12px; margin-bottom: 22px;
+  }
+  .about-eyebrow::before{
+    content:''; width:26px; height:1px; background: var(--violet);
+  }
+
+  .about-head h2{
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    line-height:1.15;
+    font-weight:600;
+  }
+ .about-head h2 .loc{
+    color: var(--text-low);
+    font-weight: 400;
+    font-size: 0.5em;
+}
+
+  .about-copy p{
+    font-size: 16.5px;
+    line-height: 1.85;
+    color: var(--text-mid);
+  }
+  .about-copy p + p{ margin-top: 20px; }
+  .about-copy strong{ color: var(--text-hi); font-weight:600; }
+
+  .pillars{
+    margin-top: 64px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .pillar-card{
+    position:relative;
+    padding: 40px 38px;
+    border-radius: 18px;
+    border:1px solid var(--line);
+    background: linear-gradient(160deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+    overflow:hidden;
+    transition: border-color .4s ease, transform .4s ease;
+  }
+  .pillar-card::before{
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(320px 200px at 15% 0%, var(--violet-soft), transparent 70%);
+    opacity:0; transition: opacity .5s ease;
+  }
+  .pillar-card:hover{ transform: translateY(-6px); border-color: rgba(124,92,255,0.35); }
+  .pillar-card:hover::before{ opacity:1; }
+
+  .pillar-label{
+    font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color: var(--violet);
+    display:flex; align-items:center; gap:8px;
+    margin-bottom: 22px;
+  }
+  .pillar-label .ln{ width:16px; height:1px; background: var(--violet); }
+
+  .pillar-card h3{
+    font-size: 21px;
+    font-weight:600;
+    margin-bottom: 14px;
+    position:relative;
+  }
+  .pillar-card p{
+    font-size: 14.5px;
+    line-height:1.75;
+    color: var(--text-mid);
+    position:relative;
+  }
+
+  @media (max-width: 900px){
+    .about-head{ grid-template-columns: 1fr; gap:28px; }
+    .pillars{ grid-template-columns: 1fr; }
+    .wrap{ padding: 0 24px; }
+    .about{ padding: 110px 0 100px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{
+    position:relative;
+    border-top: 1px solid var(--line);
+    background: var(--bg-soft);
+    padding: 96px 0 32px;
+  }
+
+  .footer-grid{
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+
+  .footer-brand-col{ grid-column: span 5; }
+
+  .footer-logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600; font-size:18px; letter-spacing:-0.01em;
+  }
+  .footer-logo .dot{
+    width:10px; height:10px; border-radius:50%; flex-shrink:0;
+    background: var(--grad);
+    box-shadow: 0 0 12px 2px rgba(124,92,255,0.65);
+  }
+
+  .footer-tagline{
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-mid);
+    max-width: 280px;
+  }
+
+  .social-row{ display:flex; gap: 12px; margin-top: 28px; }
+  .social-btn{
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--text-mid);
+    transition: border-color .35s ease, background .35s ease, color .35s ease, transform .35s ease;
+  }
+  .social-btn:hover{
+    border-color: rgba(124,92,255,0.55);
+    background: var(--violet-soft);
+    color: var(--text-hi);
+    transform: translateY(-3px);
+  }
+
+  .footer-col{ grid-column: span 2; }
+  .footer-col.contact-col{ grid-column: span 3; }
+
+  .footer-col h5{
+    font-size: 12px; letter-spacing: 0.14em; text-transform:uppercase;
+    color: var(--text-low); font-weight:600; margin-bottom: 20px;
+  }
+  .footer-col ul{ list-style:none; display:flex; flex-direction:column; gap: 12px; }
+  .footer-col li{ font-size: 14px; color: var(--text-mid); }
+
+  .footer-link{ color: var(--text-mid); transition: color .3s ease, padding-left .3s ease; }
+  .footer-link:hover{ color: var(--text-hi); padding-left: 4px; }
+
+  .footer-bottom{
+    border-top: 1px solid var(--line);
+    padding-top: 30px;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-bottom-tag{
+    font-family:'Space Grotesk', sans-serif;
+    font-size: 11.5px; letter-spacing: 0.18em; text-transform:uppercase;
+    color: var(--text-low);
+  }
+  .footer-copy{ font-size: 12px; color: var(--text-low); }
+
+  @media (max-width: 900px){
+    .footer-grid{ grid-template-columns: 1fr 1fr; row-gap: 44px; }
+    .footer-brand-col{ grid-column: span 2; }
+    .footer-col, .footer-col.contact-col{ grid-column: span 1; }
+  }
+  @media (max-width: 560px){
+    .footer-grid{ grid-template-columns: 1fr; }
+    .footer-brand-col{ grid-column: span 1; }
+    .footer-bottom{ flex-direction: column; align-items:flex-start; }
+  }
+
+  /* ---------- TOAST ---------- */
+  .toast{
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    max-width: 320px;
+    padding: 16px 22px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text-hi);
+    background: rgba(14,15,24,0.78);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.6);
+    transform: translateY(28px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .5s ease;
+  }
+  .toast.show{ transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+ 
+<nav>
+    <div class="wrap navbar">
+
+        <div class="logo-area">
+            <img src="Web content logo.png" alt="Logo">
+            <h2>Web Content</h2>
+        </div>
+
+        <div class="nav-right">
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                    <a href="#">Solutions ▾</a>
+
+                    <div class="dropdown-content">
+                        <a href="consulting.html">Business Consulting</a>
+                        <a href="technology.html">Technology Solutions</a>
+                        <a href="branding.html">Branding & Social Media</a>
+                        <a href="learning.html">Learning & Career Development</a>
+                    </div>
+                </div>
+
+                 
+
+                <a href="mediagallery.html">Media Gallery</a>
+            </div>
+            <a href="contact.html" class="nav-talk">
+                Let's Talk
+            </a>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="grid-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="eyebrow reveal" style="animation-delay:.05s">
+      <span class="dot"></span>
+      Business Consulting &amp; Businesse Solutions
+    </div>
+
+    <h1 class="reveal" style="animation-delay:.18s">
+      We Transform Businesses Through <span class="grad-text">Strategy, Technology &amp; Creative Solutions.</span>
+    </h1>
+
+    <p class="sub reveal" style="animation-delay:.32s">
+      We help businesses understand their challenges, structure their operations, build digital solutions, strengthen their brands and create sustainable growth.
+    </p>
+
+    <div class="hero-ctas reveal" style="animation-delay:.46s">
+      <a href="contact.html" class="btn btn-primary">
+        Let's Talk About Your Business
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="solutions.html" class="btn btn-ghost">
+        Explore Our Solutions
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="about" id="about">
+  <div class="wrap">
+
+    <div class="about-head">
+      <div>
+        <div class="about-eyebrow">Who We Are</div>
+        <h2>Web Content Services<br>&amp; Businesse Solutions <span class="loc">—Pune| Amravati, Maharashtra</span></h2>
+      </div>
+
+      <div class="about-copy reveal-scroll">
+        <p>
+          <strong>Web Content Services &amp; Businesse Solutions</strong> is a results-driven digital agency headquartered in Pune and Amravati, Maharashtra. We specialise in empowering businesses, coaching institutes, and personal brands with a comprehensive suite of digital services — from high-impact content creation and performance-driven brand promotion to full-stack technology solutions.
+        </p>
+        <p>
+          We believe that premium quality and budget-friendly pricing are not mutually exclusive. Every solution we deliver is crafted to maximise your return on investment, build brand authority, and generate measurable, sustainable growth.
+        </p>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar-card reveal-scroll">
+        <div class="pillar-label"><span class="ln"></span>Mission</div>
+        <h3>Presence that converts into revenue.</h3>
+        <p>To help every client communicate their value, grow their audience, and convert digital presence into real-world revenue — through content, strategy, and technology.</p>
+      </div>
+       
+        
+      <div class="pillar-card reveal-scroll">
+         <div class="pillar-label"><span class="ln"></span>Vision</div>
+        <h3>The most trusted digital growth partner.</h3>
+        <p>To become the most trusted digital growth partner for institutes, local businesses, and emerging brands — delivering creative excellence, intelligent brand growth strategy, and cutting-edge technology.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="#" class="footer-logo">
+          <span class="dot"></span>
+          Web Content Services &amp; Businesse Solutions
+        </a>
+        <p class="footer-tagline">Where Smart Solutions Build Trusted Brands.</p>
+
+        <div class="social-row">
+          <a href="https://www.linkedin.com/company/web-content-services/" class="social-btn" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM.5 8.98H9V23H.5zM12.5 8.98h8.14v1.91h.11c1.13-2.14 3.9-2.14 5.75 0V23h-4.5v-6.9c0-1.66-.03-3.8-2.32-3.8-2.32 0-2.68 1.81-2.68 3.68V23h-4.5z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/webcontent.in?igsh=NjRzM3AxdmNsYW9j" class="social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="X / Twitter">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22H16.9l-5-6.6L6 22H2.9l8.1-9.3L1.7 2h6.6l4.5 6z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.4h2.8l.4-3.3h-3.2V8.1c0-1 .3-1.6 1.7-1.6h1.7V3.5C16.3 3.4 15.2 3.3 14 3.3c-2.6 0-4.4 1.6-4.4 4.5v2.5H6.8v3.3h2.8V22z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="consulting.html" class="footer-link">Business Consulting &amp; Analysis</a></li>
+          <li><a href="technology.html" class="footer-link">Technology</a></li>
+          <li><a href="branding.html" class="footer-link">Branding &amp; Social Media</a></li>
+          <li><a href="learning.html" class="footer-link">Learning &amp; Career</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="insights.html" class="footer-link">Insights</a></li>
+          <li><a href="careers.html" class="footer-link">Careers</a></li>
+          <li><a href="" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col contact-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>+91 9022545488</li>
+          <li>contentweb.officials@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-bottom-tag">Consult. Analyze. Build. Brand. Grow.</p>
+      <p class="footer-copy">&copy; <span id="year"></span> Web Content Services &amp; Businesse Solutions. All Rights Reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<div id="toast" class="toast">
+  Thanks — your message has been sent. We'll be in touch shortly.
+</div>
+
+<script>
+  // Hero entrance
+  document.querySelectorAll('.hero .reveal').forEach(el => {
+    requestAnimationFrame(() => el.classList.add('in'));
+  });
+
+  // Scroll-triggered reveals for about section
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if(entry.isIntersecting){
+        entry.target.style.transitionDelay = (i * 0.08) + 's';
+        entry.target.classList.add('in-view');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal-scroll').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1)';
+    obs.observe(el);
+  });
+
+  const style = document.createElement('style');
+  style.textContent = '.reveal-scroll.in-view{ opacity:1 !important; transform: translateY(0) !important; }';
+  document.head.appendChild(style);
+
+  // Footer year
+  const yearEl = document.getElementById('year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+</script>
+
+</body>
+</html>
