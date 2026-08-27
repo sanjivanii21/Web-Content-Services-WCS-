@@ -10,6 +10,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --bg:#fffdf9;
+  --bg-soft:#faf7f2;
+
+  --surface:#ffffff;
+  --surface-2:#f7f2ec;
+
+  --line:#e8ded5;
+
+  --text:#171414;
+  --muted:#6f6662;
+  --muted-2:#9b908b;
+
+  --purple:#b4232f;
+  --blue:#d13b3f;
+  --cyan:#f06a5f;
+
+  --grad:linear-gradient(
+      120deg,
+      #33178f 0%,
+      #33178f 52%,
+      #33178f 100%
+  );
+
+  --success:#16a34a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,8 +45,8 @@
 }
 
 body {
-  background: #0b0b0f;
-  color: white;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,9 +61,9 @@ body {
   padding: 30px;
   border-radius: 20px;
   backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 0 40px rgba(23,20,20,0.10);
   animation: fadeUp 1s ease;
 }
 
@@ -44,7 +71,7 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 32px;
-  background: linear-gradient(to right, #a855f7, #3b82f6);
+  background: var(--grad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -70,9 +97,9 @@ h1 {
   width: 100%;
   padding: 14px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.05);
-  color: white;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text);
   outline: none;
   transition: 0.3s;
 }
@@ -80,8 +107,8 @@ h1 {
 .input-group input:focus,
 .input-group textarea:focus,
 .input-group select:focus {
-  border-color: #a855f7;
-  box-shadow: 0 0 10px #a855f7;
+  border-color: var(--purple);
+  box-shadow: 0 0 10px rgba(180,35,47,0.35);
 }
 
 /* Floating Label */
@@ -90,7 +117,7 @@ h1 {
   top: 50%;
   left: 14px;
   transform: translateY(-50%);
-  color: gray;
+  color: var(--muted-2);
   font-size: 14px;
   pointer-events: none;
   transition: 0.3s;
@@ -102,12 +129,12 @@ h1 {
 .input-group textarea:valid + label {
   top: -8px;
   font-size: 11px;
-  color: #a855f7;
+  color: var(--purple);
 }
 
 /* Upload Box */
 .upload-box {
-  border: 2px dashed rgba(255,255,255,0.2);
+  border: 2px dashed var(--line);
   padding: 25px;
   text-align: center;
   border-radius: 15px;
@@ -115,12 +142,12 @@ h1 {
 }
 
 .upload-box:hover {
-  border-color: #a855f7;
+  border-color: var(--purple);
 }
 
 .upload-box.dragover {
-  border-color: #3b82f6;
-  background: rgba(59,130,246,0.1);
+  border-color: var(--blue);
+  background: rgba(209,59,63,0.06);
 }
 
 .upload-box input {
@@ -129,7 +156,7 @@ h1 {
 
 .file-name {
   margin-top: 10px;
-  color: #4ade80;
+  color: var(--success);
 }
 
 /* Button */
@@ -138,7 +165,7 @@ button {
   padding: 14px;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(to right, #a855f7, #3b82f6);
+  background: var(--grad);
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -269,7 +296,7 @@ button:hover {
 
 <!-- Upload -->
 <div class="upload-box" id="uploadBox">
-  <p>Drag & Drop Resume or <label style="color:#a855f7;cursor:pointer;">Browse</label></p>
+  <p>Drag & Drop Resume or <label style="color:var(--purple);cursor:pointer;">Browse</label></p>
   <input type="file" id="fileInput">
   <div class="file-name" id="fileName"></div>
 </div>

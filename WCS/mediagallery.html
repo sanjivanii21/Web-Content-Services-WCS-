@@ -17,13 +17,34 @@
 }
 
 :root{
-    --bg:#05060a;
-    --card:rgba(255,255,255,.03);
-    --line:rgba(255,255,255,.08);
-    --text:#ffffff;
-    --text-mid:#a1a8c3;
-    --violet:#7c5cff;
-    --blue:#4f8dfd;
+    --bg:#fffdf9;
+    --bg-soft:#faf7f2;
+
+    --surface:#ffffff;
+    --surface-2:#f7f2ec;
+
+    --line:#e8ded5;
+
+    --text:#171414;
+    --text-mid:#6f6662;
+    --text-hi:var(--text);
+    --text-low:#9b908b;
+
+    --purple:#b4232f;
+    --blue:#d13b3f;
+    --cyan:#f06a5f;
+
+    --violet:var(--purple);
+    --violet-soft:rgba(51,23,143,0.12);
+
+    --card:var(--surface);
+
+    --grad:linear-gradient(
+        120deg,
+        #33178f 0%,
+        #33178f 52%,
+        #33178f 100%
+    );
 }
 
 html{
@@ -55,9 +76,9 @@ a{
     right:0;
     z-index:999;
     padding:20px 0;
-    background:rgba(5,6,10,.9);
+    background:rgba(255,253,249,.9);
     backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid var(--line);
 }
 
 .navbar{
@@ -84,6 +105,7 @@ a{
 .logo-area h2{
     font-family:'Space Grotesk',sans-serif;
     font-size:18px;
+    color:var(--text);
 }
 
 /* Right Menu */
@@ -101,12 +123,12 @@ a{
 }
 
 .nav-links a{
-    color:#b8b8c5;
+    color:var(--text-mid);
     transition:.3s;
 }
 
 .nav-links a:hover{
-    color:white;
+    color:var(--text);
 }
 
 /* Dropdown */
@@ -120,14 +142,15 @@ a{
     top:100%;
     left:0;
     width:260px;
-    background:#111827;
-    border:1px solid rgba(255,255,255,.08);
+    background:var(--surface);
+    border:1px solid var(--line);
     border-radius:16px;
     overflow:hidden;
     opacity:0;
     visibility:hidden;
     transform:translateY(10px);
     transition:.3s;
+    box-shadow:0 20px 45px -20px rgba(23,20,20,0.18);
 }
 
 .dropdown:hover .dropdown-content{
@@ -139,22 +162,19 @@ a{
 .dropdown-content a{
     display:block;
     padding:15px 20px;
+    color:var(--text);
 }
 
 .dropdown-content a:hover{
-    background:rgba(255,255,255,.05);
+    background:var(--surface-2);
 }
 
-.nav-talk{
-    padding:14px 28px;
-    border-radius:999px;
-    background:linear-gradient(
-    90deg,
-    #7c5cff,
-    #4f8dfd
-    );
-    color:white;
-    font-weight:600;
+.nav-talk {
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: #33178f !important;
+    color: white;
+    font-weight: 600;
 }
 /* HERO */
 
@@ -164,7 +184,7 @@ a{
 
 .hero span{
     display:inline-block;
-    color:#8d95b3;
+    color:var(--text-low);
     letter-spacing:.2em;
     text-transform:uppercase;
     margin-bottom:25px;
@@ -178,9 +198,9 @@ a{
 
     background:linear-gradient(
         90deg,
-        #ffffff,
-        #7c5cff,
-        #4f8dfd
+        var(--text),
+        var(--purple),
+        var(--blue)
     );
 
     -webkit-background-clip:text;
@@ -211,7 +231,7 @@ a{
 }
 
 .tabs a:hover{
-    color:#fff;
+    color:var(--text);
 }
 
 .tabs .active{
@@ -246,6 +266,8 @@ a{
     padding:40px;
 
     margin-bottom:40px;
+
+    box-shadow:0 20px 60px -35px rgba(23,20,20,0.14);
 }
 
 .executive-card img{
@@ -288,7 +310,7 @@ a{
     padding:14px 28px;
     border-radius:999px;
     border:1px solid var(--line);
-    color:#fff;
+    color:var(--text);
     transition:.3s;
 }
 
@@ -298,6 +320,8 @@ a{
         var(--violet),
         var(--blue)
     );
+    color:#fff;
+    border-color:transparent;
 }
 
 /* OFFICES */
@@ -314,6 +338,7 @@ a{
     border-radius:28px;
     overflow:hidden;
     transition:.4s;
+    box-shadow:0 20px 60px -35px rgba(23,20,20,0.14);
 }
 
 .office-card:hover{
@@ -409,7 +434,7 @@ a{
     background:var(--grad);
 
     box-shadow:
-        0 0 12px 2px rgba(124,92,255,.65);
+        0 0 12px 2px rgba(51,23,143,.4);
 }
 
 .footer-tagline{
@@ -462,7 +487,7 @@ a{
 }
 
 .social-btn:hover{
-    border-color:rgba(124,92,255,.55);
+    border-color:rgba(51,23,143,.45);
 
     background:var(--violet-soft);
 
@@ -667,10 +692,11 @@ a{
 
     <span style="display: block; text-align: left;">MEDIA GALLERY</span>
 
-    <h1 style="text-align: center;">
-      Leadership, Workplace
-      &amp; Corporate Culture.
-    </h1>
+   <h1 style="text-align: center; color: #000000 !important; white-space: nowrap;">
+  Leadership, Workplace &amp;<br>
+  <span style="color: #ef2b11; font-size: 0.8em;">Corporate Culture</span>
+  <span style="color: #e4da23; font-size: 0.8em;">!</span>
+</h1>
 
     <p style="text-align: center !important; margin-left: auto; margin-right: auto;">
       Meet our executives, explore our offices and discover the people and places driving innovation, growth and transformation.
@@ -712,9 +738,9 @@ a{
         </p>
 
         <div class="social-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">Instagram</a>
-            <a href="#">X</a>
+            <a href="https://www.linkedin.com/company/web-content-services/">LinkedIn</a>
+            <a href="https://www.instagram.com/webcontent.in/">Instagram</a>
+            <a href="https://twitter.com/webcontent_in">X</a>
         </div>
 
     </div>
@@ -738,9 +764,9 @@ a{
         </p>
 
         <div class="social-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">Instagram</a>
-            <a href="#">X</a>
+            <a href="https://www.linkedin.com/company/web-content-services/">LinkedIn</a>
+            <a href="https://www.instagram.com/webcontent.in/">Instagram</a>
+            <a href="https://twitter.com/webcontent_in">X</a>
         </div>
 
     </div>
@@ -761,23 +787,25 @@ a{
 
 <div class="office-card">
 
-    <img src="headquarters.jpeg" alt="Head Office">
+    <img src="Office 1.jpeg" alt="Head Office">
 
-    <h3 style="text-align: center !important;">Corporate Headquarters</h3>
+    <h3 style="text-align: center !important;">OFFICE 1</h3>
 
    <p style="text-align: center !important;">
-  The central hub for leadership, strategic planning, consulting and technology innovation.
+  📍 New Building, Walgaon Road, next to Unique English School, Samarpan Colony, Paradise Colony, Amravati, Maharashtra – 444604
+
 </p>
 </div>
 
 <div class="office-card">
 
-    <img src="learning.jpeg" alt="Training Center">
+    <img src="workspace.jpeg" alt="Training Center">
 
-    <h3 style="text-align: center !important;">Learning & Development Center</h3>
+    <h3 style="text-align: center !important;">OFFICE 2</h3>
 
     <p style="text-align: center !important;">
-        Dedicated to internship programs, professional development, training and industry collaboration.
+        📍Nex-GeN Premium Study Lounge, Near Fitness Arena Gym, Sai Nagar, Amravati, Maharashtra – 444607
+
     </p>
 
 </div>
@@ -1108,6 +1136,10 @@ a{
     </div>
 
 </footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
