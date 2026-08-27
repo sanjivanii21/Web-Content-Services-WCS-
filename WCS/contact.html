@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,19 +9,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg-0:#05060a;
-    --bg-1:#0a0c16;
-    --glass:rgba(255,255,255,0.045);
-    --glass-border:rgba(255,255,255,0.10);
-    --glass-border-hover:rgba(255,255,255,0.20);
-    --text-0:#ffffff;
-    --text-1:#9CA3AF;
-    --text-2:#5f6577;
-    --violet:#8b5cf6;
-    --blue:#3b82f6;
-    --cyan:#38bdf8;
-    --grad: linear-gradient(120deg, var(--violet), var(--blue));
-    --grad-soft: linear-gradient(120deg, rgba(139,92,246,0.18), rgba(59,130,246,0.14));
+    --bg:#fffdf9;
+    --bg-soft:#faf7f2;
+
+    --surface:#ffffff;
+    --surface-2:#f7f2ec;
+
+    --line:#e8ded5;
+
+    --text:#171414;
+    --muted:#6f6662;
+    --muted-2:#9b908b;
+
+    --purple:#b4232f;
+    --blue:#d13b3f;
+    --cyan:#f06a5f;
+
+    --grad:linear-gradient(
+        120deg,
+        #33178f 0%,
+        #33178f 52%,
+        #33178f 100%
+    );
+
+    --text-hi:var(--text);
+    --text-mid:var(--muted);
+    --text-low:var(--muted-2);
+    --violet-soft:rgba(51,23,143,0.12);
+
+    --bg-0:var(--bg);
+    --bg-1:var(--bg-soft);
+    --glass:rgba(23,20,20,0.035);
+    --glass-border:var(--line);
+    --glass-border-hover:#d3c6bb;
+    --text-0:var(--text);
+    --text-1:var(--muted);
+    --text-2:var(--muted-2);
+    --violet:var(--purple);
+    --grad-soft: linear-gradient(120deg, rgba(51,23,143,0.14), rgba(209,59,63,0.10));
     --radius-lg:22px;
     --radius-md:14px;
     --radius-sm:10px;
@@ -32,9 +57,9 @@
   html{scroll-behavior:smooth;}
   body{
     background:
-      radial-gradient(ellipse 900px 520px at 15% -10%, rgba(139,92,246,0.16), transparent 60%),
-      radial-gradient(ellipse 820px 620px at 88% 8%, rgba(59,130,246,0.13), transparent 55%),
-      linear-gradient(180deg, var(--bg-0), #070811 40%, var(--bg-0));
+      radial-gradient(ellipse 900px 520px at 15% -10%, rgba(51,23,143,0.08), transparent 60%),
+      radial-gradient(ellipse 820px 620px at 88% 8%, rgba(209,59,63,0.07), transparent 55%),
+      linear-gradient(180deg, var(--bg-0), var(--bg-soft) 40%, var(--bg-0));
     color:var(--text-0);
     font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     -webkit-font-smoothing:antialiased;
@@ -45,7 +70,7 @@
   }
   a{color:inherit; text-decoration:none;}
   button{font-family:inherit; cursor:pointer;}
-  ::selection{background:rgba(139,92,246,0.35); color:#fff;}
+  ::selection{background:rgba(51,23,143,0.25); color:#fff;}
   :focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:6px;}
 
   .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
@@ -82,7 +107,7 @@ header {
 }
 
 header.scrolled {
-    background: rgba(6, 7, 13, 0.72);
+    background: rgba(255, 253, 249, 0.82);
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
     border-bottom: 1px solid var(--glass-border);
@@ -105,14 +130,15 @@ header.scrolled {
     top:100%;
     left:0;
     width:260px;
-    background:#111827;
-    border:1px solid rgba(255,255,255,.08);
+    background:var(--surface);
+    border:1px solid var(--line);
     border-radius:16px;
     overflow:hidden;
     opacity:0;
     visibility:hidden;
     transform:translateY(10px);
     transition:.3s;
+    box-shadow:0 20px 45px -20px rgba(23,20,20,0.18);
 }
 
 .dropdown:hover .dropdown-content{
@@ -124,10 +150,11 @@ header.scrolled {
 .dropdown-content a{
     display:block;
     padding:15px 20px;
+    color:var(--text);
 }
 
 .dropdown-content a:hover{
-    background:rgba(255,255,255,.05);
+    background:var(--surface-2);
 }
 
 .nav-talk{
@@ -135,8 +162,8 @@ header.scrolled {
     border-radius:999px;
     background:linear-gradient(
     90deg,
-    #7c5cff,
-    #4f8dfd
+    var(--purple),
+    var(--blue)
     );
     color:white;
     font-weight:600;
@@ -256,7 +283,7 @@ header.scrolled {
         left: 16px;
         right: 16px;
 
-        background: rgba(10, 12, 22, 0.97);
+        background: rgba(255, 253, 249, 0.97);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
 
@@ -343,10 +370,10 @@ header.scrolled {
     padding:150px 0 90px; text-align:center; overflow:hidden;
   }
   .hero-bg{position:absolute; inset:0; z-index:0; pointer-events:none;}
-  .blob{position:absolute; border-radius:50%; filter:blur(90px); opacity:0.55; animation:drift 18s ease-in-out infinite;}
+  .blob{position:absolute; border-radius:50%; filter:blur(90px); opacity:0.35; animation:drift 18s ease-in-out infinite;}
   .blob-1{width:480px; height:480px; left:-120px; top:-60px; background:radial-gradient(circle, var(--violet), transparent 70%); animation-duration:22s;}
   .blob-2{width:520px; height:520px; right:-160px; top:10%; background:radial-gradient(circle, var(--blue), transparent 70%); animation-duration:26s; animation-delay:-6s;}
-  .blob-3{width:380px; height:380px; left:38%; bottom:-160px; background:radial-gradient(circle, var(--cyan), transparent 70%); animation-duration:20s; animation-delay:-11s; opacity:0.35;}
+  .blob-3{width:380px; height:380px; left:38%; bottom:-160px; background:radial-gradient(circle, var(--cyan), transparent 70%); animation-duration:20s; animation-delay:-11s; opacity:0.25;}
   @keyframes drift{
     0%,100%{ transform:translate(0,0) scale(1); }
     33%{ transform:translate(40px,-30px) scale(1.08); }
@@ -355,8 +382,8 @@ header.scrolled {
   .grid-overlay{
     position:absolute; inset:0; opacity:0.35;
     background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      linear-gradient(rgba(23,20,20,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23,20,20,0.03) 1px, transparent 1px);
     background-size:64px 64px;
     mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
   }
@@ -374,10 +401,10 @@ header.scrolled {
   .btn-primary{
     position:relative; display:inline-flex; align-items:center; gap:10px; padding:16px 32px; border-radius:999px; border:none;
     background:var(--grad); color:#fff; font-weight:600; font-size:15px; letter-spacing:-0.01em;
-    box-shadow:0 8px 30px -8px rgba(139,92,246,0.55);
+    box-shadow:0 8px 30px -8px rgba(51,23,143,0.4);
     transition:transform .35s var(--ease), box-shadow .35s var(--ease); overflow:hidden;
   }
-  .btn-primary:hover{transform:translateY(-2px) scale(1.02); box-shadow:0 14px 40px -8px rgba(139,92,246,0.75);}
+  .btn-primary:hover{transform:translateY(-2px) scale(1.02); box-shadow:0 14px 40px -8px rgba(51,23,143,0.55);}
   .btn-primary:active{transform:translateY(0) scale(0.98);}
   .btn-primary .shine{position:absolute; inset:0; background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.35) 48%, transparent 65%); transform:translateX(-120%); transition:transform .7s var(--ease);}
   .btn-primary:hover .shine{transform:translateX(120%);}
@@ -405,7 +432,7 @@ header.scrolled {
   /* ================= SOLUTIONS STRIP ================= */
   .sol-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px;}
   .sol-card{padding:26px; transition:border-color .35s, transform .35s var(--ease), box-shadow .35s;}
-  .sol-card:hover{transform:translateY(-4px); border-color:var(--glass-border-hover); box-shadow:0 20px 50px -25px rgba(139,92,246,0.4);}
+  .sol-card:hover{transform:translateY(-4px); border-color:var(--glass-border-hover); box-shadow:0 20px 50px -25px rgba(51,23,143,0.25);}
   .sol-num{font-size:12px; font-weight:700; color:var(--cyan); letter-spacing:0.06em; margin-bottom:10px; font-family:'Poppins',sans-serif;}
   .sol-card h4{font-family:'Poppins',sans-serif; font-size:16px; font-weight:600; margin-bottom:6px;}
   .sol-card p{font-size:13px; color:var(--text-1); line-height:1.6;}
@@ -415,16 +442,16 @@ header.scrolled {
   @media (max-width:960px){ .contact-grid{grid-template-columns:1fr;} }
 
   .glass-card{
-    background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius-lg);
+    background:var(--surface); border:1px solid var(--glass-border); border-radius:var(--radius-lg);
     backdrop-filter:blur(22px) saturate(150%); -webkit-backdrop-filter:blur(22px) saturate(150%);
-    box-shadow:0 20px 60px -30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+    box-shadow:0 20px 60px -30px rgba(23,20,20,0.16), inset 0 1px 0 rgba(255,255,255,0.6);
     transition:border-color .4s, transform .4s var(--ease), box-shadow .4s;
   }
 
   .form-card{padding:44px; position:relative;}
   .form-card::before{
     content:''; position:absolute; inset:-1px; border-radius:var(--radius-lg); padding:1px;
-    background:linear-gradient(140deg, rgba(139,92,246,0.35), transparent 30%, transparent 70%, rgba(59,130,246,0.3));
+    background:linear-gradient(140deg, rgba(51,23,143,0.28), transparent 30%, transparent 70%, rgba(209,59,63,0.22));
     -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none;
   }
@@ -443,7 +470,7 @@ header.scrolled {
   fieldset .field:last-child{margin-bottom:0;}
   .field label{display:block; font-size:12.5px; font-weight:500; color:var(--text-1); margin-bottom:8px;}
   .field input, .field select, .field textarea{
-    width:100%; padding:13px 16px; border-radius:var(--radius-sm); background:rgba(255,255,255,0.03);
+    width:100%; padding:13px 16px; border-radius:var(--radius-sm); background:var(--surface-2);
     border:1px solid var(--glass-border); color:var(--text-0); font-family:inherit; font-size:14.5px;
     transition:border-color .3s, box-shadow .3s, background .3s;
   }
@@ -451,16 +478,16 @@ header.scrolled {
   .field input::placeholder, .field textarea::placeholder{color:var(--text-2);}
   .field input:hover, .field select:hover, .field textarea:hover{border-color:var(--glass-border-hover);}
   .field input:focus, .field select:focus, .field textarea:focus{
-    outline:none; border-color:rgba(139,92,246,0.6);
-    box-shadow:0 0 0 4px rgba(139,92,246,0.14), 0 0 24px -6px rgba(59,130,246,0.35);
-    background:rgba(255,255,255,0.05);
+    outline:none; border-color:rgba(51,23,143,0.5);
+    box-shadow:0 0 0 4px rgba(51,23,143,0.10), 0 0 24px -6px rgba(209,59,63,0.25);
+    background:var(--surface);
   }
   .field select{
     appearance:none; -webkit-appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%239aa0b0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%239b908b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; cursor:pointer;
   }
-  .field select option{background:#0d1020; color:var(--text-0);}
+  .field select option{background:var(--surface); color:var(--text-0);}
 
   .submit-row{margin-top:34px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;}
   .submit-btn{min-width:220px; justify-content:center;}
@@ -472,11 +499,11 @@ header.scrolled {
 
   .success-msg{
     display:none; align-items:center; gap:12px; margin-top:22px; padding:16px 18px; border-radius:var(--radius-sm);
-    background:rgba(59,130,246,0.09); border:1px solid rgba(139,92,246,0.35); font-size:13.5px; color:var(--text-0);
+    background:rgba(209,59,63,0.08); border:1px solid rgba(51,23,143,0.25); font-size:13.5px; color:var(--text-0);
   }
   .success-msg.show{display:flex; animation:fade-slide .5s var(--ease);}
   @keyframes fade-slide{from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);}}
-  .success-msg .dot{width:8px; height:8px; border-radius:50%; background:var(--grad); flex-shrink:0; box-shadow:0 0 10px rgba(139,92,246,0.8);}
+  .success-msg .dot{width:8px; height:8px; border-radius:50%; background:var(--grad); flex-shrink:0; box-shadow:0 0 10px rgba(51,23,143,0.5);}
 
   /* ---- info column ---- */
   .info-col{display:flex; flex-direction:column; gap:18px;}
@@ -488,6 +515,7 @@ header.scrolled {
   }
   .info-card:hover .info-icon{transform:scale(1.08) rotate(-4deg); background:var(--grad);}
   .info-icon svg{width:19px; height:19px; stroke:var(--text-0);}
+  .info-card:hover .info-icon svg{stroke:#fff;}
   .info-text .k{font-size:12px; color:var(--text-2); font-weight:500; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:5px;}
   .info-text .v{font-size:15px; color:var(--text-0); font-weight:600; line-height:1.5;}
   .info-text .v-sub{font-size:13px; color:var(--text-1); margin-top:2px; font-weight:400;}
@@ -503,11 +531,12 @@ header.scrolled {
   .social-row{display:flex; gap:10px;}
   .social-row a{
     width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center;
-    border:1px solid var(--glass-border); background:rgba(255,255,255,0.02);
+    border:1px solid var(--glass-border); background:var(--surface-2);
     transition:transform .35s var(--ease), background .35s, border-color .35s;
   }
   .social-row a:hover{transform:translateY(-4px); background:var(--grad); border-color:transparent;}
   .social-row svg{width:16px; height:16px; stroke:var(--text-0);}
+  .social-row a:hover svg{stroke:#fff;}
 
    /* =========================================================
    FOOTER
@@ -580,7 +609,7 @@ header.scrolled {
     background:var(--grad);
 
     box-shadow:
-        0 0 12px 2px rgba(124,92,255,.65);
+        0 0 12px 2px rgba(51,23,143,.4);
 }
 
 .footer-tagline{
@@ -633,7 +662,7 @@ header.scrolled {
 }
 
 .social-btn:hover{
-    border-color:rgba(124,92,255,.55);
+    border-color:rgba(51,23,143,.45);
 
     background:var(--violet-soft);
 
@@ -808,7 +837,7 @@ header.scrolled {
     </div>
     <div class="hero-inner">
       <div class="eyebrow reveal">Business Consulting · Business Analysis · Technology · Branding &amp; Social Media · Learning &amp; Career</div>
-      <h1 class="reveal">Let's Talk About<br><span class="grad-text">Your Business.</span></h1>
+      <h1 class="reveal">Let's Talk About<br><span style="color: #E33A2A; font-size: 1.2em;">Your Business</style=> <span style="color: #F59E0B ; font-size: 1.2em;">!</style=></h1>
       <p class="lead reveal">Have a challenge, idea, or opportunity? Let's understand your requirements and create the right strategy, technology, and creative solution for your business.</p>
       <div class="hero-actions reveal">
         <a href="careers.html" class="btn-primary"><span class="shine"></span>Start a Conversation</a>
@@ -823,7 +852,9 @@ header.scrolled {
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow" style="justify-content:center;">What we help with</div>
-        <h2>Tell us where the <span class="grad-text">challenge</span> is.</h2>
+        <h2 style="white-space: nowrap;">
+    Tell us where the <span style="color: #F59E0B; font-size: 1.2em;">challenge</span> is <span style="color: #FF0000; font-size: 1.2em;"></span>
+</h2>
         <p>We don't fit businesses into predefined services — we understand the requirement first, then design a practical solution around it.</p>
       </div>
       <div class="sol-grid stagger">
@@ -840,7 +871,7 @@ header.scrolled {
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow" style="justify-content:center;">Get in touch</div>
-        <h2>Start a conversation<br>about your business.</h2>
+        <h2>Start a conversation<br> <span style="color: #F59E0B; font-size: 1.2em;">about your business</span> <span style="color: #FF0000; font-size: 1.2em;"></span></h2>
         <p>Fill in a few details below — the more context you share, the sharper our first response will be.</p>
       </div>
 
@@ -1279,7 +1310,7 @@ header.scrolled {
     </div>
 
 </footer>
-|
+
 <script>
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
@@ -1317,6 +1348,8 @@ header.scrolled {
       setTimeout(() => { submitBtn.querySelector('.btn-label').textContent = 'Start a Conversation'; }, 3200);
     }, 1400);
   });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
