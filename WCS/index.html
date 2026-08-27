@@ -12,6 +12,26 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+<<<<<<< HEAD
+=======
+  :root{
+    --bg:#FFFFFF;
+    --bg-soft:#F7F9FC;
+    --surface:#FFFFFF;
+    --surface-2:#F7F9FC;
+    --line:#E2E8F0;
+    --text:#111827;
+    --muted:#64748B;
+    --muted-2:#94A3B8;
+    --purple:#0A54A3;
+    --blue:#0A6DB0;
+    --cyan:#20A58A;
+    --yellow:#FEEB54;
+    --orange:#F59E0B;
+    --red:#E33A2A;
+     --grad: #0A54A3;
+  }
+>>>>>>> d7db70e (Updated colour pallete of  website pages and content)
 
 /* =========================================================
    UNIQUE WARM EDITORIAL THEME
@@ -70,6 +90,7 @@ body{
    TYPOGRAPHY
 ========================================================= */
 
+<<<<<<< HEAD
 h1,
 h2,
 h3,
@@ -137,6 +158,20 @@ h4,
 }
 
 .btn-primary:hover{
+=======
+   .grad-text{
+    color:#0A54A3;
+}
+
+  .btn-primary{
+    background: #0A54A3; /* Solid blue */
+    color: #FFFFFF;
+    font-weight: 600;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+    box-shadow: 0 0 0 0 rgba(10,84,163,0);
+}
+  .btn-primary:hover{
+>>>>>>> d7db70e (Updated colour pallete of  website pages and content)
     transform:translateY(-3px);
 
     box-shadow:
@@ -207,6 +242,7 @@ h4,
             rgba(255,255,255,.95)
         );
 
+<<<<<<< HEAD
     box-shadow:
         0 18px 45px rgba(55,30,20,.08);
 }
@@ -278,6 +314,17 @@ h4,
 
 
 /* =========================================================
+=======
+  /* nav */
+  #nav{ transition:background .4s ease, border-color .4s ease, padding .4s ease; }
+  #nav.scrolled{
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  
+ /* =========================
+>>>>>>> d7db70e (Updated colour pallete of  website pages and content)
    NAVBAR
 ========================================================= */
 
@@ -460,7 +507,14 @@ nav{
 .nav-talk{
     padding:16px 34px;
 
+<<<<<<< HEAD
     border-radius:999px;
+=======
+     
+       background: #0A54A3;
+ 
+
+>>>>>>> d7db70e (Updated colour pallete of  website pages and content)
 
     background:
         linear-gradient(
@@ -532,6 +586,7 @@ nav{
         font-size:18px;
     }
 }
+<<<<<<< HEAD
 
 
 /* =========================================================
@@ -542,6 +597,28 @@ nav{
     padding-top:140px;
 }
 
+=======
+ 
+    .hero{
+    background: #FFFFFF;
+         padding-top:140px;
+}
+ 
+  /* hero blobs */
+  .blob{
+    display: none !important;
+}
+  /* marquee - signature element: the transformation pipeline strip */
+  .marquee-track{
+    display:flex; width:max-content;
+    animation:scroll-left 34s linear infinite;
+  }
+  @keyframes scroll-left{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  .marquee-wrap:hover .marquee-track{ animation-play-state:paused; }
+>>>>>>> d7db70e (Updated colour pallete of  website pages and content)
 
 /* =========================================================
    SOFT BACKGROUND BLOBS
@@ -1004,7 +1081,11 @@ a.footer-link:hover{
     <div class="reveal-l">
       <span class="uppercase tracking-[0.25em] text-xs text-[var(--muted)] ">The Starting Point</span>
       <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">
+<<<<<<< HEAD
         Every business has a bottleneck,<br>   <span class="text-[#F59E0B] text-[1.2em]"> Most just don't know where it is yet</span><span class="text-[#E33A2A] text-[1.2em]">!</span>
+=======
+        Every business has a bottleneck,<br>    <span class="grad-text"> Most just don't know where it is yet</span><span class="text-[#E33A2A] text-[1.2em]">!</span>
+>>>>>>> d7db70e (Updated colour pallete of  website pages and content)
       </h2>
       <p class="mt-6 text-[var(--muted)] leading-relaxed max-w-md text-center">
         Inefficient processes. Weak systems. Technology gaps. Brand confusion. Talent you haven't structured right. We find it before we fix it.
@@ -1130,7 +1211,7 @@ a.footer-link:hover{
       <span class="uppercase tracking-[0.25em] text-xs text-[var(--muted)]">Our Approach</span>
 <<<<<<< HEAD
       <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">We Don't Just Execute. <span class="grad-text">We Understand First.</span></h2>
-=======
+
       <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">We Don't Just Execute, <span class="text-[#F59E0B] text-[1.2em]">We Understand First</span> <span class="text-[#E33A2A] text-[1.2em]">!</span></h2>
 >>>>>>> e6713ee (Update index.html)
     </div>

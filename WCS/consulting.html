@@ -18,27 +18,24 @@
    GLOBAL VARIABLES
 ========================================================= */
 
-:root{
-    --bg:#050816;
-    --bg-soft:#080b18;
+ :root{
+    --bg:#FFFFFF;
+    --bg-soft:#F7F9FC;
+    --surface:#FFFFFF;
+    --surface-2:#F7F9FC;
+    --line:#E2E8F0;
+    --text:#111827;
+    --muted:#64748B;
+    --muted-2:#94A3B8;
+    --purple:#0A54A3;
+    --blue:#0A6DB0;
+    --cyan:#20A58A;
+    --yellow:#FEEB54;
+    --orange:#F59E0B;
+    --red:#E33A2A;
+     --grad: #0A54A3;
+  }
 
-    --text-hi:#ffffff;
-    --text-mid:#a0a8c0;
-    --text-low:#747d99;
-
-    --line:rgba(255,255,255,.08);
-
-    --purple:#7c5cff;
-    --blue:#4f8dfd;
-
-    --violet-soft:rgba(124,92,255,.10);
-
-    --grad:linear-gradient(
-        90deg,
-        #7c5cff,
-        #4f8dfd
-    );
-}
 
 
 /* =========================================================
@@ -48,7 +45,7 @@
 *{
     margin:0;
     padding:0;
-    box-sizing:border-box;
+    box-sizing:borde:r-box;
 }
 
 html{
@@ -78,48 +75,10 @@ select{
    BACKGROUND GLOW
 ========================================================= */
 
-body::before{
-    content:"";
-
-    position:fixed;
-
-    width:500px;
-    height:500px;
-
-    background:#6c4dff;
-
-    filter:blur(180px);
-
-    opacity:.25;
-
-    top:-150px;
-    left:-150px;
-
-    z-index:-1;
-
-    pointer-events:none;
-}
+body::before,
 
 body::after{
-    content:"";
-
-    position:fixed;
-
-    width:500px;
-    height:500px;
-
-    background:#00bfff;
-
-    filter:blur(180px);
-
-    opacity:.18;
-
-    bottom:-150px;
-    right:-150px;
-
-    z-index:-1;
-
-    pointer-events:none;
+     display:none;
 }
 
 
@@ -148,14 +107,15 @@ nav{
 
     z-index:999;
 
-    padding:18px 0;
+    padding:20px 0;
 
-    background:rgba(5,8,22,.65);
-
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-
-    border-bottom:1px solid var(--line);
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.92),
+        rgba(255, 255, 255, 0),
+        transparent
+        );
+    backdrop-filter: blur(8px);
 }
 
 .navbar{
@@ -178,15 +138,8 @@ nav{
 
     align-items:center;
 
-    gap:12px;
+    gap:16px;
 
-    color:#fff;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    flex-shrink:0;
 }
 
 .logo-area img{
@@ -204,6 +157,13 @@ nav{
 
     border-radius:50%;
 }
+.logo-area h2{
+     color: #111827;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
 
 
 /* =========================================================
@@ -228,21 +188,16 @@ nav{
 
     align-items:center;
 
-    gap:40px;
+    gap:35px;
 }
 
 .nav-links a{
-    color:#b8b8c5;
-
-    font-size:16px;
-
-    text-decoration:none;
-
-    transition:color .3s ease;
+    color:#334155;
+    transition:.3s;
 }
 
 .nav-links a:hover{
-    color:#fff;
+     color:  #0A54A3;
 }
 
 
@@ -254,41 +209,22 @@ nav{
     position:relative;
 }
 
-.drop-btn{
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-}
+ 
 
 .dropdown-content{
-    position:absolute;
-
-    top:calc(100% + 15px);
-
+      position:absolute;
+    top:100%;
     left:0;
-
-    width:280px;
-
-    background:#111827;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    border-radius:18px;
-
+    width:260px;
+    background:#fafcff;
+    border:1px solid rgb(255, 254, 254);
+    border-radius:16px;
     overflow:hidden;
-
     opacity:0;
-
     visibility:hidden;
-
     transform:translateY(10px);
-
-    transition:
-        opacity .3s ease,
-        visibility .3s ease,
-        transform .3s ease;
+    transition:.3s;
+    
 }
 
 .dropdown:hover .dropdown-content{
@@ -304,15 +240,13 @@ nav{
 
     padding:15px 20px;
 
-    font-size:15px;
-
-    color:#b8b8c5;
+   
 }
 
 .dropdown-content a:hover{
     background:rgba(255,255,255,.05);
 
-    color:#fff;
+    
 }
 
 
@@ -321,29 +255,18 @@ nav{
 ========================================================= */
 
 .nav-talk{
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:12px 26px;
-
+    padding:14px 28px;
     border-radius:999px;
+     background: #0A54A3;
+ 
 
-    background:var(--grad);
 
-    color:#fff;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
 
-    font-weight:600;
-
-    font-size:15px;
-
-    white-space:nowrap;
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
+    transition: .3s;
 }
 
 .nav-talk:hover{
@@ -389,8 +312,8 @@ nav{
 .hero .gradient{
     background:linear-gradient(
         90deg,
-        #FFD700,
-        #FFA500
+        #E33A2A,
+        #e54141
     );
 
     -webkit-background-clip:text;
@@ -1071,17 +994,17 @@ nav{
 
         <!-- Logo -->
 
-        <a href="index.html" class="logo-area">
+        <div class="logo-area"> 
 
             <img
                 src="Web content logo.png"
                 alt="Web Content Services Logo"
             >
 
-            <span>Web Content</span>
+            <h2> Web Content</h2>
 
-        </a>
-
+        
+</div>
 
         <!-- Navigation -->
 
