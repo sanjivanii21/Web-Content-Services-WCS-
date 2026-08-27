@@ -9,17 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #05060a;
-    --bg-soft: #0a0c16;
-    --line: rgba(255,255,255,0.08);
-    --text-hi: #f4f5fb;
-    --text-mid: #a6aabd;
-    --text-low: #6b6f85;
-    --violet: #7c5cff;
-    --blue: #4f8dfd;
-    --violet-soft: rgba(124,92,255,0.16);
-    --blue-soft: rgba(79,141,253,0.14);
-    --grad: linear-gradient(115deg, #7c5cff 0%, #5a7bff 45%, #4f8dfd 100%);
+     --bg:#FFFFFF;
+    --bg-soft:#F7F9FC;
+    --surface:#FFFFFF;
+    --surface-2:#F7F9FC;
+    --line:#E2E8F0;
+    --text:#111827;
+    --muted:#64748B;
+    --muted-2:#94A3B8;
+    --purple:#0A54A3;
+    --blue:#0A6DB0;
+    --cyan:#20A58A;
+    --yellow:#FEEB54;
+    --orange:#F59E0B;
+    --red:#E33A2A;
+     --grad: #0A54A3;
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -51,29 +55,129 @@
   /* ---------- NAV ---------- */
   nav{
     position: fixed;
-    top:0; left:0; right:0;
-    z-index: 50;
-    padding: 26px 0;
-    background: linear-gradient(to bottom, rgba(5,6,10,0.85), rgba(5,6,10,0));
-    backdrop-filter: blur(6px);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 20px 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.92),
+        rgba(255, 255, 255, 0),
+        transparent
+    );
+
+    backdrop-filter: blur(8px);
   }
-  nav .wrap{ display:flex; align-items:center; justify-content:space-between; }
-  .logo{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; letter-spacing:-0.01em; }
-  .logo span{ color: var(--text-low); font-weight:500; }
-  .nav-links{ display:flex; gap:40px; font-size:14px; color: var(--text-mid); }
-  .nav-links a{ position:relative; transition: color .3s ease; }
-  .nav-links a:hover{ color: var(--text-hi); }
-  .nav-links a.active{ color: var(--text-hi); }
-  .nav-links a.active::after{
-    content:''; position:absolute; left:0; right:0; bottom:-8px; height:2px;
-    background: var(--grad); border-radius:2px;
-  }
-  .nav-cta{
-    font-size:13px; padding:10px 20px; border:1px solid var(--line); border-radius:999px;
-    color: var(--text-hi); transition: all .3s ease;
-  }
-  .nav-cta:hover{ border-color: rgba(124,92,255,0.6); background: var(--violet-soft); }
-  @media (max-width:860px){ .nav-links{ display:none; } }
+    
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* Logo */
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.logo-area img{
+    width:70px;
+    height: 70px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.logo-area h2{
+     color: #111827;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Right Menu */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.nav-links a{
+    color:#334155;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:  #0A54A3;
+}
+
+/* Dropdown */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-content{
+    position:absolute;
+    top:100%;
+    left:0;
+    width:260px;
+    background:#fafcff;
+    border:1px solid rgb(255, 254, 254);
+    border-radius:16px;
+    overflow:hidden;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:.3s;
+}
+
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-content a{
+    display:block;
+    padding:15px 20px;
+}
+
+.dropdown-content a:hover{
+    background:rgba(255,255,255,.05);
+}
+
+.nav-talk{
+    padding:14px 28px;
+    border-radius:999px;
+     background: #0A54A3;
+ 
+
+
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: .3s;
+}
+.nav-talk:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(10,84,163,.3);
+}
+   
 
   /* ---------- SHARED HERO BACKDROP ---------- */
   .hero{
@@ -96,16 +200,10 @@
     mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 75%);
   }
 
-  .orb{ position:absolute; border-radius:50%; filter: blur(90px); opacity:0.55; }
-  .orb-1{
-    width:640px; height:640px; top:-220px; left:50%; transform: translateX(-62%);
-    background: radial-gradient(circle at 35% 35%, #7c5cff, transparent 70%);
-    animation: float1 16s ease-in-out infinite;
-  }
+  .orb,
+  .orb-1,
   .orb-2{
-    width:480px; height:480px; top:120px; left:58%;
-    background: radial-gradient(circle at 60% 40%, #4f8dfd, transparent 70%);
-    animation: float2 18s ease-in-out infinite;
+     display:none;
   }
   @keyframes float1{ 0%,100%{ transform: translateX(-62%) translateY(0); } 50%{ transform: translateX(-56%) translateY(30px); } }
   @keyframes float2{ 0%,100%{ transform: translateY(0) translateX(0); } 50%{ transform: translateY(-25px) translateX(-20px); } }
@@ -116,10 +214,10 @@
     display:inline-flex; align-items:center; gap:10px;
     font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
     color: var(--text-mid);
-    border:1px solid var(--line);
-    padding: 8px 18px;
+    border:none;
+    padding:0;
     border-radius: 999px;
-    background: rgba(255,255,255,0.02);
+    background: none;
     opacity:0; transform: translateY(14px);
   }
   .eyebrow .dot{
@@ -137,10 +235,7 @@
     opacity:0; transform: translateY(24px);
   }
   .hero h1 .grad-text{
-    background: var(--grad);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+     color:#E33A2A;
   }
 
   .hero p.sub{
@@ -357,18 +452,40 @@
 </style>
 </head>
 <body>
+ <nav>
+    <div class="wrap navbar">
 
-<nav>
-  <div class="wrap">
-    <a href="index.html" class="logo">WCS<span>&nbsp;/ Digital Solutions</span></a>
-    <div class="nav-links">
-      <a href="index.html#about">About</a>
-      <a href="solutions.html" class="active">Services</a>
-      <a href="insights.html">Insights</a>
-      <a href="contact.html">Contact</a>
+        <div class="logo-area">
+            <img src="Web content logo.png" alt="Logo">
+            <h2>Web Content</h2>
+        </div>
+
+        <div class="nav-right">
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+
+                <div class="dropdown">
+                    <a href="#">Solutions ▾</a>
+                    <div class="dropdown-content">
+                        <a href="consulting.html">Business Consulting</a>
+                        <a href="technology.html">Technology Solutions</a>
+                        <a href="branding.html">Branding & Social Media</a>
+                        <a href="learning.html">Learning & Career Development</a>
+                    </div>
+                </div>
+
+                <a href="mediagallery.html">Media Gallery</a>
+            </div>
+
+            <a href="contact.html" class="nav-talk">
+                Let's Talk
+            </a>
+
+        </div>
+
     </div>
-    <a href="contact.html" class="nav-cta">Let's Talk</a>
-  </div>
 </nav>
 
 <!-- ===================== PAGE HERO ===================== -->
@@ -381,7 +498,7 @@
 
   <div class="wrap hero-inner">
     <div class="eyebrow reveal" style="animation-delay:.05s">
-      <span class="dot"></span>
+      
       Our Solutions
     </div>
 
@@ -394,8 +511,7 @@
 </p>
  
 <div class="scroll-cue reveal" style="animation-delay:.5s">
-  <span>Scroll</span>
-  <div class="scroll-line"></div>
+  
 </div>
 </section>
 
