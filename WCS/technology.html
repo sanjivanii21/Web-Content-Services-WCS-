@@ -10,12 +10,22 @@
 <style>
 
 :root{
-      --bg:#05060a;
-    --card:#0f1117;
-    --line:rgba(255,255,255,.08);
-    --text-hi:#ffffff;
-    --text-mid:#a0a7b8;
-    --violet:#7c5cff;
+    
+    --bg:#FFFFFF;
+    --bg-soft:#F7F9FC;
+    --surface:#FFFFFF;
+    --surface-2:#F7F9FC;
+    --line:#E2E8F0;
+    --text:#111827;
+    --muted:#64748B;
+    --muted-2:#94A3B8;
+    --purple:#0A54A3;
+    --blue:#0A6DB0;
+    --cyan:#20A58A;
+    --yellow:#FEEB54;
+    --orange:#F59E0B;
+    --red:#E33A2A;
+     --grad: #0A54A3;
 }
 
 *{
@@ -49,9 +59,15 @@ nav{
     right:0;
     z-index:999;
     padding:20px 0;
-    background:rgba(5,6,10,.9);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.05);
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.92),
+        rgba(255, 255, 255, 0),
+        transparent
+    );
+
+    backdrop-filter: blur(8px);
+     
 }
   .navbar{
     display:flex;
@@ -72,8 +88,10 @@ nav{
     border:2px solid #fff;
 }
 .logo-area h2{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:18px;
+     color: #111827;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
 }
 .nav-right{
     display:flex;
@@ -87,13 +105,12 @@ nav{
 }
 
 .nav-links a{
-    color:#b8b8c5;
-    
+ color:#334155;    
     transition:.3s;
 }
 
 .nav-links a:hover{
-    color:white;
+     color:  #0A54A3;
 }
 
 .dropdown{
@@ -111,9 +128,8 @@ nav{
     top:100%;
     left:0;
     width:260px;
-
-    background:#111827;
-    border:1px solid rgba(255,255,255,.1);
+ background:#fafcff;
+    border:1px solid rgb(255, 254, 254);
 
     border-radius:16px;
     overflow:hidden;
@@ -142,14 +158,10 @@ nav{
 }
 
 .nav-talk{
-    padding:14px 32px;
+    padding:14px 28px;
     border-radius:999px;
 
-    background:linear-gradient(
-      90deg,
-      #7c5cff,
-      #4f8dfd
-    );
+      background: #0A54A3;
 
     color:rgb(240, 233, 233);
     font-weight:600;
@@ -166,26 +178,10 @@ nav{
     overflow:hidden;
 }
 
-.page-hero::before{
-    content:"";
-    position:absolute;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,#7c5cff40,transparent 70%);
-    top:-200px;
-    left:-100px;
-    filter:blur(80px);
-}
-
+.page-hero::before,
+    
 .page-hero::after{
-    content:"";
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,#4f8dfd40,transparent 70%);
-    right:-100px;
-    top:0;
-    filter:blur(80px);
+    
 }
 
 .section-tag{
@@ -208,10 +204,9 @@ nav{
     z-index:2;
 }
 
-.grad-text{
-    background:linear-gradient(90deg,#7c5cff,#4f8dfd);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+.grad-red{
+    color:#E33A2A;
+    
 }
 
 .page-hero p{
@@ -224,6 +219,9 @@ nav{
     z-index:2;
 }
 
+.grad-yellow{
+    color:#f6e145fc;
+}
 /* SERVICES */
 
 .services-section{
@@ -601,7 +599,7 @@ nav{
 
         <h1>
             Building Digital Solutions That
-            <span class="grad-text">
+            <span class="grad-red">
                 Solve Real Business Problems.
             </span>
         </h1>
@@ -683,7 +681,7 @@ nav{
 
         <h2>
             Technology Should Solve Problems,
-            <span class="grad-text">Not Create Them.</span>
+            <span class="grad-yellow">Not Create Them.</span>
         </h2>
 
         <p>
