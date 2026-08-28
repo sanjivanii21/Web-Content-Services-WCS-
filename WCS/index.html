@@ -12,26 +12,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-<<<<<<< HEAD
-=======
-  :root{
-    --bg:#FFFFFF;
-    --bg-soft:#F7F9FC;
-    --surface:#FFFFFF;
-    --surface-2:#F7F9FC;
-    --line:#E2E8F0;
-    --text:#111827;
-    --muted:#64748B;
-    --muted-2:#94A3B8;
-    --purple:#0A54A3;
-    --blue:#0A6DB0;
-    --cyan:#20A58A;
-    --yellow:#FEEB54;
-    --orange:#F59E0B;
-    --red:#E33A2A;
-     --grad: #0A54A3;
-  }
->>>>>>> d7db70e (Updated colour pallete of  website pages and content)
 
 /* =========================================================
    UNIQUE WARM EDITORIAL THEME
@@ -59,9 +39,9 @@
     /* Red / coral gradient */
     --grad:linear-gradient(
         120deg,
-        #33178f 0%,
-        #33178f 52%,
-        #33178f 100%
+        #1815b9 0%,
+        #1815b9 52%,
+        #1815b9 100%
     );
 }
 
@@ -90,7 +70,6 @@ body{
    TYPOGRAPHY
 ========================================================= */
 
-<<<<<<< HEAD
 h1,
 h2,
 h3,
@@ -154,28 +133,14 @@ h4,
         box-shadow .35s;
 
     box-shadow:
-        0 8px 24px rgba(41, 24, 193, 0.18);
+        0 8px 24px rgba(180,35,47,.18);
 }
 
 .btn-primary:hover{
-=======
-   .grad-text{
-    color:#0A54A3;
-}
-
-  .btn-primary{
-    background: #0A54A3; /* Solid blue */
-    color: #FFFFFF;
-    font-weight: 600;
-    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
-    box-shadow: 0 0 0 0 rgba(10,84,163,0);
-}
-  .btn-primary:hover{
->>>>>>> d7db70e (Updated colour pallete of  website pages and content)
     transform:translateY(-3px);
 
     box-shadow:
-        0 18px 40px -12px rgba(28, 48, 226, 0.38);
+        0 18px 40px -12px rgba(180,35,47,.38);
 }
 
 
@@ -193,8 +158,8 @@ h4,
 }
 
 .btn-ghost:hover{
-    border-color:rgba(35, 42, 180, 0.45);
-    background:rgba(35, 52, 180, 0.045);
+    border-color:rgba(180,35,47,.45);
+    background:rgba(180,35,47,.045);
 
     transform:translateY(-3px);
 
@@ -242,7 +207,6 @@ h4,
             rgba(255,255,255,.95)
         );
 
-<<<<<<< HEAD
     box-shadow:
         0 18px 45px rgba(55,30,20,.08);
 }
@@ -314,17 +278,6 @@ h4,
 
 
 /* =========================================================
-=======
-  /* nav */
-  #nav{ transition:background .4s ease, border-color .4s ease, padding .4s ease; }
-  #nav.scrolled{
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid var(--line);
-  }
-  
- /* =========================
->>>>>>> d7db70e (Updated colour pallete of  website pages and content)
    NAVBAR
 ========================================================= */
 
@@ -507,20 +460,13 @@ nav{
 .nav-talk{
     padding:16px 34px;
 
-<<<<<<< HEAD
     border-radius:999px;
-=======
-     
-       background: #0A54A3;
- 
-
->>>>>>> d7db70e (Updated colour pallete of  website pages and content)
 
     background:
         linear-gradient(
             90deg,
-            #33178f,
-            #33178f
+            #1a11bc,
+            #1a11bc
         );
 
     color:#ffffff;
@@ -586,7 +532,6 @@ nav{
         font-size:18px;
     }
 }
-<<<<<<< HEAD
 
 
 /* =========================================================
@@ -597,28 +542,6 @@ nav{
     padding-top:140px;
 }
 
-=======
- 
-    .hero{
-    background: #FFFFFF;
-         padding-top:140px;
-}
- 
-  /* hero blobs */
-  .blob{
-    display: none !important;
-}
-  /* marquee - signature element: the transformation pipeline strip */
-  .marquee-track{
-    display:flex; width:max-content;
-    animation:scroll-left 34s linear infinite;
-  }
-  @keyframes scroll-left{
-    from{ transform:translateX(0); }
-    to{ transform:translateX(-50%); }
-  }
-  .marquee-wrap:hover .marquee-track{ animation-play-state:paused; }
->>>>>>> d7db70e (Updated colour pallete of  website pages and content)
 
 /* =========================================================
    SOFT BACKGROUND BLOBS
@@ -677,8 +600,8 @@ nav{
         linear-gradient(
             90deg,
             transparent,
-            #151ce7 15%,
-            #151ce7 85%,
+            #b4232f 15%,
+            #ef6a5b 85%,
             transparent
         );
 
@@ -944,7 +867,6 @@ a.footer-link:hover{
 }
 
 </style>
-</style>
 </head>
 <body class="antialiased">
 
@@ -1020,21 +942,11 @@ a.footer-link:hover{
       <span class="uppercase tracking-[0.25em] text-xs text-[var(--muted)]">Business Consulting · Technology · Branding · Career</span>
     </div>
 
-    <h1 class="font-display font-bold leading-[1.03] text-[13vw] sm:text-[9vw] lg:text-[4.4vw] max-w-6xl reveal in" style="transition-delay:.1s">
-       Most agencies start with a service,
-      <span class="text-yellow-500 text-[1.2em]">We start with your problem</span>
-      <span class="text-red-500 text-[1.2em]">!</span>
-    </h1>
-<<<<<<< Updated upstream
-=======
    <h1 class="font-display font-bold leading-[1.03] text-[13vw] sm:text-[9vw] lg:text-[4.4vw] max-w-6xl reveal in text-center" style="transition-delay:.1s">
   Most agencies start with a service,<br>
   <span class="text-[#E33A2A] text-[1.2em]">We start with your problem !</span>
   <span class="text-[#E33A2A] text-[1.2em]"></span>
 </h1>
->>>>>>> 2866d7019a6fbc1335150f0fe0a6b920a15eb54a
-=======
->>>>>>> Stashed changes
 
     <p class="mt-8 max-w-2xl mx-auto text-center text-[var(--muted)] text-lg leading-relaxed reveal in" style="transition-delay:.25s">
   We identify what's broken, build the right solutions, and help businesses grow through tailored technology and branding.
@@ -1081,11 +993,8 @@ a.footer-link:hover{
     <div class="reveal-l">
       <span class="uppercase tracking-[0.25em] text-xs text-[var(--muted)] ">The Starting Point</span>
       <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">
-<<<<<<< HEAD
-        Every business has a bottleneck,<br>   <span class="text-[#F59E0B] text-[1.2em]"> Most just don't know where it is yet</span><span class="text-[#E33A2A] text-[1.2em]">!</span>
-=======
-        Every business has a bottleneck,<br>    <span class="grad-text"> Most just don't know where it is yet</span><span class="text-[#E33A2A] text-[1.2em]">!</span>
->>>>>>> d7db70e (Updated colour pallete of  website pages and content)
+        Every business has a bottleneck,<br>   <span class="text-[#F59E0B] text-[1.2em]"> Most just don't know where it is yet !</span><span class="text-[#E33A2A] text-[1.2em]"></span>
+
       </h2>
       <p class="mt-6 text-[var(--muted)] leading-relaxed max-w-md text-center">
         Inefficient processes. Weak systems. Technology gaps. Brand confusion. Talent you haven't structured right. We find it before we fix it.
@@ -1139,9 +1048,9 @@ a.footer-link:hover{
     We're not just a service provider,<br>
     <span class="text-[#F59E0B] text-[1.2em]">
         we're a strategic partner that asks, why? 
-        <span class="whitespace-nowrap">before we build</span>
+        <span class="whitespace-nowrap">before we build !</span>
     </span>
-    <span class="text-[#E33A2A] text-[1.2em]">!</span>
+    <span class="text-[#E33A2A] text-[1.2em]"></span>
 </h2>
 
     <p class="text-[var(--muted)] max-w-3xl mx-auto leading-relaxed">
@@ -1209,11 +1118,8 @@ a.footer-link:hover{
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="mb-16 reveal">
       <span class="uppercase tracking-[0.25em] text-xs text-[var(--muted)]">Our Approach</span>
-<<<<<<< HEAD
-      <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">We Don't Just Execute. <span class="grad-text">We Understand First.</span></h2>
 
-      <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">We Don't Just Execute, <span class="text-[#F59E0B] text-[1.2em]">We Understand First</span> <span class="text-[#E33A2A] text-[1.2em]">!</span></h2>
->>>>>>> e6713ee (Update index.html)
+      <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">We Don't Just Execute, <span class="text-[#F59E0B] text-[1.2em]">We Understand First !</span> <span class="text-[#E33A2A] text-[1.2em]"></span></h2>
     </div>
 
     <div class="relative">
@@ -1242,7 +1148,7 @@ a.footer-link:hover{
   <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
     <div class="reveal-l">
       <span class="uppercase tracking-[0.25em] text-xs text-[var(--muted)]">Why Choose Us</span>
-<h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">One Partner, <span class="text-[#F59E0B] text-[1.2em]">Four Disciplines, Zero Guesswork</span> <span class="text-[#E33A2A] text-[1.2em]">.</span></h2>
+<h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">One Partner, <span class="text-[#F59E0B] text-[1.2em]">Four Disciplines, Zero Guesswork !</span> <span class="text-[#E33A2A] text-[1.2em]"></span></h2>
       <p class="mt-6 text-[var(--muted)] leading-relaxed max-w-md text-center">We start with your business needs, then choose right mix of technology, branding, or consulting to solve them.</p>
     </div>
     <div class="grid sm:grid-cols-2 gap-5 stagger">
@@ -1274,7 +1180,7 @@ a.footer-link:hover{
     <div class="grid lg:grid-cols-12 gap-14">
       <div class="lg:col-span-5 reveal-l">
         <span class="uppercase tracking-[0.25em] text-xs text-[var(--muted)]">Contact</span>
-        <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">Let's Talk About <span class="text-[#F59E0B] text-[1.2em]">Your Business</span> <span class="text-[#E33A2A] text-[1.2em]">!</span></h2>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl mt-4 leading-tight">Let's Talk About <span class="text-[#F59E0B] text-[1.2em]">Your Business !</span> <span class="text-[#E33A2A] text-[1.2em]"></span></h2>
  <p class="mt-6 text-[var(--muted)] leading-relaxed max-w-sm text-center">
   Not "start a project." Not "get a quote." A conversation — because that's step one of how you actually work.
 </p>
