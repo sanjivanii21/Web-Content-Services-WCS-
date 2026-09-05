@@ -835,7 +835,7 @@ header.scrolled {
     </div>
     <div class="hero-inner">
       <div class="eyebrow reveal">Business Consulting · Business Analysis · Technology · Branding &amp; Social Media · Learning &amp; Career</div>
-      <h1 class="reveal">Let's Talk About<br><span style="color: #E33A2A; font-size: 1.2em;">Your Business !</style=> <span style="color: #F59E0B ; font-size: 1.2em;"></style=></h1>
+      <h1 class="reveal">Let's Talk About<br><span style="color: #E33A2A; font-size: 1.2em;">Your Business !</span> <span style="color: #F59E0B ; font-size: 1.2em;"></span></h1>
       <p class="lead reveal">Have a challenge, idea, or opportunity? Let's understand your requirements and create the right strategy, technology, and creative solution for your business.</p>
       <div class="hero-actions reveal">
         <a href="careers.html" class="btn-primary"><span class="shine"></span>Start a Conversation</a>
@@ -1323,21 +1323,73 @@ header.scrolled {
   const submitBtn = document.getElementById('submitBtn');
   const successMsg = document.getElementById('successMsg');
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
-    submitBtn.querySelector('.btn-label').textContent = 'Sending…';
+  form.addEventListener('submit', async (e) => {
+
+  e.preventDefault();
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  // Convert form data into the format expected by Spring Boot
+  const inquiryData = {
+    fullName: document.getElementById('fullName').value,
+    companyName: document.getElementById('company').value,
+    phoneNumber: document.getElementById('phone').value,
+    email: document.getElementById('email').value,
+    industryName: document.getElementById('industry').value,
+    serviceRequired: document.getElementById('service').value,
+    businessRequirements: document.getElementById('requirement').value,
+    message: document.getElementById('message').value
+  };
+
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  submitBtn.querySelector('.btn-label').textContent = 'Sending…';
+
+  try {
+
+    // Send data to Spring Boot backend
+    const response = await fetch('http://localhost:8080/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(inquiryData)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit contact inquiry');
+    }
+
+    await response.json();
+
+    // Show success message
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+    submitBtn.querySelector('.btn-label').textContent = 'Message sent';
+
+    successMsg.classList.add('show');
+    form.reset();
+
     setTimeout(() => {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
-      submitBtn.querySelector('.btn-label').textContent = 'Message sent';
-      successMsg.classList.add('show');
-      form.reset();
-      setTimeout(() => { submitBtn.querySelector('.btn-label').textContent = 'Start a Conversation'; }, 3200);
-    }, 1400);
-  });
+      submitBtn.querySelector('.btn-label').textContent = 'Start a Conversation';
+      successMsg.classList.remove('show');
+    }, 3200);
+
+  } catch (error) {
+
+    console.error('Contact form submission error:', error);
+
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+    submitBtn.querySelector('.btn-label').textContent = 'Start a Conversation';
+
+    alert('Sorry, your message could not be sent. Please try again.');
+  }
+
+});
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>

@@ -18,24 +18,26 @@
    GLOBAL VARIABLES
 ========================================================= */
 
- :root{
+:root{
     --bg:#FFFFFF;
     --bg-soft:#F7F9FC;
     --surface:#FFFFFF;
     --surface-2:#F7F9FC;
     --line:#E2E8F0;
     --text:#111827;
-    --muted:#0d0e0e;
-    --muted-2:#0a0c0a;
+    --muted:#64748B;
+    --muted-2:#94A3B8;
+
     --purple:#0A54A3;
     --blue:#0A6DB0;
     --cyan:#20A58A;
+
     --yellow:#FEEB54;
     --orange:#F59E0B;
     --red:#E33A2A;
-     --grad: #0A54A3;
-  }
 
+    --grad:#0A54A3;
+}
 
 
 /* =========================================================
@@ -45,7 +47,7 @@
 *{
     margin:0;
     padding:0;
-    box-sizing:borde:r-box;
+    box-sizing:border-box;
 }
 
 html{
@@ -56,6 +58,8 @@ body{
     background:var(--bg);
     color:var(--text);
     font-family:'Inter', sans-serif;
+    color:var(--text);
+    font-family:'Inter',sans-serif;
     overflow-x:hidden;
 }
 
@@ -81,13 +85,12 @@ select{
 
 
 /* =========================================================
-   BACKGROUND GLOW
+   BACKGROUND
 ========================================================= */
 
 body::before,
-
 body::after{
-     display:none;
+    display:none;
 }
 
 
@@ -109,31 +112,27 @@ body::after{
 
 nav{
     position:fixed;
-
     top:0;
     left:0;
     right:0;
-
     z-index:999;
 
     padding:20px 0;
 
-    background: linear-gradient(
+    background:linear-gradient(
         to bottom,
         rgba(255,255,255,0.92),
-        rgba(255, 255, 255, 0),
+        rgba(255,255,255,0),
         transparent
-        );
-    backdrop-filter: blur(8px);
+    );
+
+    backdrop-filter:blur(8px);
 }
 
 .navbar{
     width:100%;
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 }
 
@@ -144,35 +143,31 @@ nav{
 
 .logo-area{
     display:flex;
-
     align-items:center;
-
     gap:16px;
-
 }
 
 .logo-area img{
     width:70px;
     height:70px;
-
     max-width:70px;
     max-height:70px;
-
     object-fit:contain;
-
     display:block;
-
     flex:0 0 70px;
-
     border-radius:50%;
 }
+
 .logo-area h2{
+    color:#111827;
+    font-size:22px;
+    font-weight:700;
+    font-family:'Space Grotesk',sans-serif;
     color:#171414;
     font-size:22px;
     font-weight:700;
     font-family:'Inter', sans-serif;
 }
-
 
 
 /* =========================================================
@@ -181,9 +176,7 @@ nav{
 
 .nav-right{
     display:flex;
-
     align-items:center;
-
     gap:40px;
 }
 
@@ -194,9 +187,7 @@ nav{
 
 .nav-links{
     display:flex;
-
     align-items:center;
-
     gap:35px;
 }
 
@@ -206,7 +197,7 @@ nav{
 }
 
 .nav-links a:hover{
-     color:  #0A54A3;
+    color:#0A54A3;
 }
 
 
@@ -218,44 +209,42 @@ nav{
     position:relative;
 }
 
- 
-
 .dropdown-content{
-      position:absolute;
+    position:absolute;
     top:100%;
     left:0;
+
     width:260px;
-    background:#fafcff;
-    border:1px solid rgb(255, 254, 254);
+
+    background:#FFFFFF;
+    border:1px solid var(--line);
     border-radius:16px;
     overflow:hidden;
+
     opacity:0;
     visibility:hidden;
     transform:translateY(10px);
+
     transition:.3s;
-    
+
+    box-shadow:0 15px 40px rgba(15,23,42,.08);
 }
 
 .dropdown:hover .dropdown-content{
     opacity:1;
-
     visibility:visible;
-
     transform:translateY(0);
 }
 
 .dropdown-content a{
     display:block;
-
     padding:15px 20px;
-
-   
+    color:#334155;
 }
 
 .dropdown-content a:hover{
-    background:rgba(255,255,255,.05);
-
-    
+    background:#F1F6FC;
+    color:#0A54A3;
 }
 
 
@@ -266,23 +255,22 @@ nav{
 .nav-talk{
     padding:14px 28px;
     border-radius:999px;
-     background: #0A54A3;
- 
 
+    background:#0A54A3;
 
-    color: #fff;
-    font-size: 17px;
-    font-weight: 600;
-    text-decoration: none;
+    color:#FFFFFF;
+    font-size:17px;
+    font-weight:600;
+    text-decoration:none;
 
-    transition: .3s;
+    transition:.3s;
 }
 
 .nav-talk:hover{
     transform:translateY(-2px);
 
     box-shadow:
-        0 10px 30px rgba(79,141,253,.3);
+        0 10px 30px rgba(10,84,163,.25);
 }
 
 
@@ -292,12 +280,11 @@ nav{
 
 .hero{
     padding:180px 0 100px;
-
     text-align:center;
 }
 
-.hero span{
-    color:#8d95b3;
+.hero > .container > span{
+    color:#64748B;
 
     text-transform:uppercase;
 
@@ -307,7 +294,7 @@ nav{
 }
 
 .hero h1{
-    font-size:clamp(3rem,2vw,5.2rem);
+    font-size:clamp(3rem,6vw,5.2rem);
 
     line-height:1.1;
 
@@ -319,10 +306,12 @@ nav{
 }
 
 .hero .gradient{
+    display:block;
+
     background:linear-gradient(
         90deg,
-        #E33A2A,
-        #e54141
+        #0A54A3,
+        #0A6DB0
     );
 
     -webkit-background-clip:text;
@@ -333,14 +322,12 @@ nav{
     font-size:60px;
 }
 
-
-
 .hero p{
     max-width:800px;
 
     margin:0 auto;
 
-    color:var(--text-mid);
+    color:var(--muted);
 
     line-height:1.8;
 
@@ -370,7 +357,7 @@ nav{
 ========================================================= */
 
 .card{
-    background:rgba(255,255,255,.03);
+    background:#FFFFFF;
 
     border:1px solid var(--line);
 
@@ -391,16 +378,18 @@ nav{
 .card:hover{
     transform:translateY(-8px);
 
-    border-color:var(--purple);
+    border-color:#0A54A3;
 
     box-shadow:
-        0 20px 40px rgba(124,92,255,.2);
+        0 20px 40px rgba(10,84,163,.12);
 }
 
 .card h2{
     margin-bottom:25px;
 
     font-size:30px;
+
+    color:#111827;
 }
 
 .card ul{
@@ -417,6 +406,7 @@ nav{
     border-bottom:1px solid var(--line);
 
     color:#171718;
+    color:var(--muted);
 
     line-height:1.5;
 }
@@ -437,8 +427,8 @@ nav{
 
     background:linear-gradient(
         135deg,
-        #7c5cff,
-        #4f8dfd
+        #0A54A3,
+        #0A6DB0
     );
 
     border-radius:16px;
@@ -513,7 +503,7 @@ nav{
 
     gap:10px;
 
-    color:var(--text-hi);
+    color:var(--text);
 
     font-family:'Space Grotesk',sans-serif;
 
@@ -536,7 +526,7 @@ nav{
     background:var(--grad);
 
     box-shadow:
-        0 0 12px 2px rgba(124,92,255,.65);
+        0 0 12px 2px rgba(10,84,163,.35);
 }
 
 .footer-tagline{
@@ -548,7 +538,7 @@ nav{
 
     line-height:1.7;
 
-    color:var(--text-mid);
+    color:var(--muted);
 }
 
 
@@ -579,7 +569,7 @@ nav{
 
     justify-content:center;
 
-    color:var(--text-mid);
+    color:var(--muted);
 
     transition:
         border-color .35s ease,
@@ -589,11 +579,11 @@ nav{
 }
 
 .social-btn:hover{
-    border-color:rgba(124,92,255,.55);
+    border-color:rgba(10,84,163,.55);
 
-    background:var(--violet-soft);
+    background:#F1F6FC;
 
-    color:#fff;
+    color:#0A54A3;
 
     transform:translateY(-3px);
 }
@@ -626,7 +616,7 @@ nav{
 
     text-transform:uppercase;
 
-    color:var(--text-low);
+    color:var(--muted-2);
 
     font-weight:600;
 }
@@ -648,7 +638,7 @@ nav{
 .footer-col li{
     font-size:14px;
 
-    color:var(--text-mid);
+    color:var(--muted);
 }
 
 
@@ -657,7 +647,7 @@ nav{
 ========================================================= */
 
 .footer-link{
-    color:var(--text-mid);
+    color:var(--muted);
 
     text-decoration:none;
 
@@ -667,7 +657,7 @@ nav{
 }
 
 .footer-link:hover{
-    color:var(--text-hi);
+    color:var(--text);
 
     padding-left:4px;
 }
@@ -704,7 +694,7 @@ nav{
 
     text-transform:uppercase;
 
-    color:var(--text-low);
+    color:var(--muted-2);
 }
 
 .footer-copy{
@@ -712,7 +702,7 @@ nav{
 
     font-size:12px;
 
-    color:var(--text-low);
+    color:var(--muted-2);
 }
 
 
@@ -739,9 +729,9 @@ nav{
 
     line-height:1.5;
 
-    color:var(--text-hi);
+    color:var(--text);
 
-    background:rgba(14,15,24,.78);
+    background:#FFFFFF;
 
     backdrop-filter:blur(16px);
 
@@ -750,7 +740,7 @@ nav{
     border:1px solid var(--line);
 
     box-shadow:
-        0 20px 50px -12px rgba(0,0,0,.6);
+        0 20px 50px -12px rgba(0,0,0,.15);
 
     transform:translateY(28px);
 
@@ -868,6 +858,10 @@ nav{
 
         font-size:13px;
     }
+
+    .hero .gradient{
+        font-size:48px;
+    }
 }
 
 
@@ -901,17 +895,25 @@ nav{
         flex-basis:48px;
     }
 
+    .logo-area h2{
+        font-size:18px;
+    }
+
     .hero{
         padding:130px 0 80px;
     }
 
-    .hero span{
+    .hero > .container > span{
         font-size:11px;
 
         letter-spacing:2.5px;
     }
 
     .hero h1{
+        font-size:clamp(2.4rem,10vw,4rem);
+    }
+
+    .hero .gradient{
         font-size:clamp(2.4rem,10vw,4rem);
     }
 
@@ -997,23 +999,23 @@ nav{
      NAVBAR
 ========================================================= -->
 
-<nav>
+<nav id="nav">
 
     <div class="wrap navbar">
 
         <!-- Logo -->
 
-        <div class="logo-area"> 
+        <div class="logo-area">
 
             <img
                 src="Web content logo.png"
                 alt="Web Content Services Logo"
             >
 
-            <h2> Web Content</h2>
+            <h2>Web Content</h2>
 
-        
-</div>
+        </div>
+
 
         <!-- Navigation -->
 
@@ -1106,7 +1108,6 @@ nav{
                 Work Better & Grow Better.
             </span>
 
-           
         </h1>
 
         <p>
@@ -1312,7 +1313,10 @@ nav{
                 </a>
 
 
-                <p class="footer-tagline " style="text-align: center;">
+                <p
+                    class="footer-tagline"
+                    style="text-align:center;"
+                >
 
                     Where Smart Solutions Build Trusted Brands.
 
@@ -1398,6 +1402,8 @@ nav{
                         href="https://x.com/webcontent_biz?s=11"
                         class="social-btn"
                         aria-label="X / Twitter"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
 
                         <svg
@@ -1420,6 +1426,8 @@ nav{
                         href="https://www.facebook.com/share/1CNiLj4fPb/?mibextid=wwXIfr"
                         class="social-btn"
                         aria-label="Facebook"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
 
                         <svg
@@ -1616,7 +1624,9 @@ nav{
 
 <script>
 
-/* Current Year */
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
@@ -1628,7 +1638,8 @@ document.getElementById("year").textContent =
 
 function showToast(message){
 
-    const toast = document.getElementById("toast");
+    const toast =
+        document.getElementById("toast");
 
     if(!toast) return;
 
@@ -1641,6 +1652,7 @@ function showToast(message){
         toast.classList.remove("show");
 
     },4000);
+
 }
 
 </script>

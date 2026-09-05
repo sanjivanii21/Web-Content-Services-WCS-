@@ -1195,12 +1195,12 @@ a.footer-link:hover{
 
       <form id="contactForm" class="lg:col-span-7 glass rounded-3xl p-8 sm:p-10 reveal-r">
         <div class="grid sm:grid-cols-2 gap-5">
-          <input required type="text" placeholder="Full Name" class="rounded-xl px-4 py-3.5 text-sm w-full">
-          <input required type="text" placeholder="Company Name" class="rounded-xl px-4 py-3.5 text-sm w-full">
-          <input required type="tel" placeholder="Phone Number" class="rounded-xl px-4 py-3.5 text-sm w-full">
-          <input required type="email" placeholder="Email Address" class="rounded-xl px-4 py-3.5 text-sm w-full">
-          <input type="text" placeholder="Industry" class="rounded-xl px-4 py-3.5 text-sm w-full">
-          <select required class="rounded-xl px-4 py-3.5 text-sm w-full">
+         <input required type="text" id="fullName" placeholder="Full Name" class="rounded-xl px-4 py-3.5 text-sm w-full">
+         <input required type="text" id="companyName" placeholder="Company Name" class="rounded-xl px-4 py-3.5 text-sm w-full">
+         <input required type="tel" id="phoneNumber" placeholder="Phone Number" class="rounded-xl px-4 py-3.5 text-sm w-full">
+         <input required type="email" id="email" placeholder="Email Address" class="rounded-xl px-4 py-3.5 text-sm w-full">
+         <input type="text" id="industryName" placeholder="Industry" class="rounded-xl px-4 py-3.5 text-sm w-full">
+         <select required id="serviceRequired" class="rounded-xl px-4 py-3.5 text-sm w-full">
             <option value="" class="bg-[#FFFFFF]">Service / Solution Required</option>
             <option class="bg-[#FFFFFF]">Business Consulting</option>
             <option class="bg-[#FFFFFF]">Business Analysis</option>
@@ -1210,8 +1210,8 @@ a.footer-link:hover{
             <option class="bg-[#FFFFFF]">Other</option>
           </select>
         </div>
-        <textarea placeholder="Business Requirement" rows="3" class="rounded-xl px-4 py-3.5 text-sm w-full mt-5"></textarea>
-        <textarea placeholder="Message" rows="3" class="rounded-xl px-4 py-3.5 text-sm w-full mt-5"></textarea>
+        <textarea id="businessRequirements" placeholder="Business Requirement" rows="3" class="rounded-xl px-4 py-3.5 text-sm w-full mt-5"></textarea>
+        <textarea id="message" placeholder="Message" rows="3" class="rounded-xl px-4 py-3.5 text-sm w-full mt-5"></textarea>
         <button type="submit" class="btn-primary rounded-full px-8 py-4 text-sm mt-7 w-full sm:w-auto">Start a Conversation</button>
       </form>
     </div>
@@ -1381,15 +1381,50 @@ if (document.getElementById('caseContent')) {
 /* Contact form */
 const form = document.getElementById('contactForm');
 const toast = document.getElementById('toast');
-form.addEventListener('submit', (e) => {
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  toast.style.transform = 'translateY(0)';
-  toast.style.opacity = '1';
-  form.reset();
-  setTimeout(() => {
-    toast.style.transform = 'translateY(6rem)';
-    toast.style.opacity = '0';
-  }, 3500);
+
+  const inquiryData = {
+    fullName: document.getElementById('fullName').value,
+    companyName: document.getElementById('companyName').value,
+    phoneNumber: document.getElementById('phoneNumber').value,
+    email: document.getElementById('email').value,
+    industryName: document.getElementById('industryName').value,
+    serviceRequired: document.getElementById('serviceRequired').value,
+    businessRequirements: document.getElementById('businessRequirements').value,
+    message: document.getElementById('message').value
+  };
+
+  try {
+    const response = await fetch('http://localhost:8080/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(inquiryData)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to submit contact inquiry');
+    }
+
+    // Show success message
+    toast.style.transform = 'translateY(0)';
+    toast.style.opacity = '1';
+
+    // Clear the form
+    form.reset();
+
+    setTimeout(() => {
+      toast.style.transform = 'translateY(6rem)';
+      toast.style.opacity = '0';
+    }, 3500);
+
+  } catch (error) {
+    console.error('Contact form submission error:', error);
+    alert('Failed to submit the form. Please try again.');
+  }
 });
 
 /* Hero parallax on blobs */
