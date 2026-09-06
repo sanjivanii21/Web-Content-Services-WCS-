@@ -1,390 +1,1298 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title> Application Form</title>
+    <title>Apply Now - WCS</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
-<style>
-:root{
-  --bg:#fffdf9;
-  --bg-soft:#faf7f2;
+    <style>
 
-  --surface:#ffffff;
-  --surface-2:#f7f2ec;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
-  --line:#e8ded5;
+        body {
+            min-height: 100vh;
+            background: #fffdf9;
+            color: #171414;
 
-  --text:#171414;
-  --muted:#6f6662;
-  --muted-2:#9b908b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-  --purple:#b4232f;
-  --blue:#d13b3f;
-  --cyan:#f06a5f;
+            padding: 30px 15px;
+        }
 
-  --grad:linear-gradient(
-      120deg,
-      #0A54A3 100%
-  );
+        .container {
+            width: 100%;
+            max-width: 900px;
 
-  --success:#16a34a;
-}
+            background: white;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
+            border: 1px solid #e8ded5;
+            border-radius: 20px;
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-}
+            padding: 35px;
 
-/* Glass Container */
-.container {
-  width: 100%;
-  max-width: 900px;
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(15px);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: 0 0 40px rgba(23,20,20,0.10);
-  animation: fadeUp 1s ease;
-}
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.10);
+        }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 32px;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
 
-/* Grid */
-.grid {
-  display: grid;
-  gap: 15px;
-}
+            font-size: 34px;
+            color: #0A54A3;
+        }
 
-.grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-}
+        .grid {
+            display: grid;
+            gap: 18px;
+        }
 
-/* Inputs */
-.input-group {
-  position: relative;
-}
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
 
-.input-group input,
-.input-group select,
-.input-group textarea {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-  color: var(--text);
-  outline: none;
-  transition: 0.3s;
-}
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
 
-.input-group input:focus,
-.input-group textarea:focus,
-.input-group select:focus {
-  border-color: var(--purple);
-  box-shadow: 0 0 10px rgba(180,35,47,0.35);
-}
+        .input-group input,
+        .input-group textarea,
+        select {
 
-/* Floating Label */
-.input-group label {
-  position: absolute;
-  top: 50%;
-  left: 14px;
-  transform: translateY(-50%);
-  color: var(--muted-2);
-  font-size: 14px;
-  pointer-events: none;
-  transition: 0.3s;
-}
+            width: 100%;
 
-.input-group input:focus + label,
-.input-group input:valid + label,
-.input-group textarea:focus + label,
-.input-group textarea:valid + label {
-  top: -8px;
-  font-size: 11px;
-  color: var(--purple);
-}
+            padding: 14px;
 
-/* Upload Box */
-.upload-box {
-  border: 2px dashed var(--line);
-  padding: 25px;
-  text-align: center;
-  border-radius: 15px;
-  transition: 0.3s;
-}
+            border: 1px solid #e0d6ce;
+            border-radius: 10px;
 
-.upload-box:hover {
-  border-color: var(--purple);
-}
+            background: #faf7f2;
+            color: #171414;
 
-.upload-box.dragover {
-  border-color: var(--blue);
-  background: rgba(209,59,63,0.06);
-}
+            outline: none;
 
-.upload-box input {
-  display: none;
-}
+            font-size: 14px;
 
-.file-name {
-  margin-top: 10px;
-  color: var(--success);
-}
+            transition: 0.3s;
+        }
 
-/* Button */
-button {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  background: var(--grad);
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+        .input-group textarea {
 
-button:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
-}
+            resize: vertical;
+            min-height: 100px;
+        }
 
-/* Loader */
-.loader {
-  width: 20px;
-  height: 20px;
-  border: 3px solid white;
-  border-top: 3px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: auto;
-}
+        .input-group input:focus,
+        .input-group textarea:focus,
+        select:focus {
 
-/* Animations */
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+            border-color: #0A54A3;
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+            box-shadow: 0 0 8px rgba(10, 84, 163, 0.20);
+        }
 
-/* Responsive */
-@media(max-width:600px){
-  h1 { font-size: 24px; }
-}
-</style>
+        .input-group label {
+
+            position: absolute;
+
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #9b908b;
+
+            font-size: 14px;
+
+            pointer-events: none;
+
+            transition: 0.2s;
+
+            background: transparent;
+        }
+
+        .input-group textarea + label {
+            top: 25px;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label,
+        .input-group textarea:focus + label,
+        .input-group textarea:not(:placeholder-shown) + label {
+
+            top: -8px;
+            left: 10px;
+
+            padding: 0 5px;
+
+            background: white;
+
+            color: #0A54A3;
+
+            font-size: 11px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        /* Resume upload */
+
+        .upload-box {
+
+            border: 2px dashed #e0d6ce;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .upload-box:hover {
+
+            border-color: #0A54A3;
+
+            background: #fafcff;
+        }
+
+        .upload-box.dragover {
+
+            border-color: #0A54A3;
+
+            background: #eef6ff;
+        }
+
+        .upload-box input {
+            display: none;
+        }
+
+        .browse {
+
+            color: #0A54A3;
+
+            font-weight: 600;
+        }
+
+        .file-name {
+
+            margin-top: 10px;
+
+            color: #16a34a;
+
+            font-size: 14px;
+        }
+
+        /* Terms */
+
+        .terms {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 14px;
+        }
+
+        .terms input {
+
+            width: 17px;
+            height: 17px;
+        }
+
+        /* Submit button */
+
+        button {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #0A54A3;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+
+            background: #083f7b;
+        }
+
+        button:disabled {
+
+            opacity: 0.7;
+
+            cursor: not-allowed;
+        }
+
+        /* Loader */
+
+        .loader {
+
+            width: 20px;
+            height: 20px;
+
+            border: 3px solid white;
+
+            border-top: 3px solid transparent;
+
+            border-radius: 50%;
+
+            animation: spin 1s linear infinite;
+
+            margin: auto;
+        }
+
+        /* Messages */
+
+        .success-message,
+        .error-message {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            font-size: 14px;
+        }
+
+        .success-message {
+
+            background: #dcfce7;
+
+            color: #166534;
+        }
+
+        .error-message {
+
+            background: #fee2e2;
+
+            color: #991b1b;
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 650px) {
+
+            .container {
+
+                padding: 25px 18px;
+            }
+
+            .grid-2 {
+
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+
+                font-size: 27px;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<h1>Apply Now</h1>
+    <h1>Apply Now</h1>
 
-<form id="form">
 
-<!-- Personal Info -->
-<div class="grid grid-2">
-  <div class="input-group">
-    <input type="text" required>
-    <label>Full Name</label>
-  </div>
-  <div class="input-group">
-    <input type="email" required>
-    <label>Email Address</label>
-  </div>
-  <div class="input-group">
-    <input type="text" required>
-    <label>Phone Number</label>
-  </div>
-  <div class="input-group">
-    <input type="text" required>
-    <label>Location</label>
-  </div>
+    <form id="form">
+
+
+        <!-- NAME + EMAIL -->
+
+        <div class="grid grid-2">
+
+            <div class="input-group">
+
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder=" "
+                    required
+                >
+
+                <label>Full Name</label>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder=" "
+                    required
+                >
+
+                <label>Email Address</label>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- PHONE + LOCATION -->
+
+        <div class="grid grid-2">
+
+            <div class="input-group">
+
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    placeholder=" "
+                    required
+                >
+
+                <label>Phone Number</label>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    placeholder=" "
+                    required
+                >
+
+                <label>Location</label>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- APPLICATION TYPE + ROLE -->
+
+        <div class="grid grid-2">
+
+            <select id="applicationType" required>
+
+                <option value="">
+                    Apply For
+                </option>
+
+                <option value="Internship">
+                    Internship
+                </option>
+
+                <option value="Full-Time">
+                    Full-Time
+                </option>
+
+                <option value="Remote">
+                    Remote
+                </option>
+
+                <option value="Freelancing">
+                    Freelancing
+                </option>
+
+            </select>
+
+
+            <select id="role" required>
+
+                <option value="">
+                    Select Role
+                </option>
+
+                <option value="Business Consultant">
+                    Business Consultant
+                </option>
+
+                <option value="Business Analyst">
+                    Business Analyst
+                </option>
+
+                <option value="Project Manager">
+                    Project Manager
+                </option>
+
+                <option value="Web Developer">
+                    Web Developer
+                </option>
+
+                <option value="App Developer">
+                    App Developer
+                </option>
+
+                <option value="UI/UX Designer">
+                    UI/UX Designer
+                </option>
+
+                <option value="Graphic Designer">
+                    Graphic Designer
+                </option>
+
+                <option value="Video Editor">
+                    Video Editor
+                </option>
+
+                <option value="Social Media Executive">
+                    Social Media Executive
+                </option>
+
+                <option value="Social Media Manager">
+                    Social Media Manager
+                </option>
+
+                <option value="Cinematographer">
+                    Cinematographer
+                </option>
+
+                <option value="Digital Marketing Executive">
+                    Digital Marketing Executive
+                </option>
+
+                <option value="Sales Executive">
+                    Sales Executive
+                </option>
+
+                <option value="Model | Artist | Talent for Brand Shoots">
+                    Model | Artist | Talent for Brand Shoots
+                </option>
+
+                <option value="Content Creator">
+                    Content Creator
+                </option>
+
+            </select>
+
+
+            <select id="experience" required>
+
+                <option value="">
+                    Experience
+                </option>
+
+                <option value="Fresher">
+                    Fresher
+                </option>
+
+                <option value="1-2 Years">
+                    1-2 Years
+                </option>
+
+                <option value="3+ Years">
+                    3+ Years
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- SKILLS + PORTFOLIO -->
+
+        <div class="grid grid-2">
+
+            <div class="input-group">
+
+                <input
+                    type="text"
+                    id="skills"
+                    placeholder=" "
+                    required
+                >
+
+                <label>
+                    Skills (comma separated)
+                </label>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <input
+                    type="url"
+                    id="portfolioUrl"
+                    placeholder=" "
+                    required
+                >
+
+                <label>
+                    Portfolio / GitHub / LinkedIn
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- RESUME -->
+
+        <div
+            class="upload-box"
+            id="uploadBox"
+        >
+
+            <p>
+                Drag & Drop Resume or
+                <span class="browse">
+                    Browse
+                </span>
+            </p>
+
+
+            <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,.doc,.docx"
+            >
+
+
+            <div
+                class="file-name"
+                id="fileName"
+            ></div>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- REASON -->
+
+        <div class="input-group">
+
+            <textarea
+                id="reason"
+                placeholder=" "
+                required
+            ></textarea>
+
+            <label>
+                Why should we hire you?
+            </label>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- AVAILABILITY -->
+
+        <select
+            id="availability"
+            required
+        >
+
+            <option value="">
+                Availability
+            </option>
+
+            <option value="Immediate">
+                Immediate
+            </option>
+
+            <option value="15 Days">
+                15 Days
+            </option>
+
+            <option value="1 Month">
+                1 Month
+            </option>
+
+        </select>
+
+
+        <br><br>
+
+
+        <!-- TERMS -->
+
+        <label class="terms">
+
+            <input
+                type="checkbox"
+                id="termsAccepted"
+                required
+            >
+
+            <span>
+                I agree to Terms & Conditions
+            </span>
+
+        </label>
+
+
+        <br><br>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            type="submit"
+            id="submitBtn"
+        >
+            Submit Application
+        </button>
+
+
+        <!-- SUCCESS -->
+
+        <div
+            class="success-message"
+            id="successMessage"
+        >
+            ✅ Application submitted successfully!
+        </div>
+
+
+        <!-- ERROR -->
+
+        <div
+            class="error-message"
+            id="errorMessage"
+        >
+            ❌ Something went wrong.
+        </div>
+
+
+    </form>
+
 </div>
 
-<br>
-
-<!-- Application Details -->
-<div class="grid grid-2">
-  <select required>
-    <option value="">Apply For</option>
-    <option>Internship</option>
-    <option>Full-Time</option>
-    <option>Remote</option>
-      <option>Freelancing</option>
-  </select>
-
-  <select id="role" required>
-  <option value="">Select Role</option>
-  <option>Business Consultant</option>
-  <option>Business Analyst</option>
-  <option>Project Manager</option>
-  <option>Web Developer</option>
-  <option>App Developer</option>
-  <option>UI/UX Designer</option>
-  <option>Graphic Designer</option>
-  <option>Video Editor</option>
-  <option>Social Media Executive</option>
-   <option>Social Media Manager</option>
-   <option>Cinematographer</option>
-   <option>Digital Marketing Executive</option>
-   <option>Sales Executive</option>
-   <option>Model | Artist | Talent for Brand Shoots</option>
-   <option>Content Creator</option>
-</select>
-
-  <select required>
-    <option value="">Experience</option>
-    <option>Fresher</option>
-    <option>1-2 Years</option>
-    <option>3+ Years</option>
-  </select>
-</div>
-
-<br>
-
-<!-- Skills -->
-<div class="grid grid-2">
-  <div class="input-group">
-    <input type="text" required>
-    <label>Skills (comma separated)</label>
-  </div>
-  <div class="input-group">
-    <input type="text" required>
-    <label>Portfolio / GitHub / LinkedIn</label>
-  </div>
-</div>
-
-<br>
-
-<!-- Upload -->
-<div class="upload-box" id="uploadBox">
-  <p>Drag & Drop Resume or <label style="color:var(--purple);cursor:pointer;">Browse</label></p>
-  <input type="file" id="fileInput">
-  <div class="file-name" id="fileName"></div>
-</div>
-
-<br>
-
-<!-- Additional -->
-<div class="input-group">
-  <textarea rows="3" required></textarea>
-  <label>Why should we hire you?</label>
-</div>
-
-<br>
-
-<select required>
-  <option value="">Availability</option>
-  <option>Immediate</option>
-  <option>15 Days</option>
-  <option>1 Month</option>
-</select>
-
-<br>
-
-<label>
-  <input type="checkbox" required> I agree to Terms & Conditions
-</label>
-
-<br><br>
-
-<button type="submit" id="submitBtn">Submit Application</button>
-
-</form>
-
-</div>
 
 <script>
-const uploadBox = document.getElementById("uploadBox");
-const fileInput = document.getElementById("fileInput");
-const fileName = document.getElementById("fileName");
 
-uploadBox.addEventListener("click", () => fileInput.click());
 
-uploadBox.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  uploadBox.classList.add("dragover");
-});
+/* =========================================
+   BACKEND URL
+========================================= */
 
-uploadBox.addEventListener("dragleave", () => {
-  uploadBox.classList.remove("dragover");
-});
+const API_URL =
+    "http://localhost:8080/api/applications";
 
-uploadBox.addEventListener("drop", (e) => {
-  e.preventDefault();
-  uploadBox.classList.remove("dragover");
-  handleFile(e.dataTransfer.files[0]);
-});
 
-fileInput.addEventListener("change", () => {
-  handleFile(fileInput.files[0]);
-});
+/* =========================================
+   GET HTML ELEMENTS
+========================================= */
 
-function handleFile(file) {
-  const allowed = ["application/pdf","application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+const form =
+    document.getElementById("form");
 
-  if (!allowed.includes(file.type)) {
-    alert("Only PDF/DOC/DOCX allowed");
-    return;
-  }
+const submitBtn =
+    document.getElementById("submitBtn");
 
-  if (file.size > 2 * 1024 * 1024) {
-    alert("Max file size 2MB");
-    return;
-  }
+const successMessage =
+    document.getElementById("successMessage");
 
-  fileName.innerHTML = "✔ " + file.name;
+const errorMessage =
+    document.getElementById("errorMessage");
+
+const uploadBox =
+    document.getElementById("uploadBox");
+
+const fileInput =
+    document.getElementById("fileInput");
+
+const fileName =
+    document.getElementById("fileName");
+
+
+/* =========================================
+   RESUME SELECTION
+   NOTE:
+   Resume is NOT sent to backend yet.
+========================================= */
+
+uploadBox.addEventListener(
+    "click",
+    function () {
+
+        fileInput.click();
+
+    }
+);
+
+
+uploadBox.addEventListener(
+    "dragover",
+    function (event) {
+
+        event.preventDefault();
+
+        uploadBox.classList.add("dragover");
+
+    }
+);
+
+
+uploadBox.addEventListener(
+    "dragleave",
+    function () {
+
+        uploadBox.classList.remove("dragover");
+
+    }
+);
+
+
+uploadBox.addEventListener(
+    "drop",
+    function (event) {
+
+        event.preventDefault();
+
+        uploadBox.classList.remove("dragover");
+
+        const file =
+            event.dataTransfer.files[0];
+
+        if (file) {
+
+            checkResume(file);
+
+        }
+
+    }
+);
+
+
+fileInput.addEventListener(
+    "change",
+    function () {
+
+        const file =
+            fileInput.files[0];
+
+        if (file) {
+
+            checkResume(file);
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   CHECK RESUME
+========================================= */
+
+function checkResume(file) {
+
+    const allowedExtensions = [
+        ".pdf",
+        ".doc",
+        ".docx"
+    ];
+
+
+    const fileNameLower =
+        file.name.toLowerCase();
+
+
+    const valid =
+        allowedExtensions.some(
+            extension =>
+                fileNameLower.endsWith(extension)
+        );
+
+
+    if (!valid) {
+
+        alert(
+            "Only PDF, DOC and DOCX files are allowed."
+        );
+
+        fileInput.value = "";
+
+        fileName.innerHTML = "";
+
+        return;
+    }
+
+
+    /* Maximum 2 MB */
+
+    if (file.size > 2 * 1024 * 1024) {
+
+        alert(
+            "Resume must be smaller than 2MB."
+        );
+
+        fileInput.value = "";
+
+        fileName.innerHTML = "";
+
+        return;
+    }
+
+
+    fileName.innerHTML =
+        "✔ " + file.name;
 }
 
-/* Submit Animation */
-const form = document.getElementById("form");
-const btn = document.getElementById("submitBtn");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  btn.innerHTML = '<div class="loader"></div>';
+/* =========================================
+   FORM SUBMISSION
+========================================= */
 
-  setTimeout(() => {
-    btn.innerHTML = "Submitted ✔";
-  }, 2000);
-});
+form.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        /* Hide old messages */
+
+        successMessage.style.display =
+            "none";
+
+        errorMessage.style.display =
+            "none";
+
+
+        /* =====================================
+           GET FORM VALUES
+        ===================================== */
+
+        const fullName =
+            document
+                .getElementById("fullName")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+        const location =
+            document
+                .getElementById("location")
+                .value
+                .trim();
+
+
+        const applicationType =
+            document
+                .getElementById("applicationType")
+                .value;
+
+
+        const role =
+            document
+                .getElementById("role")
+                .value;
+
+
+        const experience =
+            document
+                .getElementById("experience")
+                .value;
+
+
+        const skills =
+            document
+                .getElementById("skills")
+                .value
+                .trim();
+
+
+        const portfolioUrl =
+            document
+                .getElementById("portfolioUrl")
+                .value
+                .trim();
+
+
+        const reason =
+            document
+                .getElementById("reason")
+                .value
+                .trim();
+
+
+        const availability =
+            document
+                .getElementById("availability")
+                .value;
+
+
+        const termsAccepted =
+            document
+                .getElementById("termsAccepted")
+                .checked;
+
+
+        const resume =
+            fileInput.files[0];
+
+
+        /* =====================================
+           VALIDATION
+        ===================================== */
+
+        if (
+            !fullName ||
+            !email ||
+            !phone ||
+            !location ||
+            !applicationType ||
+            !role ||
+            !experience ||
+            !skills ||
+            !portfolioUrl ||
+            !reason ||
+            !availability
+        ) {
+
+            alert(
+                "Please fill all required fields."
+            );
+
+            return;
+        }
+
+
+        /* Resume is still required */
+
+        if (!resume) {
+
+            alert(
+                "Please upload your resume."
+            );
+
+            return;
+        }
+
+
+        if (!termsAccepted) {
+
+            alert(
+                "Please accept Terms & Conditions."
+            );
+
+            return;
+        }
+
+
+        /* =====================================
+           DATA SENT TO SPRING BOOT
+           
+           Resume is intentionally NOT included.
+        ===================================== */
+
+        const applicationData = {
+
+            fullName: fullName,
+
+            email: email,
+
+            phone: phone,
+
+            location: location,
+
+            applicationType: applicationType,
+
+            role: role,
+
+            experience: experience,
+
+            skills: skills,
+
+            portfolioUrl: portfolioUrl,
+
+            reason: reason,
+
+            availability: availability,
+
+            termsAccepted: termsAccepted
+
+        };
+
+
+        console.log(
+            "Sending application:"
+        );
+
+        console.log(applicationData);
+
+
+        /* =====================================
+           DISABLE BUTTON
+        ===================================== */
+
+        submitBtn.disabled = true;
+
+        submitBtn.innerHTML =
+            '<div class="loader"></div>';
+
+
+        try {
+
+
+            /* =================================
+               SEND DATA TO SPRING BOOT
+            ================================= */
+
+            const response =
+                await fetch(
+                    API_URL,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                applicationData
+                            )
+                    }
+                );
+
+
+            console.log(
+                "HTTP Status:",
+                response.status
+            );
+
+
+            /* Read server response */
+
+            const responseText =
+                await response.text();
+
+
+            console.log(
+                "Server Response:",
+                responseText
+            );
+
+
+            /* =================================
+               CHECK ERROR
+            ================================= */
+
+            if (!response.ok) {
+
+                let serverMessage =
+                    responseText;
+
+
+                try {
+
+                    const errorJson =
+                        JSON.parse(
+                            responseText
+                        );
+
+
+                    serverMessage =
+                        errorJson.message ||
+                        errorJson.error ||
+                        responseText;
+
+                }
+                catch (e) {
+
+                    /* Response wasn't JSON */
+
+                }
+
+
+                throw new Error(
+                    "Server returned HTTP " +
+                    response.status +
+                    ": " +
+                    serverMessage
+                );
+            }
+
+
+            /* =================================
+               SUCCESS
+            ================================= */
+
+            console.log(
+                "Application saved successfully."
+            );
+
+
+            submitBtn.disabled = false;
+
+            submitBtn.innerHTML =
+                "Submitted ✔";
+
+
+            successMessage.innerHTML =
+                "✅ Application submitted successfully!";
+
+
+            successMessage.style.display =
+                "block";
+
+
+            errorMessage.style.display =
+                "none";
+
+
+            /* Reset form */
+
+            form.reset();
+
+            fileName.innerHTML = "";
+
+
+            /* Scroll to success message */
+
+            successMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+
+            /* Change button back */
+
+            setTimeout(
+                function () {
+
+                    submitBtn.innerHTML =
+                        "Submit Application";
+
+                },
+                3000
+            );
+
+
+        }
+        catch (error) {
+
+
+            /* =================================
+               REAL ERROR
+            ================================= */
+
+            console.error(
+                "Application Error:",
+                error
+            );
+
+
+            submitBtn.disabled = false;
+
+            submitBtn.innerHTML =
+                "Submit Application";
+
+
+            successMessage.style.display =
+                "none";
+
+
+            errorMessage.style.display =
+                "block";
+
+
+            errorMessage.innerHTML =
+                "❌ Application failed.<br><br>" +
+                "<small>" +
+                error.message +
+                "</small>";
+
+
+            errorMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+    }
+);
+
 </script>
 
+
 </body>
+
 </html>
